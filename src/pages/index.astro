@@ -1,11 +1,264 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import paintbrush from '../assets/paintbrush.svg';
+import cup from '../assets/cup.svg';
+import cart from '../assets/cart.svg';
+import check from '../assets/check.svg';
+import cross from '../assets/cross.svg';
+import skincenterlogo from '../assets/skincenter-logo.svg';
+import actionmakerlogo from '../assets/actionmaker-logo.svg';
+import chevrondown from '../assets/chevron-down.svg';
+import location from '../assets/location.svg';
+import phone from '../assets/phone.svg';
+import envelope from '../assets/envelope.svg';
 ---
 
 <Layout>
-	<Welcome />
+	<header class="site-header">
+		<nav class="primary-navigation">
+			<img src="src/assets/logo.png" width="73px" height="100px" alt="webmoov logo" />
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="#">Over ons</a></li>
+				<li><a href="#">Diensten</a></li>
+				<li><a href="#">Ons werk</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section class="hero">
+		<div class="heading">
+			<h1>Wij creëren maatwerk websites</h1>
+			<p class="subtitle">
+				Van eenvoudige landingspagina's tot complexe e-commerce oplossingen, 
+			wij bouwen websites die meegroeien met uw bedrijf.
+			</p>
+		</div>
+		<a href="#" class="btn">Ontdek onze diensten <span class="visually-hidden">die Webmoov aanbiedt om je website project te realiseren</span></a>
+	</section>
+	<section class="services">
+		<h2>Onze diensten</h2>
+		<p class="subtitle">Kies de perfecte oplossing voor uw bedrijf</p>
+		<div class="service-cards">
+			<article class="service-card">
+				<section class="service-card__header">
+					<img src={paintbrush.src} alt="Service 1" />
+					<h3>One Pager Website</h3>
+				</section>
+				<p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
+			</article>
+			<article class="service-card">
+				<section class="service-card__header">
+					<img src={cup.src} alt="Service 2" />
+					<h3>Premium Website</h3>
+				</section>
+				<p>Een volledig op maat gemaakte website met CMS-integratie.</p>
+			</article>
+			<article class="service-card">
+				<section class="service-card__header">
+					<img src={cart.src} alt="Service 3" />
+					<h3>Ecommerce Website</h3>
+				</section>
+				<p>Complete webshop oplossingen die meegroeien met uw bedrijf.</p>
+			</article>
+		</div>
+	</section>
+	<section class="comparison-section">
+		<div class="heading">
+			<h2>Maatwerk vs Template</h2>
+			<p class="subtitle">Wij bouwen maatwerk websites met unieke designs en aangepaste functionaliteit, waarmee uw bedrijf zich onderscheidt van template websites.</p>
+		</div>
+		<div class="cards">
+			<article class="card">
+				<h2>Maatwerk website</h2>
+				<img src="src/assets/custom-website.jpg" alt="custom website" />
+				<div class="item">
+					<img src={check.src} alt="item 1" />
+					<p>Unieke merkidentiteit die perfect bij uw bedrijf past</p>
+				</div>
+				<div class="item">
+					<img src={check.src} alt="item 1" />
+					<p>Aangepaste functionaliteit.</p>
+				</div>
+				<div class="item">
+					<img src={check.src} alt="item 1" />
+					<p>Optimale laadsnelheid en prestaties</p>
+				</div>
+				<div class="item">
+					<img src={check.src} alt="item 1" />
+					<p>Uitgebreide beveiligingsmaatregelen</p>
+				</div>
+				<div class="item">
+					<img src={check.src} alt="item 1" />
+					<p>Makkelijk schaalbaar met uw bedrijf mee</p>
+				</div>
+				<div class="item">
+					<img src={check.src} alt="item 1" />
+					<p>Superieure SEO-mogelijkheden</p>
+				</div>
+			</article>
+			<article class="card">
+				<h2>Template website</h2>
+				<img src="src/assets/template-website.jpg" alt="template website" />
+				<div class="item">
+					<img src={cross.src} alt="item 1" />
+					<p>Generiek ontwerp met beperkte aanpassingen</p>
+				</div>
+				<div class="item">
+					<img src={cross.src} alt="item 1" />
+					<p>Vooraf bepaalde functionaliteit met beperkingen</p>
+				</div>
+				<div class="item">
+					<img src={cross.src} alt="item 1" />
+					<p>Trage laadtijden door overbodige code</p>
+				</div>
+				<div class="item">
+					<img src={cross.src} alt="item 1" />
+					<p>Standaard beveiliging met bekende kwetsbaarheden</p>
+				</div>
+				<div class="item">
+					<img src={cross.src} alt="item 1" />
+					<p>Beperkte schaalbaarheid door platformrestricties</p>
+				</div>
+				<div class="item">
+					<img src={cross.src} alt="item 1" />
+					<p>Basis SEO-optimalisatie</p>
+				</div>
+			</article>
+		</div>
+		<a href="#" class="btn">Bekijk ons werk</a>
+	</section>
+	<section class="testimonials-section">
+		<div class="heading">
+			<h2>Klant ervaringen</h2>
+			<p class="subtitle">Ontdek wat onze klanten over ons zeggen.</p>
+		</div>
+		<div class="testimonial-cards">
+			<article class="testimonial-card">
+				<div class="heading">
+					<img src="src/assets/testimonial-avatar-1.jpg" alt="testimonial avatar" />
+					<div class="heading__text">
+						<h2>Anniek Lambrecht</h2>
+						<p>Zaakvoerder</p>
+					</div>
+				</div>
+				<div class="body">
+					<p>Fijne samenwerking met Anthony van Webmoov resulteerde in een mooie hippe website met bijhorende webshop. Service nadien blijft ook uitstekend, snel antwoord en interactie voor aanpassingen.</p>
+				</div>
+				<footer>
+					<img src={skincenterlogo.src} alt="skincenter logo" />
+					<p>Skincenter Anniek Lambrecht</p>
+				</footer>
+			</article>
+			<article class="testimonial-card">
+				<div class="heading">
+					<img src="src/assets/testimonial-avatar-2.jpg" alt="testimonial avatar" />
+					<div class="heading__text">
+						<h2>Frederiek Troubleyn</h2>
+						<p>Zaakvoerder</p>
+					</div>
+				</div>
+				<div class="body">
+					<p>Voor de ontwikkeling van onze nieuwe teambuilding-website werkten we samen met Webmoov en we kunnen met volle overtuiging zeggen dat dit een topkeuze was!</p>
+				</div>
+				<footer>
+					<img src={actionmakerlogo.src} alt="skincenter logo" />
+					<p>Action Maker</p>
+				</footer>
+			</article>
+	</section>
+	<section class="faq-section">
+		<div class="heading">
+			<h2>Alles wat u moet weten over onze diensten.</p>
+		</div>
+		<div class="faq-items">
+			<div class="faq-item">
+				<div class="question">
+					<h3>Wat is inbegrepen bij het One Pager Website pakket?</h3>
+					<img src={chevrondown.src} alt="chevron down" />
+				</div>
+				<hr />
+				<p>Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+			</div>
+			<div class="faq-item">
+				<div class="question">
+					<h3>Hoe lang duurt het om een Premium Website te bouwen?</h3>
+					<img src={chevrondown.src} alt="chevron down" />
+				</div>
+				<hr />
+				<p>Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+			</div>
+			<div class="faq-item">
+				<div class="question">
+					<h3>Kunnen jullie helpen bij het migreren van mijn bestaande webshop?</h3>
+					<img src={chevrondown.src} alt="chevron down" />
+				</div>
+				<hr />
+				<p>Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+			</div>
+			<div class="faq-item">
+				<div class="question">
+					<h3>Bieden jullie doorlopende ondersteuning en onderhoud?</h3>
+					<img src={chevrondown.src} alt="chevron down" />
+				</div>
+				<hr />
+				<p>Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+			</div>
+		</div>
+	</section>
+	<section class="cta-section">
+		<div class="heading">
+			<h1>Klaar om uw digitale aanwezigheid te transformeren?</h1>
+			<p class="subtitle">Laten we bespreken hoe we uw bedrijf kunnen laten groeien met een op maat gemaakte website.</p>
+		</div>
+		<a href="#" class="btn">Start het gesprek <span class="visually-hidden">over je project via ons contactformulier</span></a>
+	</section>
+	<footer class="site-footer">
+		<!-- Five columns -->
+		 <!-- first column spans 2 columns -->
+		<div class="column">
+			<div class="footer-logo">
+				<img src="src/assets/logo.png" alt="webmoov logo" />
+				<h1>Webmoov</h1>
+			</div>
+			<p>Digitale ervaringen die inspireren en converteren.</p>
+		</div>
+		<div class="columns">	
+			<div class="column">
+			
+					<h2>Bedrijf</h2>
+					<ul>
+						<li><a href="#">Over ons</a></li>
+						<li><a href="#">Over ons werk</a></li>
+						<li><a href="#">Diensten</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				
+			</div>
+			<div class="column">
+				
+					<h2>Juridisch</h2>
+					<li><a href="#">Disclaimer</a></li>
+					<li><a href="#">Algemene voorwaarden</a></li>
+				
+			</div>
+			<div class="column">
+				
+					<h2>Contact</h2>
+					<ul>
+						<li><a href="#"><img src={location.src} alt="map" />Grote Edestraat 50, 8370 Blankenberge</a></li>
+						<li><a href="#"><img src={phone.src} alt="phone" />0498137260</a></li>
+						<li><a href="#"><img src={envelope.src} alt="mail" />info@webmoov.be</a></li>
+						<li><a href="#">IBAN: BE527370 2593 4409</a></li>
+						<li><a href="#">VAT: BE0861036534</a></li>
+					</ul>
+				
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<p>© 2025 Webmoov. Alle rechten voorbehouden.</p>
+		</div>
+	</footer>
 </Layout>
