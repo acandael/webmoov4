@@ -1,0 +1,84 @@
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__inner">
+      <a href="/" class="logo">
+        <img src="src/assets/logo.png" alt="webmoov logo" />
+        <span>Webmoov</span>
+      </a>
+      <nav class="primary-navigation">
+        <ul role="list">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Over Ons</a></li>
+          <li><a href="#">Diensten</a></li>
+          <li><a href="#">Ons Werk</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--background-main);
+    height: 75px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--background-light-gray);
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .site-header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+  }
+
+  .logo img {
+    height: 100px;
+    width: auto;
+  }
+
+  .logo span {
+    font-size: var(--font-size-regular);
+    font-weight: 500;
+    font-family: var(--ff-accent);
+    color: var(--clr-black);
+  }
+
+  .primary-navigation ul {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .primary-navigation a {
+    font-size: var(--font-size-regular);
+    color: var(--text-body);
+    text-decoration: none;
+  }
+
+  .primary-navigation a:hover {
+    color: var(--background-accent);
+  }
+
+  @media (max-width: 768px) {
+    .primary-navigation {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,150 @@
+---
+import location from '../assets/location.svg';
+import phone from '../assets/phone.svg';
+import envelope from '../assets/envelope.svg';
+---
+
+<footer class="section site-footer text-low-contrast" data-padding="compact">
+  <div class="container">
+    <div class="column">
+      <div class="footer-logo">
+        <img src="src/assets/logo.png" alt="webmoov logo" />
+        <h1 class="text-low-contrast">Webmoov</h1>
+      </div>
+      <p class="text-low-contrast">Digitale ervaringen die inspireren en converteren.</p>
+    </div>
+    <div class="footer-links">
+    <div class="column">
+      <h2>Bedrijf</h2>
+      <ul>
+        <li><a href="#">Over ons</a></li>
+        <li><a href="#">Over ons werk</a></li>
+        <li><a href="#">Diensten</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="column">
+      <h2>Juridisch</h2>
+      <ul>
+        <li><a href="#">Disclaimer</a></li>
+        <li><a href="#">Algemene voorwaarden</a></li>
+      </ul>
+    </div>
+
+    <div class="column">
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="#"><img src={location.src} alt="map" />Grote Edestraat 50, 8370 Blankenberge</a></li>
+        <li><a href="#"><img src={phone.src} alt="phone" />0498137260</a></li>
+        <li><a href="#"><img src={envelope.src} alt="mail" />info@webmoov.be</a></li>
+        <li><a href="#">IBAN: BE527370 2593 4409</a></li>
+        <li><a href="#">VAT: BE0861036534</a></li>
+      </ul>
+    </div>
+    </div>  
+  </div>
+  <hr />
+  <div class="footer-copyright">
+      <p>© 2025 Webmoov. Alle rechten voorbehouden.</p>
+    </div>
+</footer>
+
+<style>
+
+  .site-footer .container {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--ff-accent);
+    gap: 2rem;
+  }
+
+ .footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 2.5rem 0;
+  gap: 3rem;
+ }
+
+  .site-footer .column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .site-footer .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .site-footer .footer-logo img {
+    height: 100px;
+    width: auto;
+  }
+
+  .site-footer h2 {
+    font-family: var(--ff-accent);
+    color: var(--clr-white-70);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-footer ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .site-footer ul li a {
+    font-size: var(--font-size-sm);
+    color: var(--clr-white-70);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--clr-white);
+    }
+  }
+
+  .site-footer ul li a img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .site-footer .footer-copyright {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: var(--font-size-sm);
+  }
+
+  .site-footer hr {
+    max-width: 1440px;
+    border: none;
+    height: 0.5px;
+    background-color:  var(--clr-brown-500);
+  }
+
+  @media (max-width: 768px) {
+    .site-footer .container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .site-footer .column {
+      text-align: center;
+    }
+
+    .site-footer .footer-logo {
+      justify-content: center;
+    }
+  }
+</style>
