@@ -79,7 +79,7 @@
     --clr-brown-800: hsl(24, 5%, 19%);
     --clr-brown-900: hsl(15, 5%, 15%);
 
-    --clr-accent-500: hsl(14, 84%, 55%);
+    --clr-accent-500: hsl(14, 73%, 60%);
     --clr-accent-700: hsl(14, 41%, 39%);
     --clr-black: hsl(0, 0%, 0%);
     --clr-white: hsl(0, 0%, 100%);
@@ -151,12 +151,6 @@
     color: var(--text-body);
   }
 
-  ul li a {
-    font-family: var(--ff-accent);
-    font-size: var(--font-size-regular);
-    color: var(--text-body);
-  }
-
   .site-footer {
     background-color: var(--background-extra-dark);
   }
@@ -171,6 +165,7 @@
     display: grid;
     gap: var(--grid-flow-gap, 1.5rem);
   }
+
   .equal-columns {
     display: grid;
     gap: var(--equal-columns-gap, 1.5rem);
@@ -189,9 +184,12 @@
       --equal-columns-vertical-alignment: center;
     }
   }
+
   .section {
     --padding: 3rem;
     padding-block: var(--padding);
+    width: 100%;
+    overflow-x: hidden;
 
     @media (width > 760px) {
       --padding: 11.25rem;
@@ -204,10 +202,14 @@
 
   .container {
     --container-max-width: 1312px;
+    --container-padding: 1rem;
 
-    max-width: var(--container-max-width);
+    width: 100%;
+    max-width: calc(
+      var(--container-max-width) + (var(--container-padding) * 2)
+    );
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: var(--container-padding);
     box-sizing: content-box;
 
     &[data-width="medium"] {

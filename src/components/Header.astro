@@ -5,9 +5,9 @@
         <img src="src/assets/logo.png" alt="webmoov logo" />
         <span>Webmoov</span>
       </a>
-      <button aria-controls="primary-nav" aria-expanded="false" class="hamburger-button">
+      <button aria-controls="primary-nav" aria-expanded="false">
         <span class="visually-hidden">Menu</span>
-        <img src="src/assets/hamburger.svg" alt="hamburger menu" />
+        <img src="src/assets/hamburger.svg" alt="" />
       </button>
       <nav id="primary-nav" class="primary-navigation">
         <ul role="list">
@@ -23,7 +23,7 @@
 </header>
 
 <style>
-  header {
+  .site-header {
     background-color: var(--background-main);
     height: 75px;
     display: flex;
@@ -31,13 +31,11 @@
     border-bottom: 1px solid var(--background-light-gray);
   }
 
-  .container {
-    margin: 0 auto;
-    width: 100%;
-  }
 
   .site-header__inner {
     display: flex;
+    gap: 0.5rem 1rem;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
   }
@@ -61,28 +59,84 @@
     color: var(--clr-black);
   }
 
-  .primary-navigation ul {
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  [aria-controls="primary-nav"] {
+    z-index: 100;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
   }
 
-  .primary-navigation a {
-    font-size: var(--font-size-regular);
-    color: var(--text-body);
-    text-decoration: none;
+  [aria-controls="primary-nav"] {
+    display: none;
   }
 
-  .primary-navigation a:hover {
-    color: var(--background-accent);
-  }
+  .primary-navigation {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      font-family: var(--ff-accent);
+      font-size: var(--font-size-regular);
+    }
 
-  @media (max-width: 768px) {
-    .primary-navigation {
+    a {
+      text-decoration: none;
+      color: var(--text-body);
+    }
+
+    @media (width < 760px) {
       display: none;
+      width: 35%;
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      right: 0;
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      font-family: var(--ff-accent);
+      background: var(--background-accent-dark);
+      padding: 2rem;
+      border-radius: 0 0 0 var(--border-radius);
+
+      ul {
+        gap: 0;
+        flex-direction: column;
+      }
+
+      li + li {
+        margin-block-start: 1.5rem;
+        padding-block-start: 1.5rem;
+        border-top: 2px solid var(--background-accent-light);
+      }
+
+      a {
+        color: var(--clr-white);
+      }
+    }
+  }
+
+  @media (width < 760px) {
+    [aria-controls="primary-nav"] {
+      display: block;
+    }
+    [aria-expanded="true"] ~ .primary-navigation {
+      display: block;
     }
   }
 </style>
+
+<script>
+  const nav = document.querySelector('.primary-navigation');
+  const navToggle = document.querySelector('[aria-controls="primary-nav"]');
+
+  navToggle?.addEventListener("click", () => {
+  // check if the navigation is opened
+  const isNavOpened = navToggle.getAttribute("aria-expanded");
+
+  if (isNavOpened === "false") {
+    navToggle.setAttribute("aria-expanded", "true");
+  } else {
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+  });
+</script>
