@@ -284,6 +284,15 @@
     img {
       border-radius: var(--border-radius);
     }
+
+    h2 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      font-size: var(--font-size-md);
+    }
   }
 
   .card__title {

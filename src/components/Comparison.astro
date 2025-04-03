@@ -1,0 +1,120 @@
+---
+import Heading from './ui/Heading.astro';
+import check from '../assets/check.svg';
+import cross from '../assets/cross.svg';
+---
+
+<section class="section comparison-section background-light-gray">
+  <div class="container flow" data-width="narrow">
+    <Heading>
+      <h2 class="section-title">Maatwerk vs Template</h2>
+      <p class="subtitle">Wij bouwen maatwerk websites met unieke designs en aangepaste functionaliteit, waarmee uw bedrijf zich onderscheidt van template websites.</p>
+    </Heading>
+    <div class="equal-columns cards" data-gap="large" data-alignment="centered">
+      <article class="card">
+        <h2 class="card__title">Maatwerk website</h2>
+        <img src="src/assets/custom-website.jpg" alt="custom website" />
+        <div class="items">
+          <div class="item">
+            <img src={check.src} alt="item 1" />
+            <p>Unieke merkidentiteit die perfect bij uw bedrijf past</p>
+          </div>
+          <div class="item">
+            <img src={check.src} alt="item 1" />
+            <p>Aangepaste functionaliteit.</p>
+          </div>
+          <div class="item">
+            <img src={check.src} alt="item 1" />
+            <p>Optimale laadsnelheid en prestaties</p>
+          </div>
+          <div class="item">
+            <img src={check.src} alt="item 1" />
+            <p>Uitgebreide beveiligingsmaatregelen</p>
+          </div>
+          <div class="item">
+            <img src={check.src} alt="item 1" />
+            <p>Makkelijk schaalbaar met uw bedrijf mee</p>
+          </div>
+          <div class="item">
+            <img src={check.src} alt="item 1" />
+            <p>Superieure SEO-mogelijkheden</p>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <h2 class="card__title">Template website</h2>
+        <img src="src/assets/template-website.jpg" alt="template website" />
+        <div class="items">
+          <div class="item">
+            <img src={cross.src} alt="item 1" />
+            <p>Generiek ontwerp met beperkte aanpassingen</p>
+          </div>
+          <div class="item">
+            <img src={cross.src} alt="item 1" />
+            <p>Vooraf bepaalde functionaliteit met beperkingen</p>
+          </div>
+          <div class="item">
+            <img src={cross.src} alt="item 1" />
+            <p>Trage laadtijden door overbodige code</p>
+          </div>
+          <div class="item">
+            <img src={cross.src} alt="item 1" />
+            <p>Standaard beveiliging met bekende kwetsbaarheden</p>
+          </div>
+          <div class="item">
+            <img src={cross.src} alt="item 1" />
+            <p>Beperkte schaalbaarheid door platformrestricties</p>
+          </div>
+          <div class="item">
+            <img src={cross.src} alt="item 1" />
+            <p>Basis SEO-optimalisatie</p>
+          </div>
+        </div>
+      </article>
+    </div>
+    <a href="#" class="button">Bekijk ons werk</a>
+  </div>
+</section>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-block: 11.25rem;
+    padding-inline: .5rem;
+    gap: 4.5rem;
+  }
+
+  .cards {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .comparison-section .card {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-block-start: 2rem;
+    padding-block-end: 3rem;
+    box-shadow: 2px 2px 48px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .button {
+    margin-inline: auto;
+  }
+  
+  
+</style>

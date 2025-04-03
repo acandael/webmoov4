@@ -1,0 +1,53 @@
+---
+import Heading from "./ui/Heading.astro";
+import paintbrush from '../assets/paintbrush.svg';
+import cup from '../assets/cup.svg';
+import cart from '../assets/cart.svg';
+---
+
+<section class="section services background-dark">
+  <div class="container flow">
+    <Heading>
+      <h2 class="section-title text-high-contrast">Onze diensten</h2>
+      <p class="subtitle text-low-contrast">Kies de perfecte oplossing voor uw bedrijf</p>
+    </Heading>
+    <div class="equal-columns service-cards">
+      <article class="card">
+        <section class="service-card__header">
+          <img src={paintbrush.src} alt="Service 1" />
+          <h2>One Pager Website</h2>
+        </section>
+        <p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
+      </article>
+      <article class="card">
+        <section class="service-card__header">
+          <img src={cup.src} alt="Service 2" />
+          <h2 class="card__title">Premium Website</h3>
+        </section>
+        <p>Een volledig op maat gemaakte website met CMS-integratie.</p>
+      </article>
+      <article class="card">
+        <section class="service-card__header">
+          <img src={cart.src} alt="Service 3" />
+          <h2 class="card__title">Ecommerce Website</h3>
+        </section>
+        <p>Complete webshop oplossingen die meegroeien met uw bedrijf.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-card__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .service-cards .card {
+    padding-block: 7rem;
+  }
+  
+  
+</style>

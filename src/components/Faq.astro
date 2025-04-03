@@ -1,0 +1,148 @@
+---
+import Heading from "./ui/Heading.astro";
+
+
+import chevrondown from '../assets/chevron-down.svg';
+---
+
+
+<section class="section faq-section background-light-gray">
+  <div class="container flow">
+    <Heading>
+      <h2 class="section-title">Alles wat u moet weten over onze diensten.</h2>
+    </Heading>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="question">
+          <p>Wat is inbegrepen bij het One Pager Website pakket?</p>
+          <img class="chevron" src={chevrondown.src} alt="chevron down" />
+        </div>
+        <div class="answer-wrapper">
+          <p class="answer">Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+        </div>
+        <hr />
+      </div>
+      <div class="faq-item">
+        <div class="question">
+          <p>Hoe lang duurt het om een Premium Website te bouwen?</p>
+          <img class="chevron" src={chevrondown.src} alt="chevron down" />
+        </div>
+        <div class="answer-wrapper">
+          <p class="answer">Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+        </div>
+        <hr />
+      </div>
+      <div class="faq-item">
+        <div class="question">
+          <p>Kunnen jullie helpen bij het migreren van mijn bestaande webshop?</p>
+          <img class="chevron" src={chevrondown.src} alt="chevron down" />
+        </div>
+        <div class="answer-wrapper">
+          <p class="answer">Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+        </div>
+        <hr />
+      </div>
+      <div class="faq-item">
+        <div class="question">
+          <p>Bieden jullie doorlopende ondersteuning en onderhoud?</p>
+          <img class="chevron" src={chevrondown.src} alt="chevron down" />
+        </div>
+        <div class="answer-wrapper">
+          <p class="answer">Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.</p>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    max-width: 650px;
+  }
+
+  .question {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover {
+      color: var(--clr-accent-500);
+    }
+  }
+
+  .chevron {
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.active .chevron {
+    transform: rotate(180deg);
+  }
+
+  .answer-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+  }
+
+  .answer {
+    padding: 0 0 1rem 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .faq-item.active .answer {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  hr {
+    color: #E4E4E4;
+    opacity: 0.5;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.question');
+      const answerWrapper = item.querySelector('.answer-wrapper');
+      const answer = item.querySelector('.answer');
+
+      if (!question || !answerWrapper || !answer) return;
+
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            const otherWrapper = otherItem.querySelector('.answer-wrapper');
+            if (otherWrapper instanceof HTMLElement) {
+              otherWrapper.style.height = '0';
+            }
+          }
+        });
+
+        // Toggle current item
+        if (!isActive) {
+          item.classList.add('active');
+          if (answer instanceof HTMLElement && answerWrapper instanceof HTMLElement) {
+            answerWrapper.style.height = `${answer.offsetHeight}px`;
+          }
+        } else {
+          item.classList.remove('active');
+          if (answerWrapper instanceof HTMLElement) {
+            answerWrapper.style.height = '0';
+          }
+        }
+      });
+    });
+  });
+</script>
