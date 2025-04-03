@@ -329,6 +329,7 @@
 
   .section-title {
     font-size: var(--font-size-heading-lg);
+    font-weight: 400;
     text-wrap: balance;
   }
   .subtitle {
@@ -358,6 +359,10 @@
 
   .background-extra-dark {
     background-color: var(--background-extra-dark);
+  }
+
+  .background-brown-gradient {
+    background: linear-gradient(180deg, #565150 0%, #34312f 100%);
   }
 
   .font-size-heading-lg {

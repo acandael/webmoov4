@@ -7,6 +7,7 @@ import Services from '../components/Services.astro';
 import Comparison from '../components/Comparison.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Faq from '../components/Faq.astro';
+import CTA from '../components/CTA.astro';
 ---
 
 <Layout>
@@ -15,14 +16,6 @@ import Faq from '../components/Faq.astro';
 	<Comparison />
 	<Testimonials />
 	<Faq />
-	<section class="section cta-section background-dark">
-		<div class="container flow" data-width="medium">
-			<Heading>
-				<h1 class="section-title text-high-contrast">Klaar om uw digitale aanwezigheid te transformeren?</h1>
-				<p class="subtitle text-low-contrast">Laten we bespreken hoe we uw bedrijf kunnen laten groeien met een op maat gemaakte website.</p>
-			</Heading>
-			<a href="#" class="button">Start het gesprek <span class="visually-hidden">over je project via ons contactformulier</span></a>
-		</div>
-	</section>
+	<CTA />
 	
 </Layout>
