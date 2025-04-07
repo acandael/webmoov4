@@ -84,6 +84,7 @@
     --clr-black: hsl(0, 0%, 0%);
     --clr-white: hsl(0, 0%, 100%);
     --clr-white-70: hsl(0, 0%, 100%, 0.7);
+    --clr-broken-white: hsl(0, 100%, 99%);
     --ff-body: "EB Garamond Variable", serif;
     --ff-heading: "DM Serif Display", serif;
     --ff-accent: "Fira Sans", sans-serif;
@@ -116,6 +117,7 @@
     --background-accent: var(--clr-accent-500);
     --background-accent-dark: var(--clr-accent-700);
     --background-main: var(--clr-white);
+    --background-broken-white: var(--clr-broken-white);
     --background-light-gray: var(--clr-gray-200);
     --background-dark: var(--clr-brown-800);
     --background-extra-dark: var(--clr-brown-900);
@@ -134,7 +136,7 @@
     --border-radius: 16px;
     --border-radius-rounded: 999px;
 
-    --box-shadow: box-shadow: 2px 2px 48px 0px rgba(0, 0, 0, 0.15);
+    --box-shadow: 2px 2px 48px 0px rgba(0, 0, 0, 0.15);
   }
 
   html {
@@ -309,13 +311,13 @@
     flex-direction: column;
     align-items: flex-start;
     font-family: var(--ff-accent);
-    gap: .5rem;
+    gap: 0.5rem;
     flex-shrink: 0;
 
     p.number {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--clr-accent-500);
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      color: var(--clr-accent-500);
     }
   }
 }
@@ -372,6 +374,10 @@
     background-color: var(--background-light-gray);
   }
 
+  .background-broken-white {
+    background-color: var(--background-broken-white);
+  }
+
   .background-dark {
     background-color: var(--background-dark);
   }
@@ -407,5 +413,4 @@
   .box-shadow {
     box-shadow: var(--box-shadow);
   }
-  
 }

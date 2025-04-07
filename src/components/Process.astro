@@ -1,0 +1,52 @@
+---
+
+import Heading from "./ui/Heading.astro";
+import chessIcon from "../assets/chess.svg";
+import paletteIcon from "../assets/palette.svg";
+import wrenchIcon from "../assets/wrench.svg";
+import rocketIcon from "../assets/rocket.svg";
+---
+
+
+  <section class="section background-broken-white">
+    <div class="container">
+      <Heading>
+        <h2 class="section-title">Onze proces</h2>
+        <p class="subtitle">Hoe wij websites bouwen die converteren</p>
+      </Heading>
+      <div class="steps equal-columns">
+        <div class="step box-shadow">
+          <img src={chessIcon.src} alt="Chess Icon" />
+          <h2>Strategie</h2>
+          <p>We beginnen met het begrijpen van uw behoeften en doelen</p>
+        </div>
+        <div class="step box-shadow">
+          <img src={paletteIcon.src} alt="Palette Icon" />
+          <h2>Design</h2>
+          <p>We creëren een visueel aantrekkelijk en gebruiksvriendelijk ontwerp</p>
+        </div>
+        <div class="step box-shadow">
+          <img src={wrenchIcon.src} alt="Wrench Icon" />
+          <h2>Ontwikkeling</h2>
+          <p>We bouwen uw website met de nieuwste technologieën</p>
+        </div>
+        <div class="step box-shadow">
+          <img src={rocketIcon.src} alt="Rocket Icon" />
+          <h2>Lancering</h2>
+          <p>We lanceren uw website en zorgen voor een soepele overgang</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+
+    .step {
+      display: grid;
+    gap: var(--grid-flow-gap, 1.5rem);
+    padding-inline: 1.5rem;
+    padding-block: 3rem;
+    border-radius: var(--border-radius);
+    background-color: var(--background-main);
+    }
+  </style>
