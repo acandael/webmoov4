@@ -1,5 +1,4 @@
 ---
-
 import Heading from "./ui/Heading.astro";
 import chessIcon from "../assets/chess.svg";
 import paletteIcon from "../assets/palette.svg";
@@ -7,46 +6,82 @@ import wrenchIcon from "../assets/wrench.svg";
 import rocketIcon from "../assets/rocket.svg";
 ---
 
-
-  <section class="section background-broken-white">
-    <div class="container">
-      <Heading>
-        <h2 class="section-title">Onze proces</h2>
-        <p class="subtitle">Hoe wij websites bouwen die converteren</p>
-      </Heading>
-      <div class="steps equal-columns">
-        <div class="step box-shadow">
-          <img src={chessIcon.src} alt="Chess Icon" />
-          <h2>Strategie</h2>
-          <p>We beginnen met het begrijpen van uw behoeften en doelen</p>
-        </div>
-        <div class="step box-shadow">
-          <img src={paletteIcon.src} alt="Palette Icon" />
-          <h2>Design</h2>
-          <p>We creëren een visueel aantrekkelijk en gebruiksvriendelijk ontwerp</p>
-        </div>
-        <div class="step box-shadow">
-          <img src={wrenchIcon.src} alt="Wrench Icon" />
-          <h2>Ontwikkeling</h2>
-          <p>We bouwen uw website met de nieuwste technologieën</p>
-        </div>
-        <div class="step box-shadow">
-          <img src={rocketIcon.src} alt="Rocket Icon" />
-          <h2>Lancering</h2>
-          <p>We lanceren uw website en zorgen voor een soepele overgang</p>
-        </div>
+<section class="section background-broken-white">
+  <div class="container">
+    <Heading>
+      <h2 class="section-title">Onze proces</h2>
+      <p class="subtitle">Hoe wij websites bouwen die converteren</p>
+    </Heading>
+    <div class="steps equal-columns">
+      <div class="step box-shadow" data-step>
+        <img src={chessIcon.src} alt="Chess Icon" />
+        <h2>Strategie</h2>
+        <p>We beginnen met het begrijpen van uw behoeften en doelen</p>
+      </div>
+      <div class="step box-shadow" data-step>
+        <img src={paletteIcon.src} alt="Palette Icon" />
+        <h2>Design</h2>
+        <p>We creëren een visueel aantrekkelijk en gebruiksvriendelijk ontwerp</p>
+      </div>
+      <div class="step box-shadow" data-step>
+        <img src={wrenchIcon.src} alt="Wrench Icon" />
+        <h2>Ontwikkeling</h2>
+        <p>We bouwen uw website met de nieuwste technologieën</p>
+      </div>
+      <div class="step box-shadow" data-step>
+        <img src={rocketIcon.src} alt="Rocket Icon" />
+        <h2>Lancering</h2>
+        <p>We lanceren uw website en zorgen voor een soepele overgang</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <style>
-
-    .step {
-      display: grid;
+<style>
+  .step {
+    display: grid;
     gap: var(--grid-flow-gap, 1.5rem);
     padding-inline: 1.5rem;
     padding-block: 3rem;
     border-radius: var(--border-radius);
     background-color: var(--background-main);
-    }
-  </style>
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .step.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .steps {
+    --step-delay: 0.15s;
+  }
+
+  .step:nth-child(1) { transition-delay: calc(var(--step-delay) * 1); }
+  .step:nth-child(2) { transition-delay: calc(var(--step-delay) * 2); }
+  .step:nth-child(3) { transition-delay: calc(var(--step-delay) * 3); }
+  .step:nth-child(4) { transition-delay: calc(var(--step-delay) * 4); }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      } else {
+        entry.target.classList.remove('animate');
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '-50px 0px -50px 0px'
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-step]').forEach((step) => {
+      observer.observe(step);
+    });
+  });
+</script>

@@ -1,0 +1,63 @@
+---
+import Heading from "./ui/Heading.astro";
+---
+
+<section class="section">
+  <div class="container">
+    <Heading>
+      <h2 class="section-title">Oprichter Anthony Candaele</h2>
+    </Heading>
+    <div class="bio">
+      <div class="content">
+        <p>Ik zie web ontwikkeling als een digitaal ambacht. Het vereist tijd, kennis en ervaring om een goede website te bouwen. Hierbij komen verschillende vaardigheden kijken, van de eerste schets tot het lanceren van de website.</p>
+        <p>We vertrekken van een design die aansluit op op de strategie van het bedrijf, en de merkidentiteit weerspiegelt. Dit design wordt dan omgezet naar een performante website. Hierbij wordt gebruikt gemaakt van moderne technologieën.</p>
+        <p>Deze aanpak zorgt ervoor dat je website gemakkelijk kan uitgebreid worden en meegroeien met je bedrijf. Iets wat veel minder evident is bij een website die gebaseerd is op een template en gebouwd werd met een zogenaamde webpage builder als Webflow of Wix.</p>
+        <p>We voorzien je website ook met een <strong>op maat gemaakt CMS</strong> zodat jij en je medewerkers de website gemakkelijk kunnen onderhouden en van nieuwe content voorzien. Dit is cruciaal voor de indexering van je website, zodat deze gemakkelijk kan gevonden worden door je doelpubliek.</p>
+        <p>Het is uiteindelijk mijn motivatie om een website te bouwen die niet enkel mooi oogt, maar een echte meerwaarde realiseert voor je bedrijf of organisatie.</p>
+      </div>
+      <div class="image">
+        <img src="src/assets/creator.jpg" alt="Anthony Candaele" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+  }
+  .bio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    align-items: start;
+  }
+
+  .content {
+    max-width: 644px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    p {
+      font-size: var(--font-size-md);
+    }
+  }
+
+  .image {
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    box-sizing: border-box;
+  }
+</style>
