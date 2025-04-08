@@ -12,21 +12,21 @@ import cart from '../assets/cart.svg';
       <p class="subtitle text-low-contrast">Kies de perfecte oplossing voor uw bedrijf</p>
     </Heading>
     <div class="equal-columns service-cards">
-      <article class="card box-shadow">
+      <article class="card box-shadow" data-card>
         <section class="service-card__header">
-          <img src={paintbrush.src} alt="Service 1" />
+          <img class="box-shadow" src={paintbrush.src} alt="Service 1" />
           <h2>One Pager Website</h2>
         </section>
         <p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
       </article>
-      <article class="card box-shadow">
+      <article class="card box-shadow" data-card>
         <section class="service-card__header">
           <img src={cup.src} alt="Service 2" />
           <h2 class="card__title">Premium Website</h3>
         </section>
         <p>Een volledig op maat gemaakte website met CMS-integratie.</p>
       </article>
-      <article class="card box-shadow">
+      <article class="card box-shadow" data-card>
         <section class="service-card__header">
           <img src={cart.src} alt="Service 3" />
           <h2 class="card__title">Ecommerce Website</h3>
@@ -47,12 +47,47 @@ import cart from '../assets/cart.svg';
 
   .service-cards .card {
     padding-block: 7rem;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
+
+  .service-cards .card.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .service-cards {
+    --card-delay: 0.2s;
+  }
+
+  .card:nth-child(1) { transition-delay: calc(var(--card-delay) * 1); }
+  .card:nth-child(2) { transition-delay: calc(var(--card-delay) * 2); }
+  .card:nth-child(3) { transition-delay: calc(var(--card-delay) * 3); }
 
   img {
     width: 2rem;
     height: 2rem;
   }
-  
-  
 </style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      } else {
+        entry.target.classList.remove('animate');
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '-50px 0px -50px 0px'
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-card]').forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>

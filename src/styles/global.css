@@ -204,6 +204,10 @@
         --padding: 2rem;
       }
     }
+
+    &[data-gap="medium"] {
+      --padding: 2rem;
+    }
   }
 
   .container {
@@ -286,10 +290,6 @@
     padding-block: 3rem;
     border-radius: var(--border-radius);
     background-color: var(--background-main);
-
-    img {
-      border-radius: var(--border-radius);
-    }
 
     h2 {
       text-align: center;
