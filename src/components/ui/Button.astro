@@ -7,7 +7,7 @@ interface ButtonProps {
   ["data-filter"]?: string;
 }
 
-const { label, hiddenLabel, href, class: className, "data-filter": dataFilter } = Astro.props;
+const { label, hiddenLabel, href, class: className, "data-filter": dataFilter} = Astro.props;
 ---
 
 <button 
@@ -20,29 +20,7 @@ const { label, hiddenLabel, href, class: className, "data-filter": dataFilter } 
 </button>
 
 <style>
-  .button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-    background-color: transparent;
-    color: inherit;
-    font-size: inherit;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+    .button {
+       margin-inline: auto;
+    }
 </style>

@@ -2,6 +2,7 @@
 import Heading from './ui/Heading.astro';
 import check from '../assets/check.svg';
 import cross from '../assets/cross.svg';
+import Button from './ui/Button.astro';
 ---
 
 <section class="section comparison-section background-light-gray">
@@ -72,7 +73,7 @@ import cross from '../assets/cross.svg';
         </div>
       </article>
     </div>
-    <a href="#" class="button">Bekijk ons werk</a>
+    <Button label="Bekijk ons werk" href="#" style="margin-inline: auto;" />
   </div>
 </section>
 
@@ -109,10 +110,6 @@ import cross from '../assets/cross.svg';
     display: flex;
     align-items: center;
     gap: .5rem;
-  }
-
-  .button {
-    margin-inline: auto;
   }
   
   

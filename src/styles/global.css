@@ -255,6 +255,7 @@
     font-family: var(--ff-accent);
     outline: none;
   }
+
   .button {
     display: inline-flex;
     min-width: 200px;
