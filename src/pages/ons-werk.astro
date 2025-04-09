@@ -1,0 +1,29 @@
+---
+import CTA from "../components/CTA.astro";
+import Filter from "../components/Filter.astro";
+import Projects from "../components/Projects.astro";
+import Heading from "../components/ui/Heading.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="section section-work flow" data-width="medium">
+    <div class="container">
+      <Heading>
+        <h2 class="section-title">Onze werk</h2>
+        <p class="subtitle">Ontdek onze laatste projecten en succesvolle samenwerkingen</p>
+      </Heading>
+      <Filter />
+      <Projects />
+    </div>
+  </section>
+  <CTA />
+</Layout>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+</style>

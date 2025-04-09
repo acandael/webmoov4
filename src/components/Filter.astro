@@ -1,0 +1,123 @@
+---
+import Button from "./ui/Button.astro";
+---
+
+<div class="equal-columns filters">
+  <Button 
+    label="Alle" 
+    hiddenLabel="projecten" 
+    href="#" 
+    data-filter="all" 
+    class="filter-button active" 
+  />
+  <Button 
+    label="Onepager" 
+    hiddenLabel="projecten" 
+    href="#" 
+    data-filter="onepager" 
+    class="filter-button" 
+  />
+  <Button 
+    label="Premium" 
+    hiddenLabel="projecten" 
+    href="#" 
+    data-filter="premium" 
+    class="filter-button" 
+  />
+  <Button 
+    label="E-commerce" 
+    hiddenLabel="projecten" 
+    href="#" 
+    data-filter="ecommerce" 
+    class="filter-button" 
+  />
+</div>
+
+<style>
+  .filters {
+    max-width: 850px;
+    margin-inline: auto;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  :global(.filter-button) {
+    min-width: unset;
+    padding: 1rem 2rem;
+    font-family: var(--ff-accent);
+    font-size: var(--font-size-md);
+    color: var(--text-body);
+    background: var(--background-light);
+    border: none;
+    border-radius: var(--border-radius-rounded);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: none;
+  }
+
+  :global(.filter-button:hover) {
+    background: var(--background-hover);
+  }
+
+  :global(.filter-button.active) {
+    background: linear-gradient(
+      180deg,
+      var(--background-accent) 0%,
+      var(--background-accent-dark) 246.53%
+    );
+    color: var(--text-high-contrast);
+    box-shadow: var(--box-shadow);
+  }
+
+  :global(.project-card) {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  :global(.project-card.hidden) {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    position: absolute;
+    visibility: hidden;
+  }
+</style>
+
+<script>
+  function initializeFilters() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-button');
+    const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
+
+    if (!filterButtons.length || !projectCards.length) return;
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+        if (!filter) return;
+
+        projectCards.forEach(card => {
+          const cardType = card.getAttribute('data-type');
+          if (filter === 'all' || cardType === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  // Initialize on page load
+  initializeFilters();
+
+  // Initialize when the DOM content is loaded (backup)
+  document.addEventListener('DOMContentLoaded', initializeFilters);
+
+  // Initialize when Astro page changes (for view transitions)
+  document.addEventListener('astro:page-load', initializeFilters);
+</script>

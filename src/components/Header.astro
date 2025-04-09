@@ -1,3 +1,7 @@
+---
+// No imports needed for basic image usage
+---
+
 <header class="site-header">
   <div class="container">
     <div class="site-header__inner">
@@ -14,7 +18,7 @@
           <li><a href="/">Home</a></li>
           <li><a href="/over-ons">Over Ons</a></li>
           <li><a href="#">Diensten</a></li>
-          <li><a href="#">Ons Werk</a></li>
+          <li><a href="/ons-werk">Ons Werk</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
       </nav>
@@ -30,7 +34,6 @@
     align-items: center;
     border-bottom: 1px solid var(--background-light-gray);
   }
-
 
   .site-header__inner {
     display: flex;
@@ -130,13 +133,11 @@
   const navToggle = document.querySelector('[aria-controls="primary-nav"]');
 
   navToggle?.addEventListener("click", () => {
-  // check if the navigation is opened
-  const isNavOpened = navToggle.getAttribute("aria-expanded");
-
-  if (isNavOpened === "false") {
-    navToggle.setAttribute("aria-expanded", "true");
-  } else {
-    navToggle.setAttribute("aria-expanded", "false");
-  }
+    const isNavOpened = navToggle.getAttribute("aria-expanded");
+    if (isNavOpened === "false") {
+      navToggle.setAttribute("aria-expanded", "true");
+    } else {
+      navToggle.setAttribute("aria-expanded", "false");
+    }
   });
 </script>
