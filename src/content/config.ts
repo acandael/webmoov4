@@ -39,7 +39,9 @@ const products = defineCollection({
 const testimonials = defineCollection({
   type: "content",
   schema: z.object({
+    project: z.string(),
     image: z.string(),
+    logo: z.string().optional(),
     text: z.string(),
     name: z.string(),
     role: z.string(),

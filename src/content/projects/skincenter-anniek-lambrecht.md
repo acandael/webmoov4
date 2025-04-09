@@ -19,12 +19,12 @@ services:
   ]
 gallery:
   [
-    "actionmaker/actionmaker-1.jpg",
-    "actionmaker/actionmaker-2.jpg",
-    "actionmaker/actionmaker-3.jpg",
-    "actionmaker/actionmaker-4.jpg",
-    "actionmaker/actionmaker-5.jpg",
-    "actionmaker/actionmaker-6.jpg",
+    "skincenter-anniek-lambrecht/skincenter-anniek-lambrecht-1.jpg",
+    "skincenter-anniek-lambrecht/skincenter-anniek-lambrecht-2.jpg",
+    "skincenter-anniek-lambrecht/skincenter-anniek-lambrecht-3.jpg",
+    "skincenter-anniek-lambrecht/skincenter-anniek-lambrecht-4.jpg",
+    "skincenter-anniek-lambrecht/skincenter-anniek-lambrecht-5.jpg",
+    "skincenter-anniek-lambrecht/skincenter-anniek-lambrecht-6.jpg",
   ]
 results:
   [

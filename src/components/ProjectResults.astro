@@ -1,0 +1,125 @@
+---
+const { project } = Astro.props;
+
+// Icons for different result types
+const icons = {
+  clock: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+  arrowUp: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>`,
+  users: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
+  compass: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16.2 7.8l-2 6.3-6.4 2.1 2-6.3z"></path></svg>`
+};
+
+// Function to get the appropriate icon based on the label
+function getIcon(label: string) {
+  const l = label.toLowerCase();
+  if (l.includes('bestelling')) return icons.arrowUp;
+  if (l.includes('verwerking')) return icons.clock;
+  if (l.includes('tevredenheid') || l.includes('klant')) return icons.users;
+  if (l.includes('lead')) return icons.compass;
+  if (l.includes('sessie')) return icons.clock;
+  if (l.includes('conversie')) return icons.arrowUp;
+  return icons.arrowUp; // Default icon
+}
+---
+
+<section class="section background-broken-white">
+  <div class="container">
+    <div class="project-results">
+      <h2>Project results</h2>
+      <div class="results-grid">
+        {project.data.results.map(([number, label]: [string, string], index: number) => (
+          <div class="stats-item" data-index={index}>
+            <div class="stats-icon" set:html={getIcon(label)} />
+            <p class="stats-number">{number}</p>
+            <p class="stats-label">{label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-results {
+    background: var(--background-broken-white);
+    border-radius: var(--border-radius);
+  }
+
+  .project-results h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: 3rem;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+  }
+
+  .stats-item {
+    display: grid;
+    gap: 1rem;
+    text-align: left;
+    background-color: var(--background-main);
+    padding-inline: 1.5rem;
+    padding-block: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .stats-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stats-icon {
+    color: var(--text-body);
+    margin-bottom: 0.5rem;
+  }
+
+  .stats-number {
+    font-family: var(--ff-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--clr-accent-500);
+    line-height: 1;
+  }
+
+  .stats-label {
+    font-size: var(--font-size-regular);
+    color: var(--text-body);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stats-item {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Set up the Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = parseInt(entry.target.getAttribute('data-index') || '0', 10);
+        // Add a small delay based on the index for a staggered effect
+        setTimeout(() => {
+          entry.target.classList.add('animate');
+        }, index * 150);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px'
+  });
+
+  // Observe all stats items
+  document.querySelectorAll('.stats-item').forEach((item) => {
+    observer.observe(item);
+  });
+</script>

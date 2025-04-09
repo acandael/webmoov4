@@ -1,0 +1,132 @@
+---
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<section class="section background-broken-white">
+  <div class="container">
+    <div class="project-info-grid">
+      <div class="project-info">
+        <h2>Project Info</h2>
+        <Content />
+        <ul class="tech-list">
+          {project.data.tech.map((tech: string) => (
+            <li>{tech}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="project-meta flow">
+        <div class="meta-item">
+          <h3>Client:</h3>
+          <p>{project.data.client}</p>
+        </div>
+        <div class="meta-item">
+          <h3>Website:</h3>
+          <a href={project.data.website} target="_blank" rel="noopener noreferrer">{project.data.website}</a>
+        </div>
+        <div class="meta-item">
+          <h3>Timeline:</h3>
+          <p>{project.data.timeline}</p>
+        </div>
+        <div class="meta-item">
+          <h3>Services</h3>
+          <div class="services">
+            {project.data.services.map((service: string) => (
+              <span class="service-tag">{service}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .project-info {
+    max-width: 555px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .project-info-grid {
+    display: grid;
+    gap: 4rem;
+    
+    @media (width > 760px) {
+      grid-template-columns: 2fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .project-info h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .tech-list {
+    
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tech-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-family: var(--ff-accent);
+    color: var(--text-body);
+  }
+
+  .tech-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    background-color: var(--clr-accent-500);
+    border-radius: 50%;
+  }
+
+  .project-meta {
+    --flow-spacer: 2rem;
+    padding: 2rem;
+    background: var(--background-light);
+    border-radius: var(--border-radius);
+  }
+
+  .meta-item h3 {
+    font-family: var(--ff-accent);
+    font-size: var(--font-size-regular);
+    margin-bottom: 0.5rem;
+  }
+
+  .meta-item a {
+    color: var(--clr-accent-500);
+    text-decoration: none;
+  }
+
+  .meta-item a:hover {
+    text-decoration: underline;
+  }
+
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .service-tag {
+    font-family: var(--ff-accent);
+    font-size: var(--font-size-sm);
+    padding: 0.5rem 1rem;
+    background: var(--background-accent-light);
+    color: var(--text-body);
+    border-radius: var(--border-radius-rounded);
+  }
+</style>

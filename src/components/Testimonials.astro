@@ -1,7 +1,8 @@
 ---
 import Heading from './ui/Heading.astro';
-import skincenterlogo from '../assets/skincenter-logo.svg';
-import actionmakerlogo from '../assets/actionmaker-logo.svg';
+import { getCollection } from 'astro:content';
+
+const testimonials = await getCollection('testimonials');
 ---
 
 <section class="section testimonials-section">
@@ -11,71 +12,64 @@ import actionmakerlogo from '../assets/actionmaker-logo.svg';
       <p class="subtitle">Ontdek wat onze klanten over ons zeggen.</p>
     </Heading>
     <div class="equal-columns testimonial-cards">
-      <article class="card">
-        <div class="heading">
-          <img src="src/assets/testimonial-avatar-1.jpg" alt="testimonial avatar" />
-          <div class="heading__text">
-            <h2 class="card__title">Anniek Lambrecht</h2>
-            <p>Zaakvoerder</p>
+      {testimonials.map((testimonial) => (
+        <article class="card">
+          <div class="heading">
+            <img src={`/src/content/images/${testimonial.data.image}`} alt={`${testimonial.data.name} avatar`} />
+            <div class="heading__text">
+              <h2 class="card__title">{testimonial.data.name}</h2>
+              <p>{testimonial.data.role}</p>
+            </div>
           </div>
-        </div>
-        <div class="body">
-          <blockquote>Fijne samenwerking met Anthony van Webmoov resulteerde in een mooie hippe website met bijhorende webshop. Service nadien blijft ook uitstekend, snel antwoord en interactie voor aanpassingen.</blockquote>
-        </div>
-        <footer>
-          <img src={skincenterlogo.src} alt="skincenter logo" />
-          <p>Skincenter Anniek Lambrecht</p>
-        </footer>
-      </article>
-      <article class="card">
-        <div class="heading">
-          <img src="src/assets/testimonial-avatar-2.jpg" alt="testimonial avatar" />
-          <div class="heading__text">
-            <h2 class="card__title">Frederiek Troubleyn</h2>
-            <p>Zaakvoerder</p>
+          <div class="body">
+            <blockquote>{testimonial.data.text}</blockquote>
           </div>
-        </div>
-        <div class="body">
-          <blockquote>Voor de ontwikkeling van onze nieuwe teambuilding-website werkten we samen met Webmoov en we kunnen met volle overtuiging zeggen dat dit een topkeuze was!&#34;</blockquote>
-        </div>
-        <footer>
-          <img src={actionmakerlogo.src} alt="skincenter logo" />
-          <p>Action Maker</p>
-        </footer>
-      </article>
+          <footer>
+            <img src={`/src/content/images/${testimonial.data.logo}`} alt={`${testimonial.data.project} logo`} />
+            <p>{testimonial.data.project}</p>
+          </footer>
+        </article>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
+  .testimonials-section {
+    padding-block: 6rem;
+    background-color: var(--background-main);
+  }
+
   .container {
     display: flex;
     flex-direction: column;
-    padding-inline: 4rem;
     gap: 4.5rem;
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+  }
+
+  .testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+    gap: 2rem;
   }
 
   .card {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    padding-block: 3rem;
-    padding-inline: 1.5rem;
-    box-shadow: 2px 2px 48px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--box-shadow);
   }
 
   .heading {
     display: flex;
     justify-content: center;
     align-items: center;
-    align-self: center;
     gap: 1rem;
-    
+  }
 
-    img {
-      width: 3.5rem;
-      height: 3.5rem;
-      border-radius: 50%;
-    }
+  .heading img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   .heading__text {
@@ -83,11 +77,14 @@ import actionmakerlogo from '../assets/actionmaker-logo.svg';
 
     h2 {
       font-size: var(--font-size-regular);
-      font-family: var(--ff-accent);
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 0.25rem;
     }
 
     p {
       font-size: var(--font-size-sm);
+      color: var(--text-body);
     }
   }
 
@@ -97,6 +94,19 @@ import actionmakerlogo from '../assets/actionmaker-logo.svg';
     line-height: 1.5;
     text-wrap: balance;
     text-align: center;
+    color: var(--text-body);
+    position: relative;
+    padding-inline: 1rem;
+
+    &::before {
+      left: -0.5rem;
+      top: -0.5rem;
+    }
+
+    &::after {
+      right: -0.5rem;
+      bottom: -0.5rem;
+    }
   }
 
   footer {
@@ -104,16 +114,33 @@ import actionmakerlogo from '../assets/actionmaker-logo.svg';
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    align-self: stretch;
+    padding-top: 1rem;
+    border-top: 1px solid var(--background-light-gray);
 
     p {
       font-size: var(--font-size-sm);
       font-family: var(--ff-accent);
+      color: var(--text-body);
     }
 
     img {
-      border-radius: 0;
+      height: 2rem;
+      width: auto;
     }
   }
-  
+
+  @media (max-width: 768px) {
+    .container {
+      padding-inline: 1rem;
+    }
+
+    .testimonial-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      padding: 2rem 1rem;
+    }
+  }
+</style>
 </style>
