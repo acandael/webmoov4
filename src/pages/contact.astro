@@ -1,0 +1,145 @@
+---
+import ContactForm from "../components/ContactForm.astro";
+import Heading from "../components/ui/Heading.astro";
+import Layout from "../layouts/Layout.astro";
+import { MapPin, Phone, Mail } from '@lucide/astro';
+---
+
+<Layout>
+  <section class="section section-contact">
+    <div class="container">
+      <Heading>
+        <h1 class="section-title">Neem contact op</h1>
+        <p class="subtitle">Heeft u een vraag over onze diensten? Klaar om uw project te starten? We horen het graag van u.</p>
+      </Heading>
+      <div class="contact-grid">
+        <div class="contact-form-container">
+          <ContactForm />
+        </div>
+        <div class="contact-info">
+          <h2>Contact informatie</h2>
+          <ul class="contact-list">
+            <li>
+              <div class="contact-item">
+                <MapPin color="#FF5733" size={24} />
+                <div>
+                  <h3>Adres</h3>
+                  <p>Grote Edestraat 50, 8370 Blankenberge</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="contact-item">
+                <Phone color="#FF5733" size={24} />
+                <div>
+                  <h3>Bel ons</h3>
+                  <p>+32 498137260</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="contact-item">
+                <Mail color="#FF5733" size={24} />
+                <div>
+                  <h3>Email ons</h3>
+                  <p>info@webmoov.be</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .section-contact {
+    padding-block: 6rem;
+    background-color: var(--background-main);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 4.5rem;
+    padding-inline: 3rem;
+    background-color: var(--background-main);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--background-light-gray);
+  }
+
+  .contact-info {
+    padding: 2rem;
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius);
+    color: var(--clr-white);
+  }
+
+  .contact-info h2 {
+    font-size: var(--font-size-lg);
+    margin-bottom: 2rem;
+    color: var(--clr-white);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .contact-list h3 {
+    font-size: var(--font-size-regular);
+    margin-bottom: 0.5rem;
+    color: var(--clr-white-70);
+  }
+
+  .contact-list p {
+    font-size: var(--font-size-regular);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-item > div {
+    flex: 1;
+  }
+
+  @media (max-width: 768px) {
+    .section-contact {
+      padding-block: 4rem;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .container {
+      gap: 3rem;
+    }
+  }
+</style>

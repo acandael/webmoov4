@@ -1,0 +1,147 @@
+<div class="form-section">
+  <h2>Laten we het gesprek starten</h2>
+  <p class="subtitle">Vul het formulier in en we nemen binnen 24 uur contact met u op.</p>
+  
+  <form class="contact-form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="name">Naam</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="johndoe@gmail.com" required />
+      </div>
+      <div class="form-group full-width">
+        <label for="phone">Telefoon (optioneel)</label>
+        <input type="tel" id="phone" name="phone" placeholder="0498163250" />
+      </div>
+      <div class="form-group full-width">
+        <label for="message">Bericht</label>
+        <textarea id="message" name="message" placeholder="Vertel ons over uw project..." required></textarea>
+      </div>
+    </div>
+    <button type="submit" class="button">Verstuur bericht</button>
+  </form>
+</div>
+
+<style>
+  .form-section {
+    background-color: var(--background-main);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+  }
+
+  .form-section h2 {
+    font-size: var(--font-size-xl);
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--text-body);
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-size: var(--font-size-regular);
+    font-family: var(--ff-accent);
+    color: var(--text-heading);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--background-main);
+    border: 1px solid var(--background-light-gray);
+    border-radius: var(--border-radius);
+    color: var(--text-body);
+    font-family: var(--ff-body);
+    font-size: var(--font-size-regular);
+    transition: border-color 0.3s ease;
+  }
+
+  textarea {
+    min-height: 200px;
+    resize: vertical;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-body-lighter);
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--clr-accent-500);
+  }
+
+  .button {
+    align-self: flex-start;
+    padding: 1rem 2rem;
+    background-color: var(--clr-accent-500);
+    border: none;
+    border-radius: var(--border-radius-rounded);
+    color: var(--clr-white);
+    font-family: var(--ff-accent);
+    font-size: var(--font-size-regular);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: var(--clr-accent-600);
+  }
+
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-section {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    input,
+    textarea,
+    .button {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const form = document.querySelector('.contact-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+  });
+</script>
