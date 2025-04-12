@@ -1,5 +1,5 @@
 ---
-import ContactForm from "../components/ContactForm.astro";
+import ContactForm from "../components/ContactForm.tsx";
 import Heading from "../components/ui/Heading.astro";
 import Layout from "../layouts/Layout.astro";
 import { MapPin, Phone, Mail } from '@lucide/astro';
@@ -14,7 +14,7 @@ import { MapPin, Phone, Mail } from '@lucide/astro';
       </Heading>
       <div class="contact-grid">
         <div class="contact-form-container">
-          <ContactForm />
+          <ContactForm client:load />
         </div>
         <div class="contact-info">
           <h2>Contact informatie</h2>

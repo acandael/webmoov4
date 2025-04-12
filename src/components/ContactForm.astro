@@ -139,9 +139,26 @@
 </style>
 
 <script>
-  const form = document.querySelector('.contact-form');
-  form?.addEventListener('submit', (e) => {
+  document.querySelector("form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
+    try {
+      const response = await fetch("/api/sendEmail.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "info@webmoov.be",
+        to: "info@webmoov.be",
+        subject: "Test email",
+        html: "<p>Hello world!</p>",
+          text: "Hello world!",
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
   });
 </script>

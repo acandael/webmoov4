@@ -75,11 +75,12 @@
 @layer base {
   :root {
     --clr-gray-200: hsl(0, 5%, 96%);
+    --clr-gray-500: hsl(0, 1%, 55%);
     --clr-brown-500: hsl(10, 4%, 33%);
     --clr-brown-800: hsl(24, 5%, 19%);
     --clr-brown-900: hsl(15, 5%, 15%);
 
-    --clr-accent-500: hsl(14, 73%, 60%);
+    --clr-accent-500: hsl(11, 100%, 60%);
     --clr-accent-700: hsl(14, 41%, 39%);
     --clr-black: hsl(0, 0%, 0%);
     --clr-white: hsl(0, 0%, 100%);
