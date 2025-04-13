@@ -20,9 +20,10 @@ type FormData = z.infer<typeof formSchema>;
 
 interface ContactFormProps {
   align?: "left" | "center";
+  product?: "one-pager-website" | "premium-website";
 }
 
-const ContactForm = ({ align = "left" }: ContactFormProps) => {
+const ContactForm = ({ align = "left", product }: ContactFormProps) => {
   const [submitStatus, setSubmitStatus] = useState({
     type: "",
     message: "",
@@ -60,7 +61,12 @@ const ContactForm = ({ align = "left" }: ContactFormProps) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          subject: product
+            ? `Nieuwe aanvraag voor ${product === "one-pager-website" ? "One Pager Website" : "Premium Website"}`
+            : "Nieuwe contactformulier aanvraag",
+        }),
       });
 
       const result = await response.json();

@@ -8,7 +8,7 @@ const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
   const body = await request.json();
-  const { name, email, phone, message } = body;
+  const { name, email, phone, message, subject } = body;
 
   if (!name || !email || !message) {
     return new Response(
@@ -50,7 +50,7 @@ export const POST: APIRoute = async ({ request }) => {
     const send = await resend.emails.send({
       from: "info@webmoov.be",
       to: "info@webmoov.be", // Send to your own email address
-      subject: `Nieuw contactformulier bericht van ${name}`,
+      subject: subject || `Nieuw contactformulier bericht van ${name}`,
       html: finalHtml,
       text: finalText,
     });
