@@ -20,7 +20,7 @@ type FormData = z.infer<typeof formSchema>;
 
 interface ContactFormProps {
   align?: "left" | "center";
-  product?: "one-pager-website" | "premium-website";
+  product?: "one-pager-website" | "premium-website" | "ecommerce-website";
 }
 
 const ContactForm = ({ align = "left", product }: ContactFormProps) => {
@@ -43,13 +43,13 @@ const ContactForm = ({ align = "left", product }: ContactFormProps) => {
   });
 
   // Add debug logging
-  console.log("Form state:", {
-    isValid: form.formState.isValid,
-    isDirty: form.formState.isDirty,
-    errors: form.formState.errors,
-    values: form.getValues(),
-    touched: form.formState.touchedFields,
-  });
+  // console.log("Form state:", {
+  //   isValid: form.formState.isValid,
+  //   isDirty: form.formState.isDirty,
+  //   errors: form.formState.errors,
+  //   values: form.getValues(),
+  //   touched: form.formState.touchedFields,
+  // });
 
   const onSubmit = async (data: FormData) => {
     console.log("Submitting form with data:", data);
@@ -64,7 +64,7 @@ const ContactForm = ({ align = "left", product }: ContactFormProps) => {
         body: JSON.stringify({
           ...data,
           subject: product
-            ? `Nieuwe aanvraag voor ${product === "one-pager-website" ? "One Pager Website" : "Premium Website"}`
+            ? `Nieuwe aanvraag voor ${product === "one-pager-website" ? "One Pager Website" : product === "premium-website" ? "Premium Website" : "Ecommerce Website"}`
             : "Nieuwe contactformulier aanvraag",
         }),
       });

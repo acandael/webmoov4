@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import paintbrush from '../assets/paintbrush-big.svg';
+import cart from '../assets/shopping-cart.svg';
 import Button from "../components/ui/Button.astro";
 import Heading from "../components/ui/Heading.astro";
 import check from '../assets/check.svg';
@@ -14,16 +14,16 @@ import ContactForm from "../components/ContactForm";
         <div class="content-col">
           <div class="heading">
             <div class="brush-icon">
-              <img src={paintbrush.src} alt="paintbrush" />
+              <img src={cart.src} alt="shopping cart" />
             </div>
-              <h1 class="section-title">One Pager Website</h1>
+              <h1 class="section-title">E-commerce Website</h1>
           </div>
-            <p class="subtitle">Perfect voor startups en kleine bedrijven die snel online willen gaan.</p>
-            <Button label="Start het gesprek" hiddenLabel="en we contacteren je binnen 24 uur" href="#contact" align="left" />
+            <p class="subtitle">Complete webshop oplossingen op maat van jouw bedrijf.</p>
+            <Button label="Start het gesprek" hiddenLabel="en vul het contactformulier in. We contacteren je binnen 24 uur" href="#contact" align="left" />
          
         </div>
         <div class="image-col">
-          <img src="src/assets/custom-website.jpg" alt="Modern workspace setup with desktop computer" class="hero-image">
+          <img src="src/assets/ecommerce-website.jpg" alt="Modern workspace setup with desktop computer" class="hero-image">
         </div>
       </div>
     </div>
@@ -36,35 +36,35 @@ import ContactForm from "../components/ContactForm";
       <div class="features-grid">
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">Design op maat</h3>
+          <h3 class="feature-title">Product Information Management (PIM)</h3>
         </div>
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">Contactformulier</h3>
+          <h3 class="feature-title">Veilige betalingen</h3>
         </div>
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">SEO optimalisatie</h3>
+          <h3 class="feature-title">Voorraadbeheer</h3>
         </div>
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">Social media integratie</h3>
+          <h3 class="feature-title">Order beheer</h3>
         </div>
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">Web analytics</h3>
+          <h3 class="feature-title">Klant accounts</h3>
         </div>
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">Snelle laadtijd</h3>
+          <h3 class="feature-title">Geavanceerd zoeken</h3>
         </div>
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">Secure Socket Layer (SSL)</h3>
+          <h3 class="feature-title">Prijs kortingen</h3>
         </div>
         <div class="card">
           <img src={check.src} alt="item 1" />
-          <h3 class="feature-title">Responsive design</h3>
+          <h3 class="feature-title">Analytics dashboard</h3>
         </div>
       </div>
     </div>
@@ -109,7 +109,7 @@ import ContactForm from "../components/ContactForm";
   <section class="section form-section" id="contact">
     <div class="container" data-width="medium">
       <div class="contactform-container">
-        <ContactForm align="center" product="one-pager-website" client:visible />
+        <ContactForm align="center" product="ecommerce-website" client:visible />
       </div>
     </div>
   </section>
@@ -128,6 +128,10 @@ import ContactForm from "../components/ContactForm";
     justify-content: start;
     gap: 3rem;
     align-items: flex-start;
+  }
+
+  .hero-image {
+    border-radius: var(--border-radius);
   }
 
   .heading {

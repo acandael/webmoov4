@@ -12,7 +12,7 @@ import Heading from "./ui/Heading.astro";
       wij bouwen websites die meegroeien met uw bedrijf.
       </p>
     </Heading>
-    <Button label="Ontdek onze diensten" hiddenLabel="die Webmoov aanbiedt om je website project te realiseren" href="#" />
+    <Button label="Ontdek onze producten" hiddenLabel="een onepager website, een premium website of een e-commerce website" href="#producten" align="center" />
   </div>
 </section>
 
@@ -64,3 +64,22 @@ import Heading from "./ui/Heading.astro";
     }
   }
 </style>
+
+<script>
+     // Smooth scrolling
+     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = anchor.getAttribute('href');
+        if (href) {
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+</script>

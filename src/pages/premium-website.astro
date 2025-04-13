@@ -19,7 +19,7 @@ import ContactForm from "../components/ContactForm";
               <h1 class="section-title">Premium Website</h1>
           </div>
             <p class="subtitle">Een volledig op maat gemaakte website met CMS-integratie.</p>
-            <Button label="Start het gesprek" hiddenLabel="en we contacteren je binnen 24 uur" href="#" align="left" />
+            <Button label="Start het gesprek" hiddenLabel="en we contacteren je binnen 24 uur" href="#contact" align="left" />
          
         </div>
         <div class="image-col">
@@ -106,7 +106,7 @@ import ContactForm from "../components/ContactForm";
       </div>
     </div>
   </section>
-  <section class="section form-section">
+  <section class="section form-section" id="contact">
     <div class="container" data-width="medium">
       <div class="contactform-container">
         <ContactForm align="center" product="premium-website" client:visible />
@@ -306,22 +306,40 @@ import ContactForm from "../components/ContactForm";
 </style>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-      } else {
-        entry.target.classList.remove('animate');
-      }
-    });
-  }, {
-    threshold: 0.2,
-    rootMargin: '-50px 0px -50px 0px'
-  });
-
   document.addEventListener('DOMContentLoaded', () => {
+    // Process animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        } else {
+          entry.target.classList.remove('animate');
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '-50px 0px -50px 0px'
+    });
+
     document.querySelectorAll('.process-step').forEach((step) => {
       observer.observe(step);
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = anchor.getAttribute('href');
+        if (href) {
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
     });
   });
 </script>
