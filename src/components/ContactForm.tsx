@@ -18,7 +18,11 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const ContactForm = () => {
+interface ContactFormProps {
+  align?: "left" | "center";
+}
+
+const ContactForm = ({ align = "left" }: ContactFormProps) => {
   const [submitStatus, setSubmitStatus] = useState({
     type: "",
     message: "",
@@ -34,9 +38,20 @@ const ContactForm = () => {
       phone: "",
       message: "",
     },
+    mode: "onChange",
+  });
+
+  // Add debug logging
+  console.log("Form state:", {
+    isValid: form.formState.isValid,
+    isDirty: form.formState.isDirty,
+    errors: form.formState.errors,
+    values: form.getValues(),
+    touched: form.formState.touchedFields,
   });
 
   const onSubmit = async (data: FormData) => {
+    console.log("Submitting form with data:", data);
     setIsSubmitting(true);
 
     try {
@@ -75,10 +90,15 @@ const ContactForm = () => {
 
   return (
     <div className={styles.formSection}>
-      <h2>Laten we het gesprek starten</h2>
-      <p className={styles.subtitle}>
-        Vul het formulier in en we nemen binnen 24 uur contact met u op.
-      </p>
+      <div
+        className={`${styles.heading} ${align === "center" ? styles.centerAlign : ""}`}
+      >
+        <h2>Laten we het gesprek starten</h2>
+        <p className={styles.subtitle}>
+          Vul het formulier in en we nemen binnen 24 uur contact met u op.
+        </p>
+      </div>
+
       <form
         className={styles.contactForm}
         onSubmit={form.handleSubmit(onSubmit)}
@@ -89,7 +109,7 @@ const ContactForm = () => {
             <input
               type="text"
               id="name"
-              {...form.register("name")}
+              {...form.register("name", { required: true })}
               placeholder="John Doe"
             />
             {form.formState.errors.name && (
@@ -103,7 +123,7 @@ const ContactForm = () => {
             <input
               type="email"
               id="email"
-              {...form.register("email")}
+              {...form.register("email", { required: true })}
               placeholder="johndoe@gmail.com"
             />
             {form.formState.errors.email && (
@@ -130,7 +150,7 @@ const ContactForm = () => {
             <label htmlFor="message">Bericht</label>
             <textarea
               id="message"
-              {...form.register("message")}
+              {...form.register("message", { required: true })}
               placeholder="Vertel ons over uw project..."
             />
             {form.formState.errors.message && (
@@ -153,8 +173,8 @@ const ContactForm = () => {
 
         <button
           type="submit"
-          className={styles.button}
-          disabled={isSubmitting || !form.formState.isValid}
+          className={`${styles.button} ${align === "center" ? styles.centerAlignButton : ""}`}
+          disabled={isSubmitting}
         >
           {isSubmitting ? "Versturen..." : "Verstuur bericht"}
         </button>

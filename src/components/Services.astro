@@ -5,20 +5,22 @@ import cup from '../assets/cup.svg';
 import cart from '../assets/cart.svg';
 ---
 
-<section class="section services background-dark">
+<section id="producten" class="section services background-dark">
   <div class="container flow">
     <Heading>
-      <h2 class="section-title text-high-contrast">Onze diensten</h2>
+      <h2 class="section-title text-high-contrast">Onze producten</h2>
       <p class="subtitle text-low-contrast">Kies de perfecte oplossing voor uw bedrijf</p>
     </Heading>
     <div class="equal-columns service-cards">
-      <article class="card box-shadow" data-card>
-        <section class="service-card__header">
-          <img class="box-shadow" src={paintbrush.src} alt="Service 1" />
-          <h2>One Pager Website</h2>
-        </section>
-        <p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
-      </article>
+      <a href="/one-pager-website" class="card-link">
+        <article class="card box-shadow" data-card>
+          <section class="service-card__header">
+            <img class="box-shadow" src={paintbrush.src} alt="Service 1" />
+            <h2>One Pager Website</h2>
+          </section>
+          <p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
+        </article>
+      </a>
       <article class="card box-shadow" data-card>
         <section class="service-card__header">
           <img src={cup.src} alt="Service 2" />
@@ -43,6 +45,22 @@ import cart from '../assets/cart.svg';
     justify-content: center;
     align-items: center;
     gap: .5rem;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .card-link:hover .card {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
+
+  .subtitle {
+    opacity: 60%;
+    color: var(--clr-white);
   }
 
   .service-cards .card {

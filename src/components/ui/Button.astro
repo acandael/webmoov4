@@ -5,14 +5,22 @@ interface ButtonProps {
   href: string;
   class?: string;
   ["data-filter"]?: string;
+  align?: 'left' | 'center' | 'right';
 }
 
-const { label, hiddenLabel, href, class: className, "data-filter": dataFilter} = Astro.props;
+const { 
+  label, 
+  hiddenLabel, 
+  href, 
+  class: className, 
+  "data-filter": dataFilter,
+  align = 'center' 
+} = Astro.props;
 ---
 
 <button 
   type="button" 
-  class={`button ${className || ''}`}
+  class={`button ${className || ''} align-${align}`}
   data-filter={dataFilter}
 >
   {label} 
@@ -21,6 +29,18 @@ const { label, hiddenLabel, href, class: className, "data-filter": dataFilter} =
 
 <style>
     .button {
-       margin-inline: auto;
+        display: block;
+    }
+    
+    .align-center {
+        margin-inline: auto;
+    }
+    
+    .align-left {
+        margin-right: auto;
+    }
+    
+    .align-right {
+        margin-left: auto;
     }
 </style>

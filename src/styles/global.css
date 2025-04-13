@@ -75,7 +75,9 @@
 @layer base {
   :root {
     --clr-gray-200: hsl(0, 5%, 96%);
+    --clr-gray-300: hsl(0, 2%, 90%);
     --clr-gray-500: hsl(0, 1%, 55%);
+    --clr-gray-600: hsl(0, 1%, 43%);
     --clr-brown-500: hsl(10, 4%, 33%);
     --clr-brown-800: hsl(24, 5%, 19%);
     --clr-brown-900: hsl(15, 5%, 15%);
@@ -106,7 +108,7 @@
       --fs-700: 1.5rem;
       --fs-800: 2rem;
       --fs-900: 3rem;
-      --fs-1000: 3.5rem;
+      --fs-1000: 4.5rem;
     }
   }
 
@@ -154,7 +156,7 @@
   h1,
   h2,
   h3 {
-    font-family: var(--ff-heading);
+    font-family: var(--ff-body);
     color: var(--text-body);
   }
 
@@ -201,7 +203,7 @@
     @media (width > 760px) {
       --padding: 11.25rem;
 
-      &[data-padding="compact"] {
+      &[data-gap="compact"] {
         --padding: 2rem;
       }
     }
@@ -359,6 +361,7 @@
   .subtitle {
     font-family: var(--ff-body);
     font-size: var(--font-size-lg);
+    color: var(--clr-gray-600);
   }
 
   .background-accent {

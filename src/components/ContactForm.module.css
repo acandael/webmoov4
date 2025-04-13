@@ -10,6 +10,14 @@
   margin-bottom: 0.5rem;
 }
 
+.heading {
+  margin-bottom: 3rem;
+}
+
+.centerAlign {
+  text-align: center;
+}
+
 .subtitle {
   color: var(--text-body);
   margin-bottom: 2rem;
@@ -39,7 +47,7 @@
 }
 
 .formGroup label {
-  font-size: var(--font-size-regular);
+  font-size: var(--font-size-sm);
   font-family: var(--ff-accent);
   color: var(--text-heading);
 }
@@ -49,7 +57,7 @@
   width: 100%;
   padding: 1rem;
   background-color: var(--background-main);
-  border: 1px solid var(--background-light-gray);
+  border: 1px solid var(--clr-gray-300);
   border-radius: var(--border-radius);
   color: var(--text-body);
   font-family: var(--ff-body);
@@ -98,6 +106,10 @@
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
+}
+
+.centerAlignButton {
+  align-self: center;
 }
 
 .button:not(:disabled):hover {
