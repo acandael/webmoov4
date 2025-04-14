@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
+import { projectImages, type ProjectId } from '../lib/projectImages';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -8,15 +9,8 @@ interface Props {
 
 const { project } = Astro.props;
 
-// Import project image with error handling
-let projectImage;
-try {
-  const imageModule = await import(`../assets/projects/${project.data['hero-image']}`);
-  projectImage = imageModule.default;
-} catch (error) {
-  console.error(`Failed to load image for project ${project.data.title}:`, error);
-  // You might want to set a fallback image here
-}
+// Get project image from registry
+const projectImage = projectImages[project.slug as ProjectId]?.hero;
 ---
 
 <article class="project-card" data-type={project.data.type}>
