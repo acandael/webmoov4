@@ -6,6 +6,7 @@ import Heading from '../../components/ui/Heading.astro';
 import ProjectResults from '../../components/ProjectResults.astro';
 import ProjectInfo from '../../components/ProjectInfo.astro';
 import { Image } from 'astro:assets';
+import { projectImages, type ProjectId } from '../../lib/projectImages';
 
 // In SSR, we need to fetch the project in the component script
 const { project: projectSlug } = Astro.params;
@@ -27,6 +28,9 @@ try {
   console.error('Error fetching project:', error);
 }
 
+// Get project images from registry
+const projectImage = project ? projectImages[project.slug as ProjectId] : undefined;
+
 console.log('Current URL slug:', projectSlug);
 console.log('Project found:', !!project);
 if (project) {
@@ -39,7 +43,7 @@ if (project) {
 ---
 
 <Layout>
-  {project ? (
+  {project && projectImage ? (
     <>
       <section class="section">
         <div class="container">
@@ -50,7 +54,7 @@ if (project) {
 
           <div class="hero-image">
             <Image 
-              src={import(`../../content/images/${project.data['hero-image']}`)} 
+              src={projectImage.hero}
               alt={project.data.title}
               width={1200}
               height={800}
@@ -64,11 +68,11 @@ if (project) {
       <section class="section">
         <div class="container">
           <div class="project-gallery">
-            {project.data.gallery.map((image, index) => (
+            {projectImage.gallery.map((image, index) => (
               <div class={`gallery-item item-${index + 1}`}>
                 <Image 
-                  src={import(`../../content/images/${image}`)} 
-                  alt=""
+                  src={image}
+                  alt={`${project.data.title} gallery image ${index + 1}`}
                   width={800}
                   height={600}
                   class="gallery-image"
@@ -89,7 +93,7 @@ if (project) {
                 </blockquote>
                 <div class="testimonial-author">
                   <Image 
-                    src={import(`../../content/images/${testimonial.data.image}`)} 
+                    src={projectImages[project.slug as ProjectId].hero}
                     alt={`${testimonial.data.name} avatar`}
                     width={64}
                     height={64}
