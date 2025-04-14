@@ -3,6 +3,9 @@ import Heading from './ui/Heading.astro';
 import check from '../assets/check.svg';
 import cross from '../assets/cross.svg';
 import Button from './ui/Button.astro';
+import { Image } from 'astro:assets';
+import customWebsite from '../assets/custom-website.jpg';
+import templateWebsite from '../assets/template-website.jpg';
 ---
 
 <section class="section comparison-section background-light-gray">
@@ -14,7 +17,13 @@ import Button from './ui/Button.astro';
     <div class="equal-columns cards" data-gap="large" data-alignment="centered">
       <article class="card">
         <h2 class="card__title">Maatwerk website</h2>
-        <img src="src/assets/custom-website.jpg" alt="custom website" />
+        <Image 
+          src={customWebsite} 
+          alt="Custom website example showing modern and unique design"
+          width={500}
+          height={300}
+          class="comparison-image"
+        />
         <div class="items">
           <div class="item">
             <img src={check.src} alt="item 1" />
@@ -44,7 +53,13 @@ import Button from './ui/Button.astro';
       </article>
       <article class="card">
         <h2 class="card__title">Template website</h2>
-        <img src="src/assets/template-website.jpg" alt="template website" />
+        <Image 
+          src={templateWebsite} 
+          alt="Template website example showing generic design"
+          width={500}
+          height={300}
+          class="comparison-image"
+        />
         <div class="items">
           <div class="item">
             <img src={cross.src} alt="item 1" />
@@ -73,7 +88,7 @@ import Button from './ui/Button.astro';
         </div>
       </article>
     </div>
-    <Button label="Bekijk ons werk" href="#" style="margin-inline: auto;" href="/ons-werk" />
+    <Button label="Bekijk ons werk" href="/ons-werk" style="margin-inline: auto;" />
   </div>
 </section>
 
@@ -112,5 +127,10 @@ import Button from './ui/Button.astro';
     gap: .5rem;
   }
   
-  
+  .comparison-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
 </style>
