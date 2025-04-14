@@ -2,19 +2,34 @@
 import Heading from './ui/Heading.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+// Import testimonial images
+import anniekLambrechtAvatar from '../assets/testimonials/skincenter-anniek-lambrecht/anniek-lambrecht.jpg';
+import anniekLambrechtLogo from '../assets/testimonials/skincenter-anniek-lambrecht/logo.png';
+import frederiekTroubleynAvatar from '../assets/testimonials/actionmaker/frederiek-troubleyn.jpg';
+import actionMakerLogo from '../assets/testimonials/actionmaker/logo.png';
 
 const testimonials = await getCollection('testimonials');
 
-// Dynamically import images
-const testimonialImages = await Promise.all(
-  testimonials.map(async (testimonial) => {
-    const avatar = await import(`../assets/testimonials/${testimonial.data.image}`);
-    const logo = testimonial.data.logo 
-      ? await import(`../assets/testimonials/${testimonial.data.logo}`)
-      : null;
-    return { avatar: avatar.default, logo: logo?.default };
-  })
-);
+type TestimonialImages = {
+  [key: string]: {
+    avatar: ImageMetadata;
+    logo: ImageMetadata;
+  };
+};
+
+// Map testimonial images
+const testimonialImages: TestimonialImages = {
+  'skincenter-anniek-lambrecht': {
+    avatar: anniekLambrechtAvatar,
+    logo: anniekLambrechtLogo
+  },
+  'action-maker': {
+    avatar: frederiekTroubleynAvatar,
+    logo: actionMakerLogo
+  }
+};
 ---
 
 <section class="section testimonials-section">
@@ -24,12 +39,12 @@ const testimonialImages = await Promise.all(
       <p class="subtitle">Ontdek wat onze klanten over ons zeggen.</p>
     </Heading>
     <div class="equal-columns testimonial-cards">
-      {testimonials.map((testimonial, index) => (
+      {testimonials.map((testimonial) => (
         <article class="card">
           <div class="heading">
             <div class="testimonial-avatar">
               <Image 
-                src={testimonialImages[index].avatar}
+                src={testimonialImages[testimonial.data.project].avatar}
                 alt={`${testimonial.data.name} avatar`}
                 width={64}
                 height={64}
@@ -46,9 +61,9 @@ const testimonialImages = await Promise.all(
             <blockquote>{testimonial.data.text}</blockquote>
           </div>
           <footer>
-            {testimonialImages[index].logo && (
+            {testimonialImages[testimonial.data.project].logo && (
               <Image 
-                src={testimonialImages[index].logo}
+                src={testimonialImages[testimonial.data.project].logo}
                 alt={`${testimonial.data.project} logo`}
                 width={80}
                 height={32}
