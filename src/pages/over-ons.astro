@@ -3,6 +3,8 @@ import Bio from "../components/Bio.astro";
 import CTA from "../components/CTA.astro";
 import Process from "../components/Process.astro";
 import Layout from "../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import aboutUsImage from '../assets/about-us.jpg';
 ---
 
 <Layout>
@@ -28,7 +30,15 @@ import Layout from "../layouts/Layout.astro";
           </div>
       </div>
       <div class="image">
-        <img class="box-shadow" src="src/assets/about-us.jpg" alt="Wij zijn Webmoov">
+        <Image 
+          src={aboutUsImage}
+          alt="Wij zijn Webmoov"
+          width={800}
+          height={600}
+          class="box-shadow"
+          format="webp"
+          quality="high"
+        />
       </div>
     </div>
   </section>

@@ -1,5 +1,7 @@
 ---
 import Heading from "./ui/Heading.astro";
+import { Image } from 'astro:assets';
+import creatorImage from '../assets/creator.jpg';
 ---
 
 <section class="section">
@@ -16,7 +18,15 @@ import Heading from "./ui/Heading.astro";
         <p>Het is uiteindelijk mijn motivatie om een website te bouwen die niet enkel mooi oogt, maar een echte meerwaarde realiseert voor je bedrijf of organisatie.</p>
       </div>
       <div class="image">
-        <img class="box-shadow" src="src/assets/creator.jpg" alt="Anthony Candaele" />
+        <Image 
+          src={creatorImage}
+          alt="Anthony Candaele"
+          width={800}
+          height={600}
+          class="box-shadow"
+          format="webp"
+          quality="high"
+        />
       </div>
     </div>
   </div>
