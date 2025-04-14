@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -7,20 +8,22 @@ interface Props {
 
 const { project } = Astro.props;
 
-// Handle image path based on project type
-const getImagePath = (heroImage: string) => {
-  if (heroImage.startsWith('/')) {
-    // Handle absolute paths (like /assets/...)
-    return heroImage;
-  }
-  // Handle relative paths for project-specific images
-  return `/src/content/images/${heroImage}`;
-};
+// Import project image
+const projectImage = await import(`../assets/projects/${project.data['hero-image']}`);
 ---
 
 <article class="project-card" data-type={project.data.type}>
   <a href={`/projects/${project.slug}`} class="project-link">
-    <img src={getImagePath(project.data['hero-image'])} alt={project.data.title} />
+    <div class="image-container">
+      <Image 
+        src={projectImage.default}
+        alt={project.data.title}
+        width={400}
+        height={250}
+        format="webp"
+        quality="high"
+      />
+    </div>
     <div class="project-info">
       <h3>{project.data.title}</h3>
       <p>{project.data.subtitle}</p>
@@ -52,9 +55,15 @@ const getImagePath = (heroImage: string) => {
     display: block;
   }
 
-  .project-card img {
+  .image-container {
     width: 100%;
     height: 250px;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
   }
