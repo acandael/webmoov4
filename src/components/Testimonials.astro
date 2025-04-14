@@ -1,6 +1,7 @@
 ---
 import Heading from './ui/Heading.astro';
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const testimonials = await getCollection('testimonials');
 ---
@@ -15,7 +16,16 @@ const testimonials = await getCollection('testimonials');
       {testimonials.map((testimonial) => (
         <article class="card">
           <div class="heading">
-            <img src={`/src/content/images/${testimonial.data.image}`} alt={`${testimonial.data.name} avatar`} />
+            <div class="testimonial-avatar">
+              <Image 
+                src={`/src/content/images/${testimonial.data.image}`}
+                alt={`${testimonial.data.name} avatar`}
+                width={64}
+                height={64}
+                format="webp"
+                quality="high"
+              />
+            </div>
             <div class="heading__text">
               <h2 class="card__title">{testimonial.data.name}</h2>
               <p>{testimonial.data.role}</p>
@@ -25,7 +35,14 @@ const testimonials = await getCollection('testimonials');
             <blockquote>{testimonial.data.text}</blockquote>
           </div>
           <footer>
-            <img src={`/src/content/images/${testimonial.data.logo}`} alt={`${testimonial.data.project} logo`} />
+            <Image 
+              src={`/src/content/images/${testimonial.data.logo}`}
+              alt={`${testimonial.data.project} logo`}
+              width={80}
+              height={32}
+              format="webp"
+              quality="high"
+            />
             <p>{testimonial.data.project}</p>
           </footer>
         </article>
@@ -143,5 +160,4 @@ const testimonials = await getCollection('testimonials');
       padding: 2rem 1rem;
     }
   }
-</style>
 </style>

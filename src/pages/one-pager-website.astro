@@ -5,6 +5,8 @@ import Button from "../components/ui/Button.astro";
 import Heading from "../components/ui/Heading.astro";
 import check from '../assets/check.svg';
 import ContactForm from "../components/ContactForm";
+import { Image } from 'astro:assets';
+import customWebsite from '../assets/custom-website.jpg';
 ---
 
 <Layout>
@@ -23,7 +25,13 @@ import ContactForm from "../components/ContactForm";
          
         </div>
         <div class="image-col">
-          <img src="src/assets/custom-website.jpg" alt="Modern workspace setup with desktop computer" class="hero-image">
+          <Image 
+            src={customWebsite} 
+            alt="Modern workspace setup with desktop computer" 
+            class="hero-image"
+            width={800}
+            height={600}
+          />
         </div>
       </div>
     </div>

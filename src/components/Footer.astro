@@ -11,16 +11,9 @@ import envelope from '../assets/envelope.svg';
     <div class="footer-content">
       <div class="footer-logo">
         <Image src={logoDark} alt="webmoov logo" width={150} height={40} />
+        <span class="footer-logo-text">Webmoov</span>
       </div>
-      <nav class="footer-nav">
-        <ul role="list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/over-ons">Over Ons</a></li>
-          <li><a href="/onze-producten">Onze Producten</a></li>
-          <li><a href="/ons-werk">Ons Werk</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
+      <p class="text-low-contrast">Digitale ervaringen die inspireren en converteren.</p>
     </div>
     <div class="footer-links">
     <div class="column">
@@ -87,6 +80,12 @@ import envelope from '../assets/envelope.svg';
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  .footer-logo-text {
+    font-family: var(--ff-accent);
+    font-size: var(--font-size-heading-md);
+    color: var(--clr-white);
   }
 
   h1 {
