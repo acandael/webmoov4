@@ -9,6 +9,7 @@ import Button from "./ui/Button.astro";
     href="#" 
     data-filter="all" 
     class="filter-button active" 
+    variant="filter"
   />
   <Button 
     label="Onepager" 
@@ -16,6 +17,7 @@ import Button from "./ui/Button.astro";
     href="#" 
     data-filter="onepager" 
     class="filter-button" 
+    variant="filter"
   />
   <Button 
     label="Premium" 
@@ -23,6 +25,7 @@ import Button from "./ui/Button.astro";
     href="#" 
     data-filter="premium" 
     class="filter-button" 
+    variant="filter"
   />
   <Button 
     label="E-commerce" 
@@ -30,6 +33,7 @@ import Button from "./ui/Button.astro";
     href="#" 
     data-filter="ecommerce" 
     class="filter-button" 
+    variant="filter"
   />
 </div>
 
@@ -43,21 +47,7 @@ import Button from "./ui/Button.astro";
   }
 
   :global(.filter-button) {
-    min-width: unset;
-    padding: 1rem 2rem;
-    font-family: var(--ff-accent);
     font-size: var(--font-size-md);
-    color: var(--text-body);
-    background: var(--background-light);
-    border: none;
-    border-radius: var(--border-radius-rounded);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: none;
-  }
-
-  :global(.filter-button:hover) {
-    background: var(--background-hover);
   }
 
   :global(.filter-button.active) {
@@ -65,9 +55,17 @@ import Button from "./ui/Button.astro";
       180deg,
       var(--background-accent) 0%,
       var(--background-accent-dark) 246.53%
-    );
-    color: var(--text-high-contrast);
-    box-shadow: var(--box-shadow);
+    ) !important;
+    color: var(--text-high-contrast) !important;
+    box-shadow: var(--box-shadow) !important;
+  }
+
+  :global(.filter-button.active:hover) {
+    background: linear-gradient(
+      180deg,
+      var(--background-accent) 0%,
+      var(--background-accent-dark) 246.53%
+    ) !important;
   }
 
   :global(.project-card) {

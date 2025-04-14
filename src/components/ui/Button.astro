@@ -6,6 +6,7 @@ interface ButtonProps {
   class?: string;
   ["data-filter"]?: string;
   align?: 'left' | 'center' | 'right';
+  variant?: 'default' | 'filter';
 }
 
 const { 
@@ -14,13 +15,14 @@ const {
   href, 
   class: className, 
   "data-filter": dataFilter,
-  align = 'center' 
+  align = 'center',
+  variant = 'default'
 } = Astro.props;
 ---
 
 <a 
   href={href}
-  class={`button ${className || ''} align-${align}`}
+  class={`button ${className || ''} align-${align} variant-${variant}`}
   data-filter={dataFilter}
 >
   {label} 
@@ -32,10 +34,7 @@ const {
         display: inline-block;
         max-width: 263px;
         padding: 1rem 2rem;
-        background-color: #ff5733;
-        border: 2px solid #ff5733;
         border-radius: var(--border-radius-rounded);
-        color: white;
         font-family: var(--ff-accent);
         font-size: var(--font-size-regular);
         font-weight: 500;
@@ -46,11 +45,29 @@ const {
         text-decoration: none;
     }
 
-    .button:hover {
+    .variant-default {
+        background-color: #ff5733;
+        border: 2px solid #ff5733;
+        color: white;
+    }
+
+    .variant-default:hover {
         background-color: #e64d2a;
         border-color: #e64d2a;
         transform: translateY(-2px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .variant-filter {
+        background: var(--background-light);
+        border: none;
+        color: var(--text-body);
+        box-shadow: none;
+        min-width: unset;
+    }
+
+    .variant-filter:hover {
+        background: var(--background-hover);
     }
     
     .align-center {
