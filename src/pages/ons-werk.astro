@@ -13,7 +13,9 @@ import Layout from "../layouts/Layout.astro";
         <h2 class="section-title">Onze werk</h2>
         <p class="subtitle">Ontdek onze laatste projecten en succesvolle samenwerkingen</p>
       </Heading>
-      <Filter />
+      <div class="filter-container">
+        <Filter />
+      </div>
       <Projects />
     </div>
   </section>
@@ -25,5 +27,9 @@ import Layout from "../layouts/Layout.astro";
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .filter-container {
+    margin-bottom: 4rem; /* 32px = 8 * 4 */
   }
 </style>

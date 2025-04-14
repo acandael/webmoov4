@@ -26,10 +26,11 @@ import envelope from '../assets/envelope.svg';
     </div>
 
     <div class="column">
-      <h2>Juridisch</h2>
+      <h2>Producten</h2>
       <ul>
-        <li><a href="#">Disclaimer</a></li>
-        <li><a href="#">Algemene voorwaarden</a></li>
+        <li><a href="/one-pager-website">One Pager Website</a></li>
+        <li><a href="/premium-website">Premium Website</a></li>
+        <li><a href="/ecommerce-website">E-commerce Website</a></li>
       </ul>
     </div>
 
@@ -47,7 +48,7 @@ import envelope from '../assets/envelope.svg';
   </div>
 
   <div class="footer-copyright">
-      <p>© 2025 Webmoov. Alle rechten voorbehouden.</p>
+      <p>© 2025 Webmoov. Alle rechten voorbehouden. <a href="/algemene-voorwaarden">Algemene voorwaarden</a></p>
     </div>
 </footer>
 
@@ -130,6 +131,11 @@ import envelope from '../assets/envelope.svg';
     margin-top: 2rem;
     font-family: var(--ff-accent);
     font-size: var(--font-size-sm);
+  }
+
+  .footer-copyright a {
+    color: var(--clr-white-70);
+    text-decoration: none;
   }
 
   @media (max-width: 768px) {
