@@ -202,14 +202,14 @@
 
     @media (width > 760px) {
       --padding: 11.25rem;
-
-      &[data-gap="compact"] {
-        --padding: 2rem;
-      }
     }
 
-    &[data-gap="medium"] {
-      --padding: 2rem;
+    &[data-padding="compact"] {
+      --padding: 4.5rem;
+
+      @media (width > 760px) {
+        --padding: 4.5rem;
+      }
     }
   }
 
