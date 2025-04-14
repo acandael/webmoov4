@@ -8,21 +8,34 @@ interface Props {
 
 const { project } = Astro.props;
 
-// Import project image
-const projectImage = await import(`../assets/projects/${project.data['hero-image']}`);
+// Import project image with error handling
+let projectImage;
+try {
+  const imageModule = await import(`../assets/projects/${project.data['hero-image']}`);
+  projectImage = imageModule.default;
+} catch (error) {
+  console.error(`Failed to load image for project ${project.data.title}:`, error);
+  // You might want to set a fallback image here
+}
 ---
 
 <article class="project-card" data-type={project.data.type}>
   <a href={`/projects/${project.slug}`} class="project-link">
     <div class="image-container">
-      <Image 
-        src={projectImage.default}
-        alt={project.data.title}
-        width={400}
-        height={250}
-        format="webp"
-        quality="high"
-      />
+      {projectImage ? (
+        <Image 
+          src={projectImage}
+          alt={project.data.title}
+          width={400}
+          height={250}
+          format="webp"
+          quality="high"
+        />
+      ) : (
+        <div class="image-placeholder">
+          <p>Image not available</p>
+        </div>
+      )}
     </div>
     <div class="project-info">
       <h3>{project.data.title}</h3>
@@ -66,6 +79,16 @@ const projectImage = await import(`../assets/projects/${project.data['hero-image
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-light-gray);
+    color: var(--text-muted);
   }
 
   .project-info {

@@ -3,13 +3,22 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
 
-const projects = await getCollection('projects');
+let projects: CollectionEntry<'projects'>[] = [];
+try {
+  projects = await getCollection('projects');
+} catch (error) {
+  console.error('Error loading projects:', error);
+}
 ---
 
 <div class="projects-grid">
-  {projects.map((project: CollectionEntry<'projects'>) => (
-    <ProjectCard project={project} />
-  ))}
+  {projects.length > 0 ? (
+    projects.map((project: CollectionEntry<'projects'>) => (
+      <ProjectCard project={project} />
+    ))
+  ) : (
+    <p class="no-projects">No projects available at the moment.</p>
+  )}
 </div>
 
 <style>
@@ -17,6 +26,13 @@ const projects = await getCollection('projects');
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    padding: 2rem;
+  }
+
+  .no-projects {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--text-muted);
     padding: 2rem;
   }
 </style> 
