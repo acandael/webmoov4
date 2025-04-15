@@ -219,14 +219,21 @@
 
   .container {
     --container-max-width: 1312px;
-    --container-padding: 1rem;
+    --container-padding: 1.5rem;
+
+    padding-inline: var(--container-padding);
 
     width: min(
       100% - (var(--container-padding) * 2),
       var(--container-max-width)
     );
+
     margin-inline: auto;
     box-sizing: border-box;
+
+    @media (width > 760px) {
+      --container-padding: 4rem;
+    }
 
     &[data-width="medium"] {
       --container-max-width: 1116px;
