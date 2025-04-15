@@ -4,28 +4,38 @@ import Heading from "./ui/Heading.astro";
 ---
 
 <section class="section background-brown-gradient" data-gap="medium">
-  <div class="container flow" data-width="medium">
-    <Heading>
-      <h1 class="section-title text-high-contrast">Klaar om uw digitale aanwezigheid te transformeren?</h1>
-      <p class="subtitle text-low-contrast">Laten we bespreken hoe we uw bedrijf kunnen laten groeien met een op maat gemaakte website.</p>
-    </Heading>
-    <Button label="Start het gesprek" hiddenLabel="over je project via ons contactformulier" href="/contact" />
-  </div>
+	<div class="container" data-width="medium">
+		<Heading>
+			<h1 class="section-title text-high-contrast">
+				Klaar om uw digitale aanwezigheid te transformeren?
+			</h1>
+			<p class="subtitle text-low-contrast">
+				Laten we bespreken hoe we uw bedrijf kunnen laten groeien met een op maat gemaakte website.
+			</p>
+		</Heading>
+		<Button
+			label="Start het gesprek"
+			hiddenLabel="over je project via ons contactformulier"
+			href="/contact"
+		/>
+	</div>
 </section>
 
 <style>
-  .subtitle {
-    opacity: 60%;
-    color: var(--clr-white);
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    @media (width > 760px) {
-      padding-block: 4.5rem;
-      padding-inline: 4rem;
-    }
-    gap: 4.5rem;
-  }
+	.subtitle {
+		opacity: 60%;
+		color: var(--clr-white);
+	}
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		@media (width > 760px) {
+			padding-block: 4.5rem;
+			padding-inline: 4rem;
+		}
+		@media (width > 760px) {
+			gap: 4.5rem;
+		}
+	}
 </style>
