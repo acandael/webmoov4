@@ -98,20 +98,38 @@ import templateWebsite from '../assets/template-website.jpg';
     flex-direction: column;
     padding-inline: .5rem;
     gap: 4.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .cards {
     display: flex;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  @media (min-width: 760px) {
+    .cards {
+      flex-direction: row;
+      gap: 3rem;
+    }
   }
 
   .comparison-section .card {
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    padding-block-start: 2rem;
-    padding-block-end: 3rem;
+    padding: 2rem 1rem 3rem;
     box-shadow: 2px 2px 48px 0px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 760px) {
+    .comparison-section .card {
+      padding: 2rem 2rem 3rem;
+    }
   }
 
   .items {
@@ -125,6 +143,11 @@ import templateWebsite from '../assets/template-website.jpg';
     display: flex;
     align-items: center;
     gap: .5rem;
+  }
+
+  .item p {
+    margin: 0;
+    font-size: var(--font-size-md);
   }
   
   .comparison-image {

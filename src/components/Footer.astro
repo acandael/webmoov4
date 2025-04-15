@@ -10,7 +10,7 @@ import envelope from '../assets/envelope.svg';
   <div class="container">
     <div class="footer-content">
       <div class="footer-logo">
-        <Image src={logoDark} alt="webmoov logo" width={150} height={40} />
+        <Image src={logoDark} alt="webmoov logo" width={300} height={80} />
         <span class="footer-logo-text">Webmoov</span>
       </div>
       <p class="text-low-contrast">Digitale ervaringen die inspireren en converteren.</p>
@@ -55,25 +55,59 @@ import envelope from '../assets/envelope.svg';
 </footer>
 
 <style>
-
   .site-footer .container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     font-family: var(--ff-accent);
     gap: 2rem;
   }
 
- .footer-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 2.5rem 0;
-  gap: 3rem;
- }
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 2.5rem 0;
+    gap: 3rem;
+  }
+
+  @media (min-width: 760px) {
+    .site-footer .container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-content {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .footer-links {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+  }
 
   .site-footer .column {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 760px) {
+    .site-footer .column {
+      align-items: flex-start;
+      text-align: left;
+    }
   }
 
   .site-footer .footer-logo {
@@ -94,7 +128,7 @@ import envelope from '../assets/envelope.svg';
   }
 
   .site-footer .footer-logo img {
-    height: 100px;
+    height: 80px;
     width: auto;
   }
 
@@ -109,6 +143,7 @@ import envelope from '../assets/envelope.svg';
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
   }
 
   .site-footer ul li {
@@ -122,10 +157,17 @@ import envelope from '../assets/envelope.svg';
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    justify-content: center;
 
     &:hover,
     &:focus-visible {
       color: var(--clr-white);
+    }
+  }
+
+  @media (min-width: 760px) {
+    .site-footer ul li a {
+      justify-content: flex-start;
     }
   }
 
@@ -137,6 +179,8 @@ import envelope from '../assets/envelope.svg';
   .site-footer .footer-copyright {
     text-align: center;
     margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-family: var(--ff-accent);
     font-size: var(--font-size-sm);
   }
@@ -144,20 +188,10 @@ import envelope from '../assets/envelope.svg';
   .footer-copyright a {
     color: var(--clr-white-70);
     text-decoration: none;
-  }
 
-  @media (max-width: 768px) {
-    .site-footer .container {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .site-footer .column {
-      text-align: center;
-    }
-
-    .site-footer .footer-logo {
-      justify-content: center;
+    &:hover,
+    &:focus-visible {
+      color: var(--clr-white);
     }
   }
 </style>

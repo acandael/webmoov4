@@ -22,8 +22,10 @@ import Heading from "./ui/Heading.astro";
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-block: 4.5rem;
-    padding-inline: 4rem;
+    @media (width > 760px) {
+      padding-block: 4.5rem;
+      padding-inline: 4rem;
+    }
     gap: 4.5rem;
   }
 </style>

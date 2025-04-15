@@ -21,12 +21,17 @@ import Heading from "./ui/Heading.astro";
     /* max-width: 791px; */
   }
   .hero {
-    min-height: calc(100vh - 75px);
+    
     display: flex;
     /* align-items: center; */
     justify-content: center;
     text-align: center;
-    padding-block-start: 23rem;
+    margin-block-start: 4.5rem;
+    padding-block-end: 4.5rem;
+    @media (width > 760px) {
+      padding-block-start: 23rem;
+      min-height: calc(100vh - 75px);
+    }
   }
 
   .section-title {

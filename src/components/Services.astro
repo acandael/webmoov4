@@ -6,12 +6,12 @@ import cart from '../assets/cart.svg';
 ---
 
 <section id="producten" class="section services background-dark">
-  <div class="container flow">
+  <div class="container">
     <Heading>
       <h2 class="section-title text-high-contrast">Onze producten</h2>
       <p class="subtitle text-low-contrast">Kies de perfecte oplossing voor uw bedrijf</p>
     </Heading>
-    <div class="equal-columns service-cards">
+    <div class="service-cards">
       <a href="/one-pager-website" class="card-link">
         <article class="card box-shadow" data-card>
           <section class="service-card__header">
@@ -55,6 +55,8 @@ import cart from '../assets/cart.svg';
     text-decoration: none;
     color: inherit;
     display: block;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .card-link:hover .card {
@@ -67,20 +69,36 @@ import cart from '../assets/cart.svg';
     color: var(--clr-white);
   }
 
+  .service-cards {
+    --card-delay: 0.2s;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin-top: 3rem;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 760px) {
+    .service-cards {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
   .service-cards .card {
-    padding-block: 7rem;
+    padding: 4rem 1rem;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
   }
 
   .service-cards .card.animate {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-
-  .service-cards {
-    --card-delay: 0.2s;
   }
 
   .card:nth-child(1) { transition-delay: calc(var(--card-delay) * 1); }
@@ -90,6 +108,12 @@ import cart from '../assets/cart.svg';
   img {
     width: 2rem;
     height: 2rem;
+  }
+
+  @media (min-width: 760px) {
+    .service-cards .card {
+      padding: 7rem 1.5rem;
+    }
   }
 </style>
 
