@@ -199,7 +199,10 @@
 	}
 
 	.section {
-		--padding: 6rem;
+		--padding: 2rem;
+		@media (width > 760px) {
+			--padding: 6rem;
+		}
 		padding-block: var(--padding);
 		width: 100%;
 		overflow-x: hidden;
