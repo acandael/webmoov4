@@ -203,7 +203,8 @@
 		@media (width > 760px) {
 			--padding: 6rem;
 		}
-		padding-block: var(--padding);
+		padding-block-start: var(--padding);
+		padding-block-end: calc(var(--padding) * 2);
 		width: 100%;
 		overflow-x: hidden;
 		box-sizing: border-box;
