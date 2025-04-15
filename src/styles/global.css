@@ -223,10 +223,10 @@
 
     padding-inline: var(--container-padding);
 
-    width: min(
+    /* width: min(
       100% - (var(--container-padding) * 2),
       var(--container-max-width)
-    );
+    ); */
 
     margin-inline: auto;
     box-sizing: border-box;
