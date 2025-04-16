@@ -1,96 +1,102 @@
 ---
 interface ButtonProps {
-  label: string;
-  hiddenLabel: string;
-  href: string;
-  class?: string;
-  ["data-filter"]?: string;
-  align?: 'left' | 'center' | 'right';
-  variant?: 'default' | 'filter';
+	label: string;
+	hiddenLabel: string;
+	href: string;
+	class?: string;
+	["data-filter"]?: string;
+	align?: "left" | "center" | "right";
+	variant?: "default" | "filter";
 }
 
-const { 
-  label, 
-  hiddenLabel, 
-  href, 
-  class: className, 
-  "data-filter": dataFilter,
-  align = 'center',
-  variant = 'default'
+const {
+	label,
+	hiddenLabel,
+	href,
+	class: className,
+	"data-filter": dataFilter,
+	align = "center",
+	variant = "default",
 } = Astro.props;
 ---
 
-<a 
-  href={href}
-  class={`button ${className || ''} align-${align} variant-${variant}`}
-  data-filter={dataFilter}
+<a
+	href={href}
+	class={`button ${className || ""} align-${align} variant-${variant}`}
+	data-filter={dataFilter}
 >
-  {label} 
-  <span class="visually-hidden">{hiddenLabel}</span>
+	{label}
+	<span class="visually-hidden">{hiddenLabel}</span>
 </a>
 
 <style>
-    .button {
-        display: inline-block;
-        max-width: 263px;
-        padding: 1rem 2rem;
-        border-radius: var(--border-radius-rounded);
-        font-family: var(--ff-accent);
-        font-size: var(--font-size-regular);
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        z-index: 1;
-        text-decoration: none;
-    }
+	.button {
+		display: inline-block;
+		max-width: 263px;
+		padding: 0.75rem 1.5rem;
+		border-radius: var(--border-radius-rounded);
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-regular);
+		font-weight: 500;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		position: relative;
+		z-index: 1;
+		text-decoration: none;
+	}
 
-    .variant-default {
-        background-color: #ff5733;
-        border: 2px solid #ff5733;
-        color: white;
-    }
+	@media (min-width: 760px) {
+		.button {
+			padding: 1rem 2rem;
+		}
+	}
 
-    .variant-default:hover {
-        background-color: #e64d2a;
-        border-color: #e64d2a;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+	.variant-default {
+		background-color: #ff5733;
+		border: 2px solid #ff5733;
+		color: white;
+	}
 
-    .variant-filter {
-        background: var(--background-light);
-        border: none;
-        color: var(--text-body);
-        box-shadow: none;
-        min-width: unset;
-    }
+	.variant-default:hover {
+		background-color: #e64d2a;
+		border-color: #e64d2a;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
 
-    .variant-filter:hover {
-        background: var(--background-hover);
-    }
-    
-    .align-center {
-        margin-inline: auto;
-    }
-    
-    .align-left {
-        margin-right: auto;
-    }
-    
-    .align-right {
-        margin-left: auto;
-    }
+	.variant-filter {
+		background: var(--background-light);
+		border: none;
+		color: var(--text-body);
+		box-shadow: none;
+		min-width: unset;
+	}
 
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
+	.variant-filter:hover {
+		background: var(--background-hover);
+	}
+
+	.align-center {
+		margin-inline: auto;
+	}
+
+	.align-left {
+		margin-right: auto;
+	}
+
+	.align-right {
+		margin-left: auto;
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
 </style>
