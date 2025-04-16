@@ -88,6 +88,7 @@ interface ProductSectionProps {
 		height: auto;
 		max-height: 400px;
 		object-fit: cover;
+		border-radius: var(--border-radius);
 	}
 
 	@media (min-width: 760px) {
@@ -99,6 +100,9 @@ interface ProductSectionProps {
 	.heading {
 		display: flex;
 		flex-direction: column;
+		@media (width > 760px) {
+			flex-direction: row;
+		}
 		align-items: center;
 		gap: 1rem;
 	}
