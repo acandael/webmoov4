@@ -1,0 +1,40 @@
+---
+import ContactForm from "../components/ContactForm";
+
+interface Props {
+	product: "one-pager-website" | "premium-website" | "ecommerce-website";
+}
+
+const { product } = Astro.props;
+---
+
+<section class="section form-section" id="contact">
+	<div class="container" data-width="medium">
+		<div class="contactform-container">
+			<ContactForm align="center" product={product} client:visible />
+		</div>
+	</div>
+</section>
+
+<style>
+	.form-section {
+		background-color: var(--background-light-gray);
+	}
+
+	.contactform-container {
+		display: flex;
+		flex-direction: column;
+		padding-block: 2rem;
+		@media screen and (width > 760px) {
+			padding-inline: 1.5rem;
+		}
+		border: 1px solid var(--box-shadow);
+	}
+
+	@media (min-width: 760px) {
+		.contactform-container {
+			padding-block: 4.5rem;
+			padding-inline: 3rem;
+		}
+	}
+</style>

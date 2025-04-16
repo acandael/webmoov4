@@ -1,420 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import trophyicon from "../assets/trophy.svg";
-import Button from "../components/ui/Button.astro";
-import Heading from "../components/ui/Heading.astro";
-import check from "../assets/check.svg";
-import ContactForm from "../components/ContactForm";
-import { Image } from "astro:assets";
+
 import premiumWebsite from "../assets/premium-website.jpg";
+import ProductSection from "../components/ProductSection.astro";
+import FeaturesGrid from "../components/FeaturesGrid.astro";
+import ProcessTimeline from "../components/ProcessTimeline.astro";
+import FormSection from "../components/FormSection.astro";
+
+interface Feature {
+	title: string;
+}
+
+const features: Feature[] = [
+	{
+		title: "Meerdere pagina designs	",
+	},
+	{
+		title: "Content Management System",
+	},
+	{
+		title: "Geavanceerde SEO optimalisatie",
+	},
+	{
+		title: "Blog integratie",
+	},
+	{
+		title: "Nieuwsbrief integratie",
+	},
+	{
+		title: "Aangepaste animaties",
+	},
+	{
+		title: "Performance optimisatie",
+	},
+	{
+		title: "Geavanceerde Analyse",
+	},
+];
 ---
 
 <Layout>
-	<section class="section product-section">
-		<div class="container">
-			<div class="product-grid">
-				<div class="content-col">
-					<div class="heading">
-						<div class="brush-icon">
-							<img src={trophyicon.src} alt="paintbrush" />
-						</div>
-						<h1 class="section-title">Premium Website</h1>
-					</div>
-					<p class="subtitle">Een volledig op maat gemaakte website met CMS-integratie.</p>
-					<Button
-						label="Start het gesprek"
-						hiddenLabel="en we contacteren je binnen 24 uur"
-						href="#contact"
-						align="left"
-					/>
-				</div>
-				<div class="image-col">
-					<Image
-						src={premiumWebsite}
-						alt="Modern workspace setup with desktop computer"
-						class="hero-image"
-						width={670}
-						height={372}
-					/>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section features-section">
-		<div class="container flow">
-			<Heading>
-				<h2 class="section-title">Wat je krijgt</h2>
-			</Heading>
-			<div class="features-grid">
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Meerdere pagina designs</h3>
-				</div>
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Content Management System</h3>
-				</div>
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Geavanceerde SEO optimalisatie</h3>
-				</div>
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Blog integratie</h3>
-				</div>
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Nieuwsbrief integratie</h3>
-				</div>
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Aangepaste animaties</h3>
-				</div>
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Performance optimisatie</h3>
-				</div>
-				<div class="card">
-					<img src={check.src} alt="item 1" />
-					<h3 class="feature-title">Geavanceerde Analyse</h3>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section process-section">
-		<div class="container">
-			<Heading>
-				<h2 class="section-title">Onze proces</h2>
-			</Heading>
-			<div class="process-timeline">
-				<div class="process-step">
-					<div class="step-number">1</div>
-					<div class="step-content">
-						<h3>Kennismaking</h3>
-						<p>We bespreken je wensen en doelen voor je website</p>
-					</div>
-				</div>
-				<div class="process-step">
-					<div class="step-number">2</div>
-					<div class="step-content">
-						<h3>Design</h3>
-						<p>We maken een uniek design dat past bij jouw merk</p>
-					</div>
-				</div>
-				<div class="process-step">
-					<div class="step-number">3</div>
-					<div class="step-content">
-						<h3>Ontwikkeling</h3>
-						<p>We bouwen je website met de laatste technologieën</p>
-					</div>
-				</div>
-				<div class="process-step">
-					<div class="step-number">4</div>
-					<div class="step-content">
-						<h3>Lancering</h3>
-						<p>Je website gaat live en is klaar voor bezoekers</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="section form-section" id="contact">
-		<div class="container" data-width="medium">
-			<div class="contactform-container">
-				<ContactForm align="center" product="premium-website" client:visible />
-			</div>
-		</div>
-	</section>
+	<ProductSection
+		image={premiumWebsite}
+		icon={trophyicon}
+		title="Premium Website"
+		subtitle="Een volledig op maat gemaakte website met CMS-integratie."
+	/>
+
+	<FeaturesGrid features={features} />
+
+	<ProcessTimeline />
+
+	<FormSection product="premium-website" />
 </Layout>
-
-<style>
-	.product-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 4.5rem;
-		text-align: center;
-	}
-
-	.content-col {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 2rem;
-	}
-
-	.heading {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.brush-icon {
-		width: 48px;
-		height: 48px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.brush-icon img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
-
-	.section-title {
-		font-size: var(--font-size-heading-lg);
-		text-align: center;
-	}
-
-	.subtitle {
-		max-width: 35ch;
-		font-size: var(--font-size-md);
-		margin-inline: auto;
-		text-align: center;
-	}
-
-	:global(.button) {
-		margin-inline: auto;
-	}
-
-	@media (min-width: 760px) {
-		.product-grid {
-			grid-template-columns: 1fr 1fr;
-			gap: 4rem;
-			text-align: left;
-		}
-
-		.content-col {
-			align-items: flex-start;
-			gap: 3rem;
-		}
-
-		.heading {
-			flex-direction: row;
-			align-items: center;
-			justify-content: flex-start;
-		}
-
-		.section-title {
-			text-align: left;
-		}
-
-		.subtitle {
-			margin-inline: 0;
-			text-align: left;
-		}
-
-		:global(.button) {
-			margin-inline: 0;
-		}
-	}
-
-	.hero-image {
-		border-radius: var(--border-radius);
-		width: 100%;
-		height: auto;
-	}
-
-	.features-section {
-		background-color: var(--background-light-gray);
-	}
-
-	.container {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-	}
-
-	@media (min-width: 760px) {
-		.container {
-			gap: 3rem;
-		}
-	}
-
-	.features-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1rem;
-		margin-top: 2rem;
-	}
-
-	@media (min-width: 480px) {
-		.features-grid {
-			grid-template-columns: repeat(2, 1fr);
-			gap: 1.5rem;
-		}
-	}
-
-	@media (min-width: 760px) {
-		.features-grid {
-			grid-template-columns: repeat(4, 1fr);
-			gap: 2rem;
-			margin-top: 3rem;
-		}
-	}
-
-	.card {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		background: white;
-		padding: 1.5rem;
-		border-radius: 0.5rem;
-		box-shadow: var(--box-shadow);
-	}
-
-	@media (min-width: 760px) {
-		.card {
-			padding: 2rem;
-		}
-	}
-
-	.feature-title {
-		font-size: var(--font-size-regular);
-		font-weight: 600;
-	}
-
-	@media (min-width: 760px) {
-		.feature-title {
-			font-size: var(--font-size-md);
-		}
-	}
-
-	.process-section {
-		padding: 3rem 0;
-		text-align: center;
-	}
-
-	.process-timeline {
-		position: relative;
-		max-width: 800px;
-		margin: 2rem auto 0;
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		padding-left: 2rem;
-	}
-
-	.process-timeline::before {
-		content: "";
-		position: absolute;
-		left: 11px;
-		top: 10px;
-		height: calc(100% - 20px);
-		width: 2px;
-		background-color: #e5e7eb;
-		z-index: 0;
-	}
-
-	.process-step {
-		position: relative;
-		text-align: left;
-		opacity: 0;
-		transform: translateY(30px);
-		transition:
-			opacity 0.6s ease-out,
-			transform 0.6s ease-out;
-		display: flex;
-		align-items: flex-start;
-		gap: 1rem;
-	}
-
-	.process-step.animate {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	.step-number {
-		flex-shrink: 0;
-		width: 24px;
-		height: 24px;
-		background-color: #ff5533;
-		color: white;
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 0.875rem;
-		font-weight: 500;
-		margin-left: -2rem;
-		position: relative;
-		z-index: 1;
-	}
-
-	.step-content {
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-	}
-
-	.step-content h3 {
-		font-size: var(--font-size-md);
-		font-weight: 500;
-		margin: 0;
-	}
-
-	.step-content p {
-		color: var(--text-muted);
-		line-height: 1.6;
-		font-size: var(--font-size-regular);
-		margin: 0;
-	}
-
-	@media (min-width: 760px) {
-		.process-section {
-			padding: 6rem 0;
-		}
-
-		.process-timeline {
-			margin: 3rem auto 0;
-			gap: 4rem;
-			padding-left: 3rem;
-		}
-
-		.process-timeline::before {
-			left: 16px;
-		}
-
-		.step-number {
-			width: 32px;
-			height: 32px;
-			margin-left: -3rem;
-		}
-
-		.step-content {
-			gap: 0.5rem;
-		}
-
-		.step-content h3 {
-			font-size: var(--font-size-lg);
-		}
-	}
-
-	.form-section {
-		background-color: var(--background-light-gray);
-	}
-
-	.contactform-container {
-		display: flex;
-		flex-direction: column;
-		padding-block: 2rem;
-		@media screen and (width > 760px) {
-			padding-inline: 1.5rem;
-		}
-		border: 1px solid var(--box-shadow);
-	}
-
-	@media (min-width: 760px) {
-		.contactform-container {
-			padding-block: 4.5rem;
-			padding-inline: 3rem;
-		}
-	}
-</style>
 
 <script>
 	document.addEventListener("DOMContentLoaded", () => {

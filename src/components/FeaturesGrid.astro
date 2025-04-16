@@ -1,0 +1,90 @@
+---
+import check from "../assets/check.svg";
+import Heading from "./ui/Heading.astro";
+
+const { features } = Astro.props;
+
+interface Feature {
+	title: string;
+	// Add any additional properties that might be needed for features
+}
+
+interface Props {
+	features: Feature[];
+}
+---
+
+<section class="section features-section">
+	<div class="container flow">
+		<Heading>
+			<h2 class="section-title">Wat je krijgt</h2>
+		</Heading>
+		<div class="features-grid">
+			{
+				features.map((feature) => (
+					<div class="card">
+						<img src={check.src} alt="" />
+						<h3 class="feature-title">{feature.title}</h3>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.features-section {
+		/* padding-block: 4rem; */
+		background-color: var(--background-light-gray);
+	}
+
+	.features-grid {
+		display: grid;
+		gap: 1rem;
+		margin-top: 2rem;
+
+		@media (width > 760px) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+	}
+
+	.card {
+		display: grid;
+		grid-template-rows: auto auto;
+		align-items: center;
+		text-align: center;
+		gap: 0.75rem;
+		padding: 1.5rem;
+		background-color: white;
+		border-radius: 0.5rem;
+		box-shadow: var(--box-shadow);
+
+		@media (width > 760px) {
+			padding: 2rem;
+			gap: 1rem;
+		}
+	}
+
+	.card img {
+		width: 2rem;
+		height: 2rem;
+		margin-inline: auto;
+
+		@media (width > 760px) {
+			width: 3rem;
+			height: 3rem;
+		}
+	}
+
+	.card h3 {
+		font-size: var(--font-size-md);
+		font-weight: 500;
+		margin: 0;
+
+		@media (width > 760px) {
+			font-size: var(--font-size-heading-sm);
+		}
+	}
+</style>

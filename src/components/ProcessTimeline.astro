@@ -1,0 +1,154 @@
+---
+import Heading from "../components/ui/Heading.astro";
+---
+
+<section class="section process-section">
+	<div class="container">
+		<Heading>
+			<h2 class="section-title">Onze proces</h2>
+		</Heading>
+		<div class="process-timeline">
+			<div class="process-step">
+				<div class="step-number">1</div>
+				<div class="step-content">
+					<h3>Kennismaking</h3>
+					<p>We bespreken je wensen en doelen voor je website</p>
+				</div>
+			</div>
+			<div class="process-step">
+				<div class="step-number">2</div>
+				<div class="step-content">
+					<h3>Design</h3>
+					<p>We maken een uniek design dat past bij jouw merk</p>
+				</div>
+			</div>
+			<div class="process-step">
+				<div class="step-number">3</div>
+				<div class="step-content">
+					<h3>Ontwikkeling</h3>
+					<p>We bouwen je website met de laatste technologieën</p>
+				</div>
+			</div>
+			<div class="process-step">
+				<div class="step-number">4</div>
+				<div class="step-content">
+					<h3>Lancering</h3>
+					<p>Je website gaat live en is klaar voor bezoekers</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.process-section {
+		padding: 3rem 0;
+		text-align: center;
+	}
+
+	.process-timeline {
+		position: relative;
+		max-width: 800px;
+		margin: 2rem auto 0;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding-left: 2rem;
+	}
+
+	.process-timeline::before {
+		content: "";
+		position: absolute;
+		left: 11px;
+		top: 10px;
+		height: calc(100% - 20px);
+		width: 2px;
+		background-color: #e5e7eb;
+		z-index: 0;
+	}
+
+	.process-step {
+		position: relative;
+		text-align: left;
+		opacity: 0;
+		transform: translateY(30px);
+		transition:
+			opacity 0.6s ease-out,
+			transform 0.6s ease-out;
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.process-step.animate {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.step-number {
+		flex-shrink: 0;
+		width: 24px;
+		height: 24px;
+		background-color: #ff5533;
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.875rem;
+		font-weight: 500;
+		margin-left: -2rem;
+		position: relative;
+		z-index: 1;
+	}
+
+	.step-content {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.step-content h3 {
+		font-size: var(--font-size-md);
+		font-weight: 500;
+		margin: 0;
+	}
+
+	.step-content p {
+		color: var(--text-muted);
+		line-height: 1.6;
+		font-size: var(--font-size-regular);
+		margin: 0;
+	}
+
+	@media (min-width: 760px) {
+		.process-section {
+			padding: 6rem 0;
+		}
+
+		.process-timeline {
+			margin: 3rem auto 0;
+			gap: 4rem;
+			padding-left: 3rem;
+		}
+
+		.process-timeline::before {
+			left: 16px;
+		}
+
+		.step-number {
+			width: 32px;
+			height: 32px;
+			margin-left: -3rem;
+		}
+
+		.step-content {
+			gap: 0.5rem;
+		}
+
+		.step-content h3 {
+			font-size: var(--font-size-lg);
+		}
+	}
+</style>

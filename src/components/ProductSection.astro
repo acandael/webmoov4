@@ -1,0 +1,122 @@
+---
+import Button from "../components/ui/Button.astro";
+import { Image } from "astro:assets";
+const { title, subtitle, image, icon } = Astro.props;
+
+interface ProductSectionProps {
+	title: string;
+	subtitle: string;
+	icon: string;
+	image: string;
+}
+---
+
+<section class="section product-section">
+	<div class="container">
+		<div class="product-grid">
+			<div class="content-col">
+				<div class="heading">
+					<div class="brush-icon">
+						<img src={icon.src} alt="paintbrush" />
+					</div>
+					<h1 class="section-title">{title}</h1>
+				</div>
+				<p class="subtitle">
+					{subtitle}
+				</p>
+				<Button
+					label="Start het gesprek"
+					hiddenLabel="en we contacteren je binnen 24 uur"
+					href="#contact"
+					align="center"
+				/>
+			</div>
+			<div class="image-col">
+				<Image
+					src={image}
+					alt="Modern workspace setup with desktop computer"
+					class="hero-image"
+					width={800}
+					height={600}
+				/>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.product-section {
+		padding-block: 4rem;
+	}
+
+	.product-grid {
+		display: grid;
+		gap: 2rem;
+	}
+
+	@media (width > 760px) {
+		.product-grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 4rem;
+		}
+	}
+
+	.content-col {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 760px) {
+		.content-col {
+			align-items: flex-start;
+			text-align: left;
+			justify-content: center;
+		}
+	}
+
+	.image-col {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hero-image {
+		width: 100%;
+		height: auto;
+		max-height: 400px;
+		object-fit: cover;
+	}
+
+	@media (min-width: 760px) {
+		.hero-image {
+			max-height: none;
+		}
+	}
+
+	.heading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.section-title {
+		font-size: var(--font-size-heading-lg);
+	}
+
+	.subtitle {
+		max-width: 35ch;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+
+		@media (width > 760px) {
+			gap: 3rem;
+		}
+	}
+</style>
