@@ -11,23 +11,23 @@ try {
 }
 ---
 
-<div class="projects-grid">
-	{
-		projects.length > 0 ? (
-			projects.map((project) => <ProjectCard project={project} />)
-		) : (
-			<p class="no-projects">No projects available at the moment.</p>
-		)
-	}
+<div class="projects-wrapper">
+	<div class="projects-grid">
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</div>
+	<p class="no-projects hidden">Geen projecten beschikbaar voor deze filter.</p>
 </div>
 
 <style>
+	.projects-wrapper {
+		width: 100%;
+		position: relative;
+	}
+
 	.projects-grid {
 		display: grid;
 		gap: 1.5rem;
 		padding-inline: 1.5rem;
-		max-width: var(--container-max-width);
-		margin-inline: auto;
 
 		@media (width > 760px) {
 			grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -37,9 +37,57 @@ try {
 	}
 
 	.no-projects {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 		text-align: center;
-		grid-column: 1 / -1;
 		color: var(--text-muted);
-		padding: 2rem;
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-md);
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		pointer-events: none;
+		width: 100%;
+		padding: 4rem 1.5rem;
+	}
+
+	.no-projects.visible {
+		opacity: 1;
+		pointer-events: auto;
 	}
 </style>
+
+<script>
+	function updateNoProjectsMessage() {
+		const projectCards = document.querySelectorAll<HTMLElement>(".project-card:not(.hidden)");
+		const noProjectsMessage = document.querySelector<HTMLElement>(".no-projects");
+
+		if (!noProjectsMessage) return;
+
+		if (projectCards.length === 0) {
+			noProjectsMessage.classList.remove("hidden");
+			noProjectsMessage.classList.add("visible");
+		} else {
+			noProjectsMessage.classList.add("hidden");
+			noProjectsMessage.classList.remove("visible");
+		}
+	}
+
+	// Initialize on page load
+	updateNoProjectsMessage();
+
+	// Update when filter changes
+	document.addEventListener("click", (e) => {
+		if ((e.target as HTMLElement).closest(".filter-button")) {
+			// Small delay to allow filter animation to complete
+			setTimeout(updateNoProjectsMessage, 300);
+		}
+	});
+
+	// Initialize when the DOM content is loaded (backup)
+	document.addEventListener("DOMContentLoaded", updateNoProjectsMessage);
+
+	// Initialize when Astro page changes (for view transitions)
+	document.addEventListener("astro:page-load", updateNoProjectsMessage);
+</script>

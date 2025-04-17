@@ -7,7 +7,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<section class="section section-work flow">
+	<section class="section section-work flow" data-width="medium">
 		<div class="container">
 			<Heading>
 				<h2 class="section-title">Onze werk</h2>
@@ -16,6 +16,8 @@ import Layout from "../layouts/Layout.astro";
 			<div class="filter-container">
 				<Filter />
 			</div>
+		</div>
+		<div class="container">
 			<Projects />
 		</div>
 	</section>
@@ -30,6 +32,12 @@ import Layout from "../layouts/Layout.astro";
 	}
 
 	.filter-container {
-		margin-bottom: 4rem; /* 32px = 8 * 4 */
+		margin-bottom: 2rem;
+	}
+
+	@media (width > 760px) {
+		.filter-container {
+			margin-bottom: 4rem;
+		}
 	}
 </style>
