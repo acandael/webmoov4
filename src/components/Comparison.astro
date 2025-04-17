@@ -113,6 +113,10 @@ import templateWebsite from "../assets/template-website.jpg";
 		}
 	}
 
+	.card p {
+		text-align: left;
+	}
+
 	.comparison-section .card {
 		display: grid;
 		grid-template-rows: auto auto 1fr;
@@ -153,14 +157,21 @@ import templateWebsite from "../assets/template-website.jpg";
 	}
 
 	.item img {
-		width: 24px;
-		height: 24px;
+		width: 16px;
+		height: 16px;
+		@media (width > 760px) {
+			width: 24px;
+			height: 24px;
+		}
 		margin-top: 0.25rem;
 	}
 
 	.item p {
 		margin: 0;
-		font-size: var(--font-size-md);
+		font-size: var(--font-size-regular);
+		@media (width > 760px) {
+			font-size: var(--font-size-md);
+		}
 		line-height: 1.5;
 	}
 
