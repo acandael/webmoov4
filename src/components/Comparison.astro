@@ -8,7 +8,7 @@ import customWebsite from "../assets/custom-website.jpg";
 import templateWebsite from "../assets/template-website.jpg";
 ---
 
-<section class="section comparison-section background-light-gray">
+<section class="section comparison-section background-light-gray" data-padding="custom">
 	<div class="container flow" data-width="narrow">
 		<Heading>
 			<h2 class="section-title">Maatwerk vs Template</h2>
@@ -103,7 +103,7 @@ import templateWebsite from "../assets/template-website.jpg";
 		grid-template-columns: 1fr;
 		gap: 2rem;
 		width: 100%;
-		margin-top: 3rem;
+		margin-block-start: 0;
 	}
 
 	@media (min-width: 760px) {
@@ -188,6 +188,19 @@ import templateWebsite from "../assets/template-website.jpg";
 		width: 100%;
 		display: flex;
 		justify-content: center;
-		margin-top: 3rem;
+		margin-block-start: 4.5rem;
+	}
+
+	.section[data-padding="custom"] {
+		--padding-top: 3rem;
+		--padding-bottom: 11.25rem;
+
+		padding-block-start: var(--padding-top);
+		padding-block-end: var(--padding-bottom);
+
+		@media (width > 760px) {
+			--padding-top: 7.5rem;
+			--padding-bottom: 7.5rem;
+		}
 	}
 </style>

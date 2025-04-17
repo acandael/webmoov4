@@ -83,7 +83,13 @@ const testimonialImages: TestimonialImages = {
 
 <style>
 	.testimonials-section {
-		padding-block: 6rem;
+		padding-block-start: 3rem;
+		padding-block-end: 7.5rem;
+
+		@media (width > 760px) {
+			padding-block-start: 7.5rem;
+			padding-block-end: 11.25rem;
+		}
 
 		background-color: var(--background-main);
 	}
@@ -91,7 +97,7 @@ const testimonialImages: TestimonialImages = {
 	.container {
 		display: flex;
 		flex-direction: column;
-		gap: 4.5rem;
+		gap: 2rem;
 		max-width: var(--container-max-width);
 		margin-inline: auto;
 	}

@@ -214,7 +214,7 @@
 		}
 
 		@media (width > 760px) {
-			padding-block-end: calc(var(--padding) * 2);
+			padding-block-end: 7.5rem;
 		}
 
 		&[data-padding="compact"] {

@@ -1,197 +1,203 @@
 ---
-import { Image } from 'astro:assets';
-import logoDark from '../assets/logo-dark.png';
-import location from '../assets/location.svg';
-import phone from '../assets/phone.svg';
-import envelope from '../assets/envelope.svg';
+import { Image } from "astro:assets";
+import logoDark from "../assets/logo-dark.png";
+import location from "../assets/location.svg";
+import phone from "../assets/phone.svg";
+import envelope from "../assets/envelope.svg";
 ---
 
 <footer class="section site-footer text-low-contrast" data-padding="compact">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <Image src={logoDark} alt="webmoov logo" width={300} height={80} />
-        <span class="footer-logo-text">Webmoov</span>
-      </div>
-      <p class="text-low-contrast">Digitale ervaringen die inspireren en converteren.</p>
-    </div>
-    <div class="footer-links">
-    <div class="column">
-      <h2>Bedrijf</h2>
-      <ul>
-        <li><a href="#">Over ons</a></li>
-        <li><a href="#">Over ons werk</a></li>
-        <li><a href="#">Diensten</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
+	<div class="container">
+		<div class="footer-content">
+			<div class="footer-logo">
+				<Image src={logoDark} alt="webmoov logo" width={300} height={80} />
+				<span class="footer-logo-text">Webmoov</span>
+			</div>
+			<p class="text-low-contrast">Digitale ervaringen die inspireren en converteren.</p>
+		</div>
+		<div class="footer-links">
+			<div class="column">
+				<h2>Bedrijf</h2>
+				<ul>
+					<li><a href="#">Over ons</a></li>
+					<li><a href="#">Over ons werk</a></li>
+					<li><a href="#">Diensten</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</div>
 
-    <div class="column">
-      <h2>Producten</h2>
-      <ul>
-        <li><a href="/one-pager-website">One Pager Website</a></li>
-        <li><a href="/premium-website">Premium Website</a></li>
-        <li><a href="/ecommerce-website">E-commerce Website</a></li>
-      </ul>
-    </div>
+			<div class="column">
+				<h2>Producten</h2>
+				<ul>
+					<li><a href="/one-pager-website">One Pager Website</a></li>
+					<li><a href="/premium-website">Premium Website</a></li>
+					<li><a href="/ecommerce-website">E-commerce Website</a></li>
+				</ul>
+			</div>
 
-    <div class="column">
-      <h2>Contact</h2>
-      <ul>
-        <li><a href="#"><img src={location.src} alt="map" />Grote Edestraat 50, 8370 Blankenberge</a></li>
-        <li><a href="#"><img src={phone.src} alt="phone" />0498137260</a></li>
-        <li><a href="#"><img src={envelope.src} alt="mail" />info@webmoov.be</a></li>
-        <li><a href="#">IBAN: BE527370 2593 4409</a></li>
-        <li><a href="#">VAT: BE0861036534</a></li>
-      </ul>
-    </div>
-    </div>  
-  </div>
+			<div class="column">
+				<h2>Contact</h2>
+				<ul>
+					<li>
+						<a href="#"
+							><img src={location.src} alt="map" />Grote Edestraat 50, 8370 Blankenberge</a>
+					</li>
+					<li><a href="#"><img src={phone.src} alt="phone" />0498137260</a></li>
+					<li><a href="#"><img src={envelope.src} alt="mail" />info@webmoov.be</a></li>
+					<li><a href="#">IBAN: BE527370 2593 4409</a></li>
+					<li><a href="#">VAT: BE0861036534</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
-  <div class="footer-copyright">
-      <p>© 2025 Webmoov. Alle rechten voorbehouden. <a href="/algemene-voorwaarden">Algemene voorwaarden</a></p>
-    </div>
+	<div class="footer-copyright">
+		<p>
+			© 2025 Webmoov. Alle rechten voorbehouden. <a href="/algemene-voorwaarden"
+				>Algemene voorwaarden</a>
+		</p>
+	</div>
 </footer>
 
 <style>
-  .site-footer .container {
-    display: flex;
-    flex-direction: column;
-    font-family: var(--ff-accent);
-    gap: 2rem;
-  }
+	.site-footer .container {
+		display: flex;
+		flex-direction: column;
+		font-family: var(--ff-accent);
+		gap: 2rem;
+	}
 
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
+	.footer-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1rem;
+	}
 
-  .footer-links {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 2.5rem 0;
-    gap: 3rem;
-  }
+	.footer-links {
+		display: grid;
+		grid-template-columns: 1fr;
+		padding: 2.5rem 0;
+		gap: 3rem;
+	}
 
-  @media (min-width: 760px) {
-    .site-footer .container {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
+	@media (min-width: 760px) {
+		.site-footer .container {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
 
-    .footer-content {
-      align-items: flex-start;
-      text-align: left;
-    }
+		.footer-content {
+			align-items: flex-start;
+			text-align: left;
+		}
 
-    .footer-links {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-    }
-  }
+		.footer-links {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 3rem;
+		}
+	}
 
-  .site-footer .column {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    text-align: center;
-  }
+	.site-footer .column {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: center;
+		text-align: center;
+	}
 
-  @media (min-width: 760px) {
-    .site-footer .column {
-      align-items: flex-start;
-      text-align: left;
-    }
-  }
+	@media (min-width: 760px) {
+		.site-footer .column {
+			align-items: flex-start;
+			text-align: left;
+		}
+	}
 
-  .site-footer .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+	.site-footer .footer-logo {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
 
-  .footer-logo-text {
-    font-family: var(--ff-accent);
-    font-size: var(--font-size-heading-md);
-    color: var(--clr-white);
-  }
+	.footer-logo-text {
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-heading-md);
+		color: var(--clr-white);
+	}
 
-  h1 {
-    font-family: var(--ff-accent);
-    font-size: var(--font-size-md);
-  }
+	h1 {
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-md);
+	}
 
-  .site-footer .footer-logo img {
-    height: 80px;
-    width: auto;
-  }
+	.site-footer .footer-logo img {
+		/* height: 80px; */
+		width: auto;
+	}
 
-  .site-footer h2 {
-    font-family: var(--ff-accent);
-    color: var(--clr-white-70);
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
+	.site-footer h2 {
+		font-family: var(--ff-accent);
+		color: var(--clr-white-70);
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+	}
 
-  .site-footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
+	.site-footer ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		width: 100%;
+	}
 
-  .site-footer ul li {
-    margin-bottom: 0.5rem;
-  }
+	.site-footer ul li {
+		margin-bottom: 0.5rem;
+	}
 
-  .site-footer ul li a {
-    font-size: var(--font-size-sm);
-    color: var(--clr-white-70);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: center;
+	.site-footer ul li a {
+		font-size: var(--font-size-sm);
+		color: var(--clr-white-70);
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		justify-content: center;
 
-    &:hover,
-    &:focus-visible {
-      color: var(--clr-white);
-    }
-  }
+		&:hover,
+		&:focus-visible {
+			color: var(--clr-white);
+		}
+	}
 
-  @media (min-width: 760px) {
-    .site-footer ul li a {
-      justify-content: flex-start;
-    }
-  }
+	@media (min-width: 760px) {
+		.site-footer ul li a {
+			justify-content: flex-start;
+		}
+	}
 
-  .site-footer ul li a img {
-    width: 1rem;
-    height: 1rem;
-  }
+	.site-footer ul li a img {
+		width: 1rem;
+		height: 1rem;
+	}
 
-  .site-footer .footer-copyright {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-family: var(--ff-accent);
-    font-size: var(--font-size-sm);
-  }
+	.site-footer .footer-copyright {
+		text-align: center;
+		margin-top: 2rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-sm);
+	}
 
-  .footer-copyright a {
-    color: var(--clr-white-70);
-    text-decoration: none;
+	.footer-copyright a {
+		color: var(--clr-white-70);
+		text-decoration: none;
 
-    &:hover,
-    &:focus-visible {
-      color: var(--clr-white);
-    }
-  }
+		&:hover,
+		&:focus-visible {
+			color: var(--clr-white);
+		}
+	}
 </style>
