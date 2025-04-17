@@ -152,7 +152,10 @@ import templateWebsite from "../assets/template-website.jpg";
 	.item {
 		display: grid;
 		grid-template-columns: 24px 1fr;
-		gap: 0.75rem;
+		gap: 0rem;
+		@media (width > 760px) {
+			gap: 0.75rem;
+		}
 		align-items: start;
 	}
 
@@ -168,7 +171,7 @@ import templateWebsite from "../assets/template-website.jpg";
 
 	.item p {
 		margin: 0;
-		font-size: var(--font-size-regular);
+		font-size: var(--font-size-sm);
 		@media (width > 760px) {
 			font-size: var(--font-size-md);
 		}
