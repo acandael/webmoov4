@@ -1,191 +1,194 @@
 ---
-import Heading from './ui/Heading.astro';
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
+import Heading from "./ui/Heading.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 // Import testimonial images
-import anniekLambrechtAvatar from '../assets/testimonials/skincenter-anniek-lambrecht/anniek-lambrecht.jpg';
-import anniekLambrechtLogo from '../assets/testimonials/skincenter-anniek-lambrecht/logo.png';
-import frederiekTroubleynAvatar from '../assets/testimonials/actionmaker/frederiek-troubleyn.jpg';
-import actionMakerLogo from '../assets/testimonials/actionmaker/logo.png';
+import anniekLambrechtAvatar from "../assets/testimonials/skincenter-anniek-lambrecht/anniek-lambrecht.jpg";
+import anniekLambrechtLogo from "../assets/testimonials/skincenter-anniek-lambrecht/logo.png";
+import frederiekTroubleynAvatar from "../assets/testimonials/actionmaker/frederiek-troubleyn.jpg";
+import actionMakerLogo from "../assets/testimonials/actionmaker/logo.png";
 
-const testimonials = await getCollection('testimonials');
+const testimonials = await getCollection("testimonials");
 
 type TestimonialImages = {
-  [key: string]: {
-    avatar: ImageMetadata;
-    logo: ImageMetadata;
-  };
+	[key: string]: {
+		avatar: ImageMetadata;
+		logo: ImageMetadata;
+	};
 };
 
 // Map testimonial images
 const testimonialImages: TestimonialImages = {
-  'skincenter-anniek-lambrecht': {
-    avatar: anniekLambrechtAvatar,
-    logo: anniekLambrechtLogo
-  },
-  'action-maker': {
-    avatar: frederiekTroubleynAvatar,
-    logo: actionMakerLogo
-  }
+	"skincenter-anniek-lambrecht": {
+		avatar: anniekLambrechtAvatar,
+		logo: anniekLambrechtLogo,
+	},
+	"action-maker": {
+		avatar: frederiekTroubleynAvatar,
+		logo: actionMakerLogo,
+	},
 };
 ---
 
 <section class="section testimonials-section">
-  <div class="container flow">
-    <Heading>
-      <h2 class="section-title">Klant ervaringen</h2>
-      <p class="subtitle">Ontdek wat onze klanten over ons zeggen.</p>
-    </Heading>
-    <div class="equal-columns testimonial-cards">
-      {testimonials.map((testimonial) => (
-        <article class="card">
-          <div class="heading">
-            <div class="testimonial-avatar">
-              <Image 
-                src={testimonialImages[testimonial.data.project].avatar}
-                alt={`${testimonial.data.name} avatar`}
-                width={64}
-                height={64}
-                format="webp"
-                quality="high"
-              />
-            </div>
-            <div class="heading__text">
-              <h2 class="card__title">{testimonial.data.name}</h2>
-              <p>{testimonial.data.role}</p>
-            </div>
-          </div>
-          <div class="body">
-            <blockquote>{testimonial.data.text}</blockquote>
-          </div>
-          <footer>
-            {testimonialImages[testimonial.data.project].logo && (
-              <Image 
-                src={testimonialImages[testimonial.data.project].logo}
-                alt={`${testimonial.data.project} logo`}
-                width={80}
-                height={32}
-                format="webp"
-                quality="high"
-              />
-            )}
-            <p>{testimonial.data.project}</p>
-          </footer>
-        </article>
-      ))}
-    </div>
-  </div>
+	<div class="container flow">
+		<Heading>
+			<h2 class="section-title">Klant ervaringen</h2>
+			<p class="subtitle">Ontdek wat onze klanten over ons zeggen.</p>
+		</Heading>
+		<div class="equal-columns testimonial-cards">
+			{
+				testimonials.map((testimonial) => (
+					<article class="card">
+						<div class="heading">
+							<div class="testimonial-avatar">
+								<Image
+									src={testimonialImages[testimonial.data.project].avatar}
+									alt={`${testimonial.data.name} avatar`}
+									width={64}
+									height={64}
+									format="webp"
+									quality="high"
+								/>
+							</div>
+							<div class="heading__text">
+								<h2 class="card__title">{testimonial.data.name}</h2>
+								<p>{testimonial.data.role}</p>
+							</div>
+						</div>
+						<div class="body">
+							<blockquote>{testimonial.data.text}</blockquote>
+						</div>
+						<footer>
+							{testimonialImages[testimonial.data.project].logo && (
+								<Image
+									src={testimonialImages[testimonial.data.project].logo}
+									alt={`${testimonial.data.project} logo`}
+									width={80}
+									height={32}
+									format="webp"
+									quality="high"
+								/>
+							)}
+							<p>{testimonial.data.project}</p>
+						</footer>
+					</article>
+				))
+			}
+		</div>
+	</div>
 </section>
 
 <style>
-  .testimonials-section {
-    padding-block: 6rem;
-    background-color: var(--background-main);
-  }
+	.testimonials-section {
+		padding-block: 6rem;
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 4.5rem;
-    max-width: var(--container-max-width);
-    margin-inline: auto;
-  }
+		background-color: var(--background-main);
+	}
 
-  .testimonial-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
-    gap: 2rem;
-  }
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 4.5rem;
+		max-width: var(--container-max-width);
+		margin-inline: auto;
+	}
 
-  .card {
-    box-shadow: var(--box-shadow);
-  }
+	.testimonial-cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+		gap: 2rem;
+	}
 
-  .heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
+	.card {
+		box-shadow: var(--box-shadow);
+	}
 
-  .heading img {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+	.heading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+	}
 
-  .heading__text {
-    font-family: var(--ff-accent);
+	.heading img {
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 50%;
+		object-fit: cover;
+	}
 
-    h2 {
-      font-size: var(--font-size-regular);
-      font-family: inherit;
-      font-weight: 600;
-      color: var(--text-heading);
-      margin-bottom: 0.25rem;
-    }
+	.heading__text {
+		font-family: var(--ff-accent);
 
-    p {
-      font-size: var(--font-size-sm);
-      color: var(--text-body);
-    }
-  }
+		h2 {
+			font-size: var(--font-size-regular);
+			font-family: inherit;
+			font-weight: 600;
+			color: var(--text-heading);
+			margin-bottom: 0.25rem;
+		}
 
-  .body blockquote {
-    font-size: var(--font-size-md);
-    font-weight: 400;
-    line-height: 1.5;
-    text-wrap: balance;
-    text-align: center;
-    color: var(--text-body);
-    position: relative;
-    padding-inline: 1rem;
+		p {
+			font-size: var(--font-size-sm);
+			color: var(--text-body);
+		}
+	}
 
-    &::before {
-      left: -0.5rem;
-      top: -0.5rem;
-    }
+	.body blockquote {
+		font-size: var(--font-size-md);
+		font-weight: 400;
+		line-height: 1.5;
+		text-wrap: balance;
+		text-align: center;
+		color: var(--text-body);
+		position: relative;
+		padding-inline: 1rem;
 
-    &::after {
-      right: -0.5rem;
-      bottom: -0.5rem;
-    }
-  }
+		&::before {
+			left: -0.5rem;
+			top: -0.5rem;
+		}
 
-  footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--background-light-gray);
+		&::after {
+			right: -0.5rem;
+			bottom: -0.5rem;
+		}
+	}
 
-    p {
-      font-size: var(--font-size-sm);
-      font-family: var(--ff-accent);
-      color: var(--text-body);
-    }
+	footer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--background-light-gray);
 
-    img {
-      height: 2rem;
-      width: auto;
-    }
-  }
+		p {
+			font-size: var(--font-size-sm);
+			font-family: var(--ff-accent);
+			color: var(--text-body);
+		}
 
-  @media (max-width: 768px) {
-    .container {
-      padding-inline: 1rem;
-    }
+		img {
+			height: 2rem;
+			width: auto;
+		}
+	}
 
-    .testimonial-cards {
-      grid-template-columns: 1fr;
-    }
+	@media (max-width: 768px) {
+		.container {
+			padding-inline: 1rem;
+		}
 
-    .card {
-      padding: 2rem 1rem;
-    }
-  }
+		.testimonial-cards {
+			grid-template-columns: 1fr;
+		}
+
+		.card {
+			padding: 2rem 1rem;
+		}
+	}
 </style>

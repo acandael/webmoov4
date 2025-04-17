@@ -201,7 +201,7 @@
 	.section {
 		--padding: 2rem;
 		@media (width > 760px) {
-			--padding: 6rem;
+			--padding: 7.5rem;
 		}
 		padding-block-start: var(--padding);
 		padding-block-end: calc(var(--padding) * 2);
@@ -216,7 +216,7 @@
 			--padding: 4.5rem;
 
 			@media (width > 760px) {
-				--padding: 4.5rem;
+				--padding: 7.5rem;
 			}
 		}
 	}
