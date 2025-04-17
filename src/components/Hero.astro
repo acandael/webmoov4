@@ -32,6 +32,13 @@ import Button from "./ui/Button.astro";
 		align-items: center;
 		justify-content: center;
 		text-align: center;
+		min-height: calc(100vh - 75px); /* Subtract header height */
+		padding-block: 4rem;
+
+		@media (width <= 760px) {
+			min-height: unset;
+			padding-block: var(--padding);
+		}
 	}
 
 	.heading-hero {
@@ -42,7 +49,12 @@ import Button from "./ui/Button.astro";
 
 		h1 {
 			font-size: var(--font-size-heading-lg);
+
+			@media (width > 760px) {
+				font-size: var(--font-size-heading-xl);
+			}
 		}
+
 		/* 
 		p {
 			font-size: var(--font-size-body);
