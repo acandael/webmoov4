@@ -231,7 +231,7 @@
 		box-sizing: border-box;
 
 		@media (width > 760px) {
-			--container-padding: 4rem;
+			/* --container-padding: 4rem; */
 
 			width: min(100% - (var(--container-padding) * 2), var(--container-max-width));
 		}

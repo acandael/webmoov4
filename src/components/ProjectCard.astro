@@ -1,10 +1,10 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
-import { projectImages, type ProjectId } from '../lib/projectImages';
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { projectImages, type ProjectId } from "../lib/projectImages";
 
 interface Props {
-  project: CollectionEntry<'projects'>;
+	project: CollectionEntry<"projects">;
 }
 
 const { project } = Astro.props;
@@ -14,118 +14,116 @@ const projectImage = projectImages[project.slug as ProjectId]?.hero;
 ---
 
 <article class="project-card" data-type={project.data.type}>
-  <a href={`/projects/${project.slug}`} class="project-link">
-    <div class="image-container">
-      {projectImage ? (
-        <Image 
-          src={projectImage}
-          alt={project.data.title}
-          width={400}
-          height={250}
-          format="webp"
-          quality="high"
-        />
-      ) : (
-        <div class="image-placeholder">
-          <p>Image not available</p>
-        </div>
-      )}
-    </div>
-    <div class="project-info">
-      <h3>{project.data.title}</h3>
-      <p>{project.data.subtitle}</p>
-      <div class="tech-stack">
-        {project.data.tech.map((tech: string) => <span>{tech}</span>)}
-      </div>
-    </div>
-  </a>
+	<a href={`/projects/${project.slug}`} class="project-link">
+		<div class="image-container">
+			{
+				projectImage ? (
+					<Image
+						src={projectImage}
+						alt={project.data.title}
+						width={400}
+						height={250}
+						format="webp"
+						quality="high"
+					/>
+				) : (
+					<div class="image-placeholder">
+						<p>Image not available</p>
+					</div>
+				)
+			}
+		</div>
+		<div class="project-info">
+			<h3>{project.data.title}</h3>
+			<p>{project.data.subtitle}</p>
+			<div class="tech-stack">
+				{project.data.tech.map((tech: string) => <span>{tech}</span>)}
+			</div>
+		</div>
+	</a>
 </article>
 
 <style>
-  .project-card {
-    background: var(--background-main);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    max-width: 400px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+	.project-card {
+		background: var(--background-main);
+		border-radius: var(--border-radius);
+		overflow: hidden;
+		transition: transform 0.3s ease;
+		width: 100%;
+		@media (width > 760px) {
+			max-width: 308px;
+		}
+		margin-inline: auto;
+		box-shadow: var(--box-shadow);
+	}
 
-  .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
+	.project-card:hover {
+		transform: translateY(-5px);
+	}
 
-  .project-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
+	.project-link {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+	}
 
-  .image-container {
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-  }
+	.image-container {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+	}
 
-  .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+	.image-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
 
-  .image-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--background-light-gray);
-    color: var(--text-muted);
-  }
+	.image-placeholder {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--background-light-gray);
+		color: var(--text-muted);
+	}
 
-  .project-info {
-    padding: 1.5rem;
-  }
+	.project-info {
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 
-  .project-info h3 {
-    margin: 0;
-    font-size: var(--font-size-lg);
-    color: var(--text-body);
-    font-weight: 600;
-  }
+	.project-info h3 {
+		margin: 0;
+		font-size: var(--font-size-regular);
+		color: var(--text-body);
+		font-weight: 500;
+	}
 
-  .project-info p {
-    margin: 0.5rem 0 1rem;
-    font-size: var(--font-size-md);
-    color: var(--text-muted);
-    line-height: 120%;
-  }
+	.project-info p {
+		margin: 0;
+		font-size: var(--font-size-regular);
+		color: var(--text-muted);
+		line-height: 1.4;
+	}
 
-  .tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
+	.tech-stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem;
+		margin-top: 0.5rem;
+	}
 
-  .tech-stack span {
-    background: var(--background-light);
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    font-family: var(--ff-accent);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    transition: all 0.2s ease;
-    border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));
-  }
-
-  .tech-stack span:hover {
-    transform: translateY(-1px);
-    background: var(--background-hover, #f5f5f5);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-</style> 
+	.tech-stack span {
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		padding: 0.25rem 0.5rem;
+		border-radius: var(--border-radius-rounded);
+		background-color: var(--background-light-gray);
+	}
+</style>

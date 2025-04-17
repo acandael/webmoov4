@@ -1,38 +1,45 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import ProjectCard from './ProjectCard.astro';
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
 
-let projects: CollectionEntry<'projects'>[] = [];
+let projects: CollectionEntry<"projects">[] = [];
 try {
-  projects = await getCollection('projects');
+	projects = await getCollection("projects");
 } catch (error) {
-  console.error('Error loading projects:', error);
+	console.error("Error loading projects:", error);
 }
 ---
 
 <div class="projects-grid">
-  {projects.length > 0 ? (
-    projects.map((project: CollectionEntry<'projects'>) => (
-      <ProjectCard project={project} />
-    ))
-  ) : (
-    <p class="no-projects">No projects available at the moment.</p>
-  )}
+	{
+		projects.length > 0 ? (
+			projects.map((project) => <ProjectCard project={project} />)
+		) : (
+			<p class="no-projects">No projects available at the moment.</p>
+		)
+	}
 </div>
 
 <style>
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-  }
+	.projects-grid {
+		display: grid;
+		gap: 1.5rem;
+		padding-inline: 1.5rem;
+		max-width: var(--container-max-width);
+		margin-inline: auto;
 
-  .no-projects {
-    text-align: center;
-    grid-column: 1 / -1;
-    color: var(--text-muted);
-    padding: 2rem;
-  }
-</style> 
+		@media (width > 760px) {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 2rem;
+			padding-inline: 4rem;
+		}
+	}
+
+	.no-projects {
+		text-align: center;
+		grid-column: 1 / -1;
+		color: var(--text-muted);
+		padding: 2rem;
+	}
+</style>
