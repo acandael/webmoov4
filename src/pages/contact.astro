@@ -36,7 +36,7 @@ import { MapPin, Phone, Mail } from "@lucide/astro";
 								<Phone color="#FF5733" size={24} />
 								<div>
 									<h3>Bel ons</h3>
-									<p>+32 498137260</p>
+									<p><a href="tel:+32498137260">+32 498137260</a></p>
 								</div>
 							</div>
 						</li>
@@ -45,7 +45,7 @@ import { MapPin, Phone, Mail } from "@lucide/astro";
 								<Mail color="#FF5733" size={24} />
 								<div>
 									<h3>Email ons</h3>
-									<p>info@webmoov.be</p>
+									<p><a href="mailto:info@webmoov.be">info@webmoov.be</a></p>
 								</div>
 							</div>
 						</li>
@@ -128,6 +128,16 @@ import { MapPin, Phone, Mail } from "@lucide/astro";
 		display: flex;
 		align-items: flex-start;
 		gap: 1rem;
+	}
+
+	.contact-item a {
+		color: var(--clr-white-70);
+		text-decoration: none;
+	}
+
+	.contact-item a:hover,
+	.contact-item a:focus {
+		color: var(--clr-white);
 	}
 
 	.contact-item > div {
