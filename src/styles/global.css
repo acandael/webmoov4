@@ -214,7 +214,7 @@
 		}
 
 		@media (width > 760px) {
-			padding-block-end: 7.5rem;
+			padding-block-end: var(--padding);
 		}
 
 		&[data-padding="compact"] {
@@ -222,6 +222,14 @@
 
 			@media (width > 760px) {
 				--padding: 7.5rem;
+			}
+		}
+
+		&[data-padding="footer"] {
+			--padding: 4.5rem;
+
+			@media (width > 760px) {
+				--padding: 1.5rem;
 			}
 		}
 	}
