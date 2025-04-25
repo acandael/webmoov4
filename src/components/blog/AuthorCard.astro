@@ -1,0 +1,139 @@
+---
+type Props = {
+	align?: "left" | "center" | "right";
+};
+
+const { align = "left" }: Props = Astro.props;
+// Import assets
+import anthonyImage from "../../assets/creator.jpg";
+import Button from "../ui/Button.astro";
+---
+
+<div class={`author-card author-card-${align}`}>
+	<div class="author-card-content">
+		<div class="author-image-container">
+			<img src={anthonyImage.src} alt="Photo of Anthony" class="author-image" />
+		</div>
+
+		<div class="author-info">
+			<h2 class="author-name">Hallo ik ben Anthony</h2>
+			<p class="author-description">
+				Ik schrijf graag over web development en web design, productiviteit en samenwerken met
+				klanten.
+			</p>
+			<p class="author-cta">
+				Wil je meer weten over mijn proces en hoe het is om met mij samen te werken?
+			</p>
+			<Button
+				align={align}
+				href="/contact"
+				label="Laten we connecteren"
+				hiddenLabel="Laten we connecteren"
+			/>
+		</div>
+	</div>
+</div>
+
+<style>
+	.author-card {
+		background-color: var(--background-light-gray, #f5f5f5);
+		border-radius: var(--border-radius);
+		padding: 2rem;
+		margin-top: 3rem;
+		margin-bottom: 3rem;
+	}
+
+	.author-card-content {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		@media (width > 768px) {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+
+	/* Center alignment */
+	.author-card-center .author-card-content {
+		text-align: center;
+
+		@media (width > 768px) {
+			flex-direction: column;
+		}
+	}
+
+	.author-card-center .author-info {
+		align-items: center;
+	}
+
+	.author-card-center .author-description,
+	.author-card-center .author-cta {
+		margin-inline: auto;
+	}
+
+	/* Right alignment */
+	.author-card-right .author-card-content {
+		text-align: right;
+
+		@media (width > 768px) {
+			flex-direction: row-reverse;
+		}
+	}
+
+	.author-card-right .author-info {
+		align-items: flex-end;
+	}
+
+	.author-image-container {
+		flex-shrink: 0;
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 4px solid var(--background-main, #fff);
+		box-shadow: var(--box-shadow);
+		margin-inline: auto;
+
+		@media (width > 768px) {
+			margin-inline: 0;
+		}
+	}
+
+	.author-card-center .author-image-container {
+		@media (width > 768px) {
+			margin-inline: auto;
+		}
+	}
+
+	.author-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.author-info {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+
+	.author-name {
+		font-family: var(--ff-body);
+		font-size: var(--font-size-xl);
+		font-weight: 400;
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	.author-description,
+	.author-cta {
+		max-width: 50ch;
+		font-family: var(--ff-body);
+		font-size: var(--font-size-md);
+		line-height: 1.5;
+		margin: 0;
+		color: var(--text-body);
+	}
+</style>

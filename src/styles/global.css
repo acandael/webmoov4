@@ -225,6 +225,14 @@
 			}
 		}
 
+		&[data-padding="blog"] {
+			--padding: 2.5rem;
+
+			@media (width > 760px) {
+				--padding: 4.5rem;
+			}
+		}
+
 		&[data-padding="footer"] {
 			--padding: 4.5rem;
 

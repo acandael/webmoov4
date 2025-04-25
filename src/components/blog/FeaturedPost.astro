@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import FormattedDate from "../ui/FormattedDate.astro";
 
 interface Props {
 	featuredPost: any;
@@ -17,8 +18,11 @@ const { featuredPost } = Astro.props;
 						<p class="featured-tag">Featured</p>
 						<h2>{featuredPost.data.title}</h2>
 						<p class="featured-description">{featuredPost.data.description}</p>
-						<a href={`/blog/${featuredPost.slug}`} class="featured-link">
-							Read more
+						<p class="featured-date">
+							<FormattedDate pubDate={featuredPost.data.pubDate} />
+						</p>
+						<a href={`/blog/${featuredPost.data.slug}`} class="featured-link">
+							Lees verder
 							<span class="arrow-icon">→</span>
 						</a>
 					</div>
@@ -75,8 +79,6 @@ const { featuredPost } = Astro.props;
 		color: var(--clr-gray-500);
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		font-weight: 500;
-		margin-bottom: 0.5rem;
 	}
 
 	h2 {
@@ -92,6 +94,13 @@ const { featuredPost } = Astro.props;
 		max-width: 50ch;
 	}
 
+	.featured-date {
+		font-size: var(--font-size-sm);
+		font-family: var(--ff-accent);
+		color: var(--clr-gray-500);
+		margin-top: 0.5rem;
+	}
+
 	.featured-link {
 		display: inline-flex;
 		align-items: center;
@@ -105,7 +114,6 @@ const { featuredPost } = Astro.props;
 	}
 
 	.featured-link:hover {
-		text-decoration: underline;
 		gap: 0.75rem;
 	}
 

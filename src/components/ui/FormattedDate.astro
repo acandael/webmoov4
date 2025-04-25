@@ -1,0 +1,16 @@
+---
+type Props = {
+	pubDate: Date;
+};
+const { pubDate } = Astro.props;
+// Format the date using Intl.DateTimeFormat
+const formattedDate = new Intl.DateTimeFormat("nl-NL", {
+	day: "numeric",
+	month: "long",
+	year: "numeric",
+}).format(new Date(pubDate));
+---
+
+<time datetime={pubDate.toISOString()}>
+	<strong>{formattedDate}</strong>
+</time>
