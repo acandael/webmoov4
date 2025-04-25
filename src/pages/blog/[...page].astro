@@ -14,7 +14,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 	return paginate(
 		posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()),
-		{ pageSize: 3 },
+		{ pageSize: 4 },
 	);
 }) satisfies GetStaticPaths;
 
@@ -42,7 +42,7 @@ const { page } = Astro.props;
 	<section class="section" data-padding="compact">
 		<div class="container">
 			<div class="equal-columns">
-				{page.data.map((post) => <BlogCard post={post} />)}
+				{page.data.filter((post) => !post.data.featured).map((post) => <BlogCard post={post} />)}
 			</div>
 			<div class="pagination-container">
 				<Pagination prev={page.url.prev} next={page.url.next} />
