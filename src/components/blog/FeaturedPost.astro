@@ -34,12 +34,21 @@ const { featuredPost } = Astro.props;
 						)}
 					</div>
 				</div>
+				<hr />
 			</div>
 		</section>
 	)
 }
 
 <style>
+	hr {
+		margin-block-start: 7.5rem;
+		width: 100%;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid var(--clr-gray-300);
+		padding: 0;
+	}
 	.featured-section {
 		padding-block: 5rem;
 	}

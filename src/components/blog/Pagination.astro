@@ -1,0 +1,55 @@
+---
+type Props = {
+	prev?: string;
+	next?: string;
+};
+const { prev, next } = Astro.props;
+---
+
+<div class="pagination">
+	{
+		prev && (
+			<a href={prev} class="pagination-link">
+				Vorige
+			</a>
+		)
+	}
+	{
+		next && (
+			<a href={next} class="pagination-link">
+				Volgende
+			</a>
+		)
+	}
+</div>
+
+<style>
+	.pagination {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.pagination-link {
+		display: inline-block;
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-md);
+		font-weight: 500;
+		color: var(--text-body);
+		text-decoration: none;
+		padding: 0.5rem 1.5rem;
+		border: 1px solid var(--clr-gray-300);
+		border-radius: var(--border-radius-rounded);
+		transition: all 0.2s ease;
+	}
+
+	.pagination-link:hover {
+		background-color: var(--clr-gray-200);
+		border-color: var(--clr-gray-500);
+	}
+
+	.pagination-link:focus {
+		outline: 2px solid var(--background-accent);
+		outline-offset: 2px;
+	}
+</style>

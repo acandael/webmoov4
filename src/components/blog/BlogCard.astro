@@ -1,0 +1,127 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+type Props = {
+	post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+const { title, description, image, pubDate, author } = post.data;
+
+// Format the date using Intl.DateTimeFormat
+const formattedDate = new Intl.DateTimeFormat("nl-NL", {
+	day: "numeric",
+	month: "long",
+	year: "numeric",
+}).format(new Date(pubDate));
+---
+
+<article class="blog-card">
+	<div class="blog-card-image">
+		{image && <Image src={image} alt={title} width={400} height={225} class="card-img" />}
+	</div>
+	<div class="blog-card-content">
+		<h3>{title}</h3>
+		<header>
+			<time datetime={pubDate.toString()}>{formattedDate}</time>
+			{author && <span class="author">door {author}</span>}
+		</header>
+		<p>{description}</p>
+		<a href={`/blog/${post.id}`} class="blog-card-link">
+			Read more
+			<span class="arrow-icon">→</span>
+		</a>
+	</div>
+</article>
+
+<style>
+	.blog-card {
+		display: flex;
+		flex-direction: column;
+		border-radius: var(--border-radius, 8px);
+		overflow: hidden;
+		background-color: var(--background-main, #ffffff);
+		box-shadow: var(--box-shadow);
+		height: 100%;
+		transition: transform 0.3s ease;
+	}
+
+	.blog-card:hover {
+		transform: translateY(-5px);
+	}
+
+	.blog-card-image {
+		width: 100%;
+		height: 225px;
+		overflow: hidden;
+	}
+
+	.card-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.blog-card:hover .card-img {
+		transform: scale(1.05);
+	}
+
+	.blog-card-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		padding: 1.5rem;
+		flex: 1;
+	}
+
+	header {
+		display: flex;
+		gap: 0.5rem;
+		font-size: var(--font-size-sm);
+		color: var(--clr-gray-600);
+		font-family: var(--ff-accent);
+	}
+
+	time,
+	.author {
+		font-weight: 400;
+	}
+
+	h3 {
+		font-size: var(--font-size-lg);
+		font-family: var(--ff-body);
+		line-height: 1.2;
+		margin: 0;
+	}
+
+	p {
+		color: var(--clr-gray-600);
+		font-size: var(--font-size-md);
+		line-height: 1.6;
+		margin-bottom: auto;
+	}
+
+	.blog-card-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--background-accent, #6366f1);
+		font-family: var(--ff-accent);
+		font-weight: 500;
+		text-decoration: none;
+		margin-top: 0.75rem;
+		transition: all 0.2s ease;
+		align-self: flex-start;
+	}
+
+	.blog-card-link:hover {
+		text-decoration: underline;
+		gap: 0.75rem;
+	}
+
+	.arrow-icon {
+		font-size: 1.1em;
+	}
+</style>

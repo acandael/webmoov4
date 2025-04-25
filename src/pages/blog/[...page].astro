@@ -6,6 +6,8 @@ import { getCollection, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Heading from "../../components/ui/Heading.astro";
 import FeaturedPost from "../../components/blog/FeaturedPost.astro";
+import BlogCard from "../../components/blog/BlogCard.astro";
+import Pagination from "../../components/blog/Pagination.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const posts = await getCollection("blog", ({ data }) => !data.isDraft);
@@ -19,10 +21,12 @@ export const getStaticPaths = (async ({ paginate }) => {
 const posts = await getCollection("blog", ({ data }) => !data.isDraft);
 
 const featuredPost = posts.find((post) => post.data.featured === true);
+
+const { page } = Astro.props;
 ---
 
 <Layout>
-	<section class="section">
+	<section class="section" data-padding="compact">
 		<div class="container">
 			<Heading>
 				<h1 class="section-title">Webmoov Blog</h1>
@@ -35,4 +39,22 @@ const featuredPost = posts.find((post) => post.data.featured === true);
 		</div>
 	</section>
 	<FeaturedPost featuredPost={featuredPost} />
+	<section class="section" data-padding="compact">
+		<div class="container">
+			<div class="equal-columns">
+				{page.data.map((post) => <BlogCard post={post} />)}
+			</div>
+			<div class="pagination-container">
+				<Pagination prev={page.url.prev} next={page.url.next} />
+			</div>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	.pagination-container {
+		margin-block-start: 4.5rem;
+		display: flex;
+		justify-content: center;
+	}
+</style>
