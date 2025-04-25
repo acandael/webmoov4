@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+	featuredPost: any;
+}
+
+const { featuredPost } = Astro.props;
+---
+
+{
+	featuredPost && (
+		<section class="section featured-section">
+			<div class="container">
+				<div class="featured-layout">
+					<div class="featured-content">
+						<p class="featured-tag">Featured</p>
+						<h2>{featuredPost.data.title}</h2>
+						<p class="featured-description">{featuredPost.data.description}</p>
+						<a href={`/blog/${featuredPost.slug}`} class="featured-link">
+							Read more
+							<span class="arrow-icon">→</span>
+						</a>
+					</div>
+					<div class="featured-image">
+						{featuredPost.data.image && (
+							<Image
+								src={featuredPost.data.image}
+								alt={featuredPost.data.title}
+								width={800}
+								height={450}
+								class="featured-img"
+							/>
+						)}
+					</div>
+				</div>
+			</div>
+		</section>
+	)
+}
+
+<style>
+	.featured-section {
+		padding-block: 5rem;
+	}
+
+	.featured-layout {
+		display: grid;
+		gap: 3rem;
+		align-items: center;
+
+		@media (min-width: 768px) {
+			grid-template-columns: 1.1fr 0.9fr;
+		}
+	}
+
+	.featured-content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.featured-tag {
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-sm);
+		color: var(--clr-gray-500);
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 500;
+		margin-bottom: 0.5rem;
+	}
+
+	h2 {
+		font-size: clamp(1.8rem, 5vw, 2.5rem);
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	.featured-description {
+		font-size: var(--font-size-md);
+		line-height: 1.6;
+		max-width: 50ch;
+	}
+
+	.featured-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--background-accent, #6366f1);
+		font-family: var(--ff-accent);
+		font-weight: 500;
+		text-decoration: none;
+		margin-top: 0.75rem;
+		transition: all 0.2s ease;
+	}
+
+	.featured-link:hover {
+		text-decoration: underline;
+		gap: 0.75rem;
+	}
+
+	.arrow-icon {
+		font-size: 1.1em;
+	}
+
+	.featured-image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.featured-img {
+		border-radius: var(--border-radius, 8px);
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		aspect-ratio: 16/9;
+		box-shadow:
+			0 20px 25px -5px rgba(0, 0, 0, 0.2),
+			0 10px 10px -5px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease;
+	}
+
+	.featured-img:hover {
+		transform: translateY(-5px);
+	}
+</style>

@@ -1,0 +1,38 @@
+---
+export const prerender = true;
+
+import type { GetStaticPaths } from "astro";
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Heading from "../../components/ui/Heading.astro";
+import FeaturedPost from "../../components/blog/FeaturedPost.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const posts = await getCollection("blog", ({ data }) => !data.isDraft);
+
+	return paginate(
+		posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()),
+		{ pageSize: 3 },
+	);
+}) satisfies GetStaticPaths;
+
+const posts = await getCollection("blog", ({ data }) => !data.isDraft);
+
+const featuredPost = posts.find((post) => post.data.featured === true);
+---
+
+<Layout>
+	<section class="section">
+		<div class="container">
+			<Heading>
+				<h1 class="section-title">Webmoov Blog</h1>
+				<p class="subtitle">
+					<p class="subtitle">
+						Blog over web design, web development, process en samenwerken met klanten.
+					</p>
+				</p>
+			</Heading>
+		</div>
+	</section>
+	<FeaturedPost featuredPost={featuredPost} />
+</Layout>
