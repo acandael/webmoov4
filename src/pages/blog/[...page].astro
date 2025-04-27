@@ -25,7 +25,10 @@ const featuredPost = posts.find((post) => post.data.featured === true);
 const { page } = Astro.props;
 ---
 
-<Layout>
+<Layout
+	title="Blog | Webmoov"
+	description="Blog over web design, web development, process en samenwerken met klanten."
+>
 	<section class="section" data-padding="compact">
 		<div class="container">
 			<Heading>

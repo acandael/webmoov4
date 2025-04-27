@@ -42,7 +42,11 @@ if (project) {
 }
 ---
 
-<Layout>
+<Layout
+	title={`${project?.data.title} | Webmoov Project`}
+	description={project?.data.subtitle}
+	image={projectImage?.hero}
+>
 	{
 		project && projectImage ? (
 			<>

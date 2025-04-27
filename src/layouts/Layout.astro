@@ -4,12 +4,19 @@ import "@fontsource-variable/eb-garamond";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+
+const {
+	title = "Maatwerk websites | Webmoov",
+	description = "Maatwerk websites",
+	image = "src/assets/logo.png",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="nl">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -18,8 +25,24 @@ import "../styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 
 		<link rel="sitemap" href="/sitemap-index.xml" />
-		<title>Webmoov | Maatwerk websites</title></head
-	>
+		<title>{title}</title>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+		<meta property="og:image:alt" content={description} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={image} />
+		<meta property="twitter:image:alt" content={description} />
+	</head>
 </html>
 <body>
 	<a class="skip-to-main" href="#main">Sla navigatie over</a>
