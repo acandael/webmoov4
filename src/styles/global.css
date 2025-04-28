@@ -167,7 +167,6 @@
 	a {
 		color: var(--clr-brown-800);
 		text-decoration: none;
-		border-bottom: 1px solid var(--clr-gray-300);
 		transition: all 0.3s ease;
 	}
 
