@@ -163,6 +163,19 @@
 		color: var(--text-body);
 	}
 
+	/* Link styling */
+	a {
+		color: var(--clr-brown-800);
+		text-decoration: none;
+		border-bottom: 1px solid var(--clr-gray-300);
+		transition: all 0.3s ease;
+	}
+
+	a:hover {
+		color: var(--clr-accent-500);
+		border-bottom-color: var(--clr-accent-500);
+	}
+
 	.site-footer {
 		background-color: var(--background-extra-dark);
 	}
@@ -461,4 +474,26 @@
 	.box-shadow {
 		box-shadow: var(--box-shadow);
 	}
+}
+
+/* Blog post content links: more noticeable, bold, accent color */
+.blog-post-content a {
+	color: var(--clr-accent-500);
+	font-weight: bold;
+	text-decoration: none;
+	border-bottom: none;
+	transition: color 0.3s;
+}
+
+.blog-post-content a:hover,
+.blog-post-content a:focus {
+	color: var(--clr-brown-800);
+	background: var(--clr-gray-200);
+	outline: none;
+	border-bottom: none;
+}
+
+.primary-navigation a {
+	text-decoration: none;
+	border-bottom: none;
 }
