@@ -1,40 +1,66 @@
 ---
 import Heading from "../components/ui/Heading.astro";
+import { Image } from "astro:assets";
+import strategyImage from "../assets/process/strategy.png";
+import designImage from "../assets/process/design.png";
+import developmentImage from "../assets/process/development.png";
+import launchImage from "../assets/process/launch.png";
+
+const steps = [
+	{
+		number: "1",
+		title: "Strategie",
+		description: "We leren uw bedrijf, doelen en doelgroep kennen",
+		image: strategyImage,
+	},
+	{
+		number: "2",
+		title: "Design",
+		description: "Een ontwerp op maat dat past bij uw merk",
+		image: designImage,
+	},
+	{
+		number: "3",
+		title: "Ontwikkeling",
+		description: "We bouwen uw website met robuuste, efficiënte code",
+		image: developmentImage,
+	},
+	{
+		number: "4",
+		title: "Lancering",
+		description: "We lanceren uw website en verzorgen de training",
+		image: launchImage,
+	},
+];
 ---
 
 <section class="section process-section">
 	<div class="container">
 		<Heading>
-			<h2 class="section-title">Onze proces</h2>
+			<h2 class="section-title">Ons proces</h2>
 		</Heading>
-		<div class="process-timeline">
-			<div class="process-step">
-				<div class="step-number">1</div>
-				<div class="step-content">
-					<h3>Kennismaking</h3>
-					<p>We bespreken je wensen en doelen voor je website</p>
-				</div>
+		<div class="process-container">
+			<div class="process-timeline">
+				{
+					steps.map((step) => (
+						<div class="process-step" data-step={step.number}>
+							<div class="step-number">{step.number}</div>
+							<div class="step-content">
+								<h3>{step.title}</h3>
+								<p>{step.description}</p>
+							</div>
+						</div>
+					))
+				}
 			</div>
-			<div class="process-step">
-				<div class="step-number">2</div>
-				<div class="step-content">
-					<h3>Design</h3>
-					<p>We maken een uniek design dat past bij jouw merk</p>
-				</div>
-			</div>
-			<div class="process-step">
-				<div class="step-number">3</div>
-				<div class="step-content">
-					<h3>Ontwikkeling</h3>
-					<p>We bouwen je website met de laatste technologieën</p>
-				</div>
-			</div>
-			<div class="process-step">
-				<div class="step-number">4</div>
-				<div class="step-content">
-					<h3>Lancering</h3>
-					<p>Je website gaat live en is klaar voor bezoekers</p>
-				</div>
+			<div class="process-images">
+				{
+					steps.map((step) => (
+						<div class="process-image" data-step={step.number}>
+							<Image src={step.image} alt={`${step.title} illustration`} width={500} height={400} />
+						</div>
+					))
+				}
 			</div>
 		</div>
 	</div>
@@ -43,17 +69,31 @@ import Heading from "../components/ui/Heading.astro";
 <style>
 	.process-section {
 		padding: 3rem 0;
-		text-align: center;
+	}
+
+	.process-container {
+		display: grid;
+		gap: 6rem;
+		margin-top: 3rem;
+		padding-inline: 1rem;
+	}
+
+	@media (min-width: 768px) {
+		.process-container {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+			gap: 2rem;
+			padding-inline: 0;
+		}
 	}
 
 	.process-timeline {
 		position: relative;
-		max-width: 800px;
-		margin: 2rem auto 0;
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 3rem;
 		padding-left: 2rem;
+		margin-bottom: 2rem;
 	}
 
 	.process-timeline::before {
@@ -63,33 +103,29 @@ import Heading from "../components/ui/Heading.astro";
 		top: 10px;
 		height: calc(100% - 20px);
 		width: 2px;
-		background-color: #e5e7eb;
+		background-color: var(--clr-gray-300);
 		z-index: 0;
 	}
 
 	.process-step {
 		position: relative;
 		text-align: left;
-		opacity: 0;
-		transform: translateY(30px);
-		transition:
-			opacity 0.6s ease-out,
-			transform 0.6s ease-out;
 		display: flex;
 		align-items: flex-start;
 		gap: 1rem;
+		cursor: pointer;
+		transition: transform 0.3s ease;
 	}
 
-	.process-step.animate {
-		opacity: 1;
-		transform: translateY(0);
+	.process-step:hover {
+		transform: translateX(8px);
 	}
 
 	.step-number {
 		flex-shrink: 0;
 		width: 24px;
 		height: 24px;
-		background-color: #ff5533;
+		background-color: var(--background-accent);
 		color: white;
 		border-radius: 50%;
 		display: flex;
@@ -106,7 +142,7 @@ import Heading from "../components/ui/Heading.astro";
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 0.25rem;
+		gap: 0.5rem;
 	}
 
 	.step-content h3 {
@@ -116,21 +152,48 @@ import Heading from "../components/ui/Heading.astro";
 	}
 
 	.step-content p {
-		color: var(--text-muted);
+		color: var(--clr-gray-600);
 		line-height: 1.6;
 		font-size: var(--font-size-regular);
 		margin: 0;
 	}
 
-	@media (min-width: 760px) {
+	.process-images {
+		position: relative;
+		min-height: 400px;
+	}
+
+	.process-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.process-image img {
+		width: 100%;
+		height: 100%;
+		border-radius: var(--border-radius);
+		object-fit: contain;
+	}
+
+	/* Show first image by default */
+	.process-image[data-step="1"] {
+		opacity: 1;
+	}
+
+	@media (min-width: 768px) {
 		.process-section {
 			padding: 6rem 0;
 		}
 
 		.process-timeline {
-			margin: 3rem auto 0;
 			gap: 4rem;
 			padding-left: 3rem;
+			margin-bottom: 0;
 		}
 
 		.process-timeline::before {
@@ -143,12 +206,47 @@ import Heading from "../components/ui/Heading.astro";
 			margin-left: -3rem;
 		}
 
-		.step-content {
-			gap: 0.5rem;
-		}
-
 		.step-content h3 {
 			font-size: var(--font-size-lg);
 		}
 	}
 </style>
+
+<script>
+	// Handle both hover and touch interactions
+	const processSteps = document.querySelectorAll(".process-step");
+	const processImages = document.querySelectorAll(".process-image");
+
+	function showImage(stepNumber: string) {
+		processImages.forEach((image) => {
+			const imgElement = image as HTMLElement;
+			if (image.getAttribute("data-step") === stepNumber) {
+				imgElement.style.opacity = "1";
+			} else {
+				imgElement.style.opacity = "0";
+			}
+		});
+	}
+
+	// Mouse events
+	processSteps.forEach((step) => {
+		step.addEventListener("mouseenter", () => {
+			const stepNumber = step.getAttribute("data-step");
+			if (stepNumber) showImage(stepNumber);
+		});
+
+		step.addEventListener("mouseleave", () => {
+			// Show first image when not hovering any step
+			showImage("1");
+		});
+	});
+
+	// Touch events
+	processSteps.forEach((step) => {
+		step.addEventListener("touchstart", (e) => {
+			e.preventDefault(); // Prevent default touch behavior
+			const stepNumber = step.getAttribute("data-step");
+			if (stepNumber) showImage(stepNumber);
+		});
+	});
+</script>
