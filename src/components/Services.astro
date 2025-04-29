@@ -1,139 +1,161 @@
 ---
 import Heading from "./ui/Heading.astro";
-import paintbrush from '../assets/paintbrush.svg';
-import cup from '../assets/cup.svg';
-import cart from '../assets/cart.svg';
+import paintbrush from "../assets/paintbrush.svg";
+import cup from "../assets/cup.svg";
+import cart from "../assets/cart.svg";
+import ctaBackground from "../assets/cta-background.png";
 ---
 
-<section id="producten" class="section services background-dark">
-  <div class="container">
-    <Heading>
-      <h2 class="section-title text-high-contrast">Onze producten</h2>
-      <p class="subtitle text-low-contrast">Kies de perfecte oplossing voor uw bedrijf</p>
-    </Heading>
-    <div class="service-cards">
-      <a href="/one-pager-website" class="card-link">
-        <article class="card box-shadow" data-card>
-          <section class="service-card__header">
-            <img src={paintbrush.src} alt="Service 1" />
-            <h2>One Pager Website</h2>
-          </section>
-          <p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
-        </article>
-      </a>
-      <a href="/premium-website" class="card-link">
-      <article class="card box-shadow" data-card>
-        <section class="service-card__header">
-          <img src={cup.src} alt="Service 2" />
-          <h2 class="card__title">Premium Website</h3>
-        </section>
-        <p>Een volledig op maat gemaakte website met CMS-integratie.</p>
-      </article>
-      </a>
-      <a href="/ecommerce-website" class="card-link">
-      <article class="card box-shadow" data-card>
-        <section class="service-card__header">
-          <img src={cart.src} alt="Service 3" />
-          <h2 class="card__title">Ecommerce Website</h3>
-        </section>
-        <p>Complete webshop oplossingen die meegroeien met uw bedrijf.</p>
-      </article>
-      </a>
-    </div>
-  </div>
+<section id="producten" class="section services">
+	<div class="container">
+		<Heading>
+			<h2 class="section-title text-high-contrast">Onze producten</h2>
+			<p class="subtitle text-low-contrast">Kies de perfecte oplossing voor uw bedrijf</p>
+		</Heading>
+		<div class="service-cards">
+			<a href="/one-pager-website" class="card-link">
+				<article class="card box-shadow" data-card>
+					<section class="service-card__header">
+						<img src={paintbrush.src} alt="Service 1" />
+						<h2>One Pager Website</h2>
+					</section>
+					<p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
+				</article>
+			</a>
+			<a href="/premium-website" class="card-link">
+				<article class="card box-shadow" data-card>
+					<section class="service-card__header">
+						<img src={cup.src} alt="Service 2" />
+						<h2 class="card__title">Premium Website</h2>
+					</section>
+					<p>Een volledig op maat gemaakte website met CMS-integratie.</p>
+				</article>
+			</a>
+			<a href="/ecommerce-website" class="card-link">
+				<article class="card box-shadow" data-card>
+					<section class="service-card__header">
+						<img src={cart.src} alt="Service 3" />
+						<h2 class="card__title">Ecommerce Website</h2>
+					</section>
+					<p>Complete webshop oplossingen die meegroeien met uw bedrijf.</p>
+				</article>
+			</a>
+		</div>
+	</div>
 </section>
 
-<style>
-  .service-card__header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-  }
+<style define:vars={{ backgroundImage: `url(${ctaBackground.src})` }}>
+	.services {
+		position: relative;
+		background-image:
+			linear-gradient(180deg, rgba(52, 49, 47, 0.7) 0%, rgba(52, 49, 47, 0.7) 70%),
+			var(--backgroundImage);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
 
-  .card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-  }
+	.service-card__header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+	}
 
-  .card-link:hover .card {
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
-  }
+	.card-link {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+	}
 
-  .subtitle {
-    opacity: 60%;
-    color: var(--clr-white);
-  }
+	.card-link:hover .card {
+		transform: translateY(-5px);
+		transition: transform 0.3s ease;
+	}
 
-  .service-cards {
-    --card-delay: 0.2s;
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: 1fr;
-    width: 100%;
-    margin-top: 3rem;
-    box-sizing: border-box;
-  }
+	.subtitle {
+		opacity: 60%;
+		color: var(--clr-white);
+	}
 
-  @media (min-width: 760px) {
-    .service-cards {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-  }
+	.service-cards {
+		--card-delay: 0.2s;
+		display: grid;
+		gap: 1.5rem;
+		grid-template-columns: 1fr;
+		width: 100%;
+		margin-top: 3rem;
+		box-sizing: border-box;
+	}
 
-  .service-cards .card {
-    padding: 4rem 1rem;
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-  }
+	@media (min-width: 760px) {
+		.service-cards {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+		}
+	}
 
-  .service-cards .card.animate {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+	.service-cards .card {
+		padding: 4rem 1rem;
+		opacity: 0;
+		transform: translateY(20px) scale(0.95);
+		transition:
+			opacity 0.5s ease-out,
+			transform 0.5s ease-out;
+		width: 100%;
+		box-sizing: border-box;
+		margin: 0;
+	}
 
-  .card:nth-child(1) { transition-delay: calc(var(--card-delay) * 1); }
-  .card:nth-child(2) { transition-delay: calc(var(--card-delay) * 2); }
-  .card:nth-child(3) { transition-delay: calc(var(--card-delay) * 3); }
+	.service-cards .card.animate {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 
-  img {
-    width: 2rem;
-    height: 2rem;
-  }
+	.card:nth-child(1) {
+		transition-delay: calc(var(--card-delay) * 1);
+	}
+	.card:nth-child(2) {
+		transition-delay: calc(var(--card-delay) * 2);
+	}
+	.card:nth-child(3) {
+		transition-delay: calc(var(--card-delay) * 3);
+	}
 
-  @media (min-width: 760px) {
-    .service-cards .card {
-      padding: 7rem 1.5rem;
-    }
-  }
+	img {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	@media (min-width: 760px) {
+		.service-cards .card {
+			padding: 7rem 1.5rem;
+		}
+	}
 </style>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-      } else {
-        entry.target.classList.remove('animate');
-      }
-    });
-  }, {
-    threshold: 0.2,
-    rootMargin: '-50px 0px -50px 0px'
-  });
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("animate");
+				} else {
+					entry.target.classList.remove("animate");
+				}
+			});
+		},
+		{
+			threshold: 0.2,
+			rootMargin: "-50px 0px -50px 0px",
+		},
+	);
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-card]').forEach((card) => {
-      observer.observe(card);
-    });
-  });
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll("[data-card]").forEach((card) => {
+			observer.observe(card);
+		});
+	});
 </script>

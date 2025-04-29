@@ -450,6 +450,10 @@
 		background: linear-gradient(180deg, #565150 0%, #34312f 100%);
 	}
 
+	.background-logo {
+		background-image: url("/assets/cta-background.png");
+	}
+
 	.font-size-heading-lg {
 		font-size: var(--font-size-heading-lg);
 	}

@@ -1,14 +1,15 @@
 ---
 import Button from "./ui/Button.astro";
 import Heading from "./ui/Heading.astro";
+import ctaBackground from "../assets/cta-background.png";
 ---
 
-<section class="section background-brown-gradient" data-gap="medium">
-	<div class="container" data-width="medium">
+<section class="section cta-section" data-gap="medium">
+	<div class="container">
 		<Heading>
-			<h1 class="section-title text-high-contrast">
+			<h2 class="section-title text-high-contrast">
 				Klaar om uw digitale aanwezigheid te transformeren?
-			</h1>
+			</h2>
 			<p class="subtitle text-low-contrast">
 				Laten we bespreken hoe we uw bedrijf kunnen laten groeien met een op maat gemaakte website.
 			</p>
@@ -21,22 +22,45 @@ import Heading from "./ui/Heading.astro";
 	</div>
 </section>
 
-<style>
-	.subtitle {
-		opacity: 60%;
-		color: var(--clr-white);
+<style define:vars={{ backgroundImage: `url(${ctaBackground.src})` }}>
+	.cta-section {
+		position: relative;
+		background-image:
+			linear-gradient(180deg, rgba(52, 49, 47, 0.7) 0%, rgba(52, 49, 47, 0.7) 70%),
+			var(--backgroundImage);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
+
+	.subtitle {
+		opacity: 0.7;
+		color: var(--clr-white);
+		text-align: center;
+		max-width: 60ch;
+		margin-inline: auto;
+	}
+
 	.container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		@media (width > 760px) {
-			padding-block-start: 0rem;
-			padding-block-end: 7.5rem;
-			padding-inline: 4rem;
+		gap: 2rem;
+		padding-block: 4rem;
+		position: relative;
+	}
+
+	@media (width > 760px) {
+		.container {
+			padding-block: 7.5rem;
+			gap: 3rem;
 		}
-		@media (width > 760px) {
-			/* gap: 4.5rem; */
-		}
+	}
+
+	.section-title {
+		text-align: center;
+		color: var(--clr-white);
+		max-width: 30ch;
+		margin-inline: auto;
 	}
 </style>
