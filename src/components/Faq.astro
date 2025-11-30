@@ -4,17 +4,22 @@ import Heading from "./ui/Heading.astro";
 import chevrondown from "../assets/chevron-down.svg";
 ---
 
-<section class="section faq-section background-light-gray">
+<section class="section faq-section">
 	<div class="container flow">
 		<Heading>
-			<h2 class="section-title">Alles wat u moet weten over onze diensten.</h2>
+			<h2 class="section-title">Veelgestelde vragen</h2>
+			<p class="subtitle">Alles wat u moet weten over onze diensten</p>
 		</Heading>
 		<div class="faq-items">
-			<div class="faq-item">
-				<div class="question">
-					<p>Wat is inbegrepen bij het One Pager Website pakket?</p>
-					<img class="chevron" src={chevrondown.src} alt="chevron down" />
-				</div>
+			<div class="faq-item" data-faq-item>
+				<button class="question" aria-expanded="false">
+					<span class="question-text">Wat is inbegrepen bij het One Pager Website pakket?</span>
+					<span class="icon-wrapper">
+						<svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</span>
+				</button>
 				<div class="answer-wrapper">
 					<p class="answer">
 						Een onepager website is een eenvoudige en snel te maken website die bestaat uit één
@@ -22,95 +27,241 @@ import chevrondown from "../assets/chevron-down.svg";
 						potentiële klanten te bereiken.
 					</p>
 				</div>
-				<hr />
 			</div>
-			<div class="faq-item">
-				<div class="question">
-					<p>Hoe lang duurt het om een Premium Website te bouwen?</p>
-					<img class="chevron" src={chevrondown.src} alt="chevron down" />
-				</div>
+			<div class="faq-item" data-faq-item>
+				<button class="question" aria-expanded="false">
+					<span class="question-text">Hoe lang duurt het om een Premium Website te bouwen?</span>
+					<span class="icon-wrapper">
+						<svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</span>
+				</button>
 				<div class="answer-wrapper">
 					<p class="answer">
 						Een Premium Website kan gebouwd worden in 4 tot 8 weken, afhankelijk van het aantal
 						pagina's en de complexiteit van de website.
 					</p>
 				</div>
-				<hr />
 			</div>
-			<div class="faq-item">
-				<div class="question">
-					<p>Hoe lang duurt het om een Ecommerce Website te bouwen?</p>
-					<img class="chevron" src={chevrondown.src} alt="chevron down" />
-				</div>
+			<div class="faq-item" data-faq-item>
+				<button class="question" aria-expanded="false">
+					<span class="question-text">Hoe lang duurt het om een Ecommerce Website te bouwen?</span>
+					<span class="icon-wrapper">
+						<svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</span>
+				</button>
 				<div class="answer-wrapper">
 					<p class="answer">
 						Een Ecommerce Website kan gebouwd worden in 6 tot 12 weken, afhankelijk van het aantal
 						producten en de complexiteit van de website.
 					</p>
 				</div>
-				<hr />
 			</div>
-			<div class="faq-item">
-				<div class="question">
-					<p>Bieden jullie doorlopende ondersteuning en onderhoud?</p>
-					<img class="chevron" src={chevrondown.src} alt="chevron down" />
-				</div>
+			<div class="faq-item" data-faq-item>
+				<button class="question" aria-expanded="false">
+					<span class="question-text">Bieden jullie doorlopende ondersteuning en onderhoud?</span>
+					<span class="icon-wrapper">
+						<svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</span>
+				</button>
 				<div class="answer-wrapper">
 					<p class="answer">
 						Ja, we bieden doorlopende ondersteuning en onderhoud aan al onze websites. Dit omvat het
 						updaten van de website, en het toevoegen van nieuwe functies.
 					</p>
 				</div>
-				<hr />
 			</div>
 		</div>
 	</div>
 </section>
 
 <style>
+	.faq-section {
+		background: linear-gradient(180deg, #ffffff 0%, var(--background-light-gray) 100%);
+		padding-block: 5rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.faq-section::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 150%;
+		height: 100%;
+		background: radial-gradient(
+			ellipse at bottom,
+			rgba(255, 87, 51, 0.03) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+	}
+
 	.container {
 		max-width: 850px;
 		display: flex;
 		flex-direction: column;
+		gap: 2rem;
+		position: relative;
+		z-index: 1;
+
 		@media (width > 760px) {
 			gap: 3.5rem;
 		}
 	}
 
+	.subtitle {
+		color: var(--clr-gray-600);
+		max-width: 50ch;
+		margin-inline: auto;
+	}
+
+	.faq-items {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	/* FAQ Item Card */
+	.faq-item {
+		background: white;
+		border-radius: 16px;
+		padding: 0;
+		box-shadow:
+			0 2px 12px rgba(0, 0, 0, 0.04),
+			0 1px 4px rgba(0, 0, 0, 0.02);
+		border: 1px solid rgba(0, 0, 0, 0.04);
+		transition:
+			box-shadow 0.3s ease,
+			border-color 0.3s ease,
+			transform 0.3s ease;
+		overflow: hidden;
+	}
+
+	.faq-item:hover {
+		box-shadow:
+			0 8px 24px rgba(0, 0, 0, 0.08),
+			0 2px 8px rgba(0, 0, 0, 0.04);
+		border-color: rgba(255, 87, 51, 0.1);
+	}
+
+	.faq-item.active {
+		border-color: rgba(255, 87, 51, 0.2);
+		box-shadow:
+			0 8px 28px rgba(0, 0, 0, 0.1),
+			0 2px 12px rgba(255, 87, 51, 0.08);
+	}
+
+	/* Question Button */
 	.question {
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		margin-block: 2rem;
+		align-items: center;
+		gap: 2rem;
+		padding: 1.75rem 2rem;
+		background: none;
+		border: none;
 		cursor: pointer;
-		font-size: var(--font-size-md);
-		font-weight: 600;
+		text-align: left;
+		transition:
+			background-color 0.3s ease,
+			color 0.3s ease;
+	}
 
-		&:hover {
-			color: var(--clr-accent-500);
+	.question:hover {
+		background-color: rgba(255, 87, 51, 0.02);
+	}
+
+	.faq-item.active .question {
+		background-color: rgba(255, 87, 51, 0.03);
+	}
+
+	.question-text {
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-regular);
+		font-weight: 600;
+		color: var(--clr-black);
+		line-height: 1.5;
+		transition: color 0.3s ease;
+	}
+
+	.question:hover .question-text {
+		color: #ff5733;
+	}
+
+	@media (width > 760px) {
+		.question {
+			padding: 2rem 2.5rem;
+		}
+
+		.question-text {
+			font-size: var(--font-size-md);
 		}
 	}
 
+	/* Icon Wrapper */
+	.icon-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 12px;
+		background: white;
+		border: 2px solid rgba(255, 87, 51, 0.15);
+		flex-shrink: 0;
+		transition:
+			background-color 0.3s ease,
+			border-color 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	.question:hover .icon-wrapper {
+		background-color: rgba(255, 87, 51, 0.05);
+		border-color: rgba(255, 87, 51, 0.25);
+	}
+
+	.faq-item.active .icon-wrapper {
+		background-color: rgba(255, 87, 51, 0.1);
+		border-color: #ff5733;
+	}
+
 	.chevron {
-		transition: transform 0.3s ease;
+		color: #ff5733;
+		transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+		display: block;
 	}
 
 	.faq-item.active .chevron {
 		transform: rotate(180deg);
 	}
 
+	/* Answer Wrapper */
 	.answer-wrapper {
 		height: 0;
 		overflow: hidden;
-		transition: height 0.3s ease-out;
+		transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.answer {
-		padding: 0 0 1rem 0;
+		padding: 0 2rem 2rem 2rem;
+		font-size: var(--font-size-regular);
+		line-height: 1.7;
+		color: var(--clr-gray-600);
 		opacity: 0;
 		transform: translateY(-10px);
 		transition:
-			opacity 0.3s ease,
-			transform 0.3s ease;
+			opacity 0.4s ease,
+			transform 0.4s ease;
+		margin: 0;
 	}
 
 	.faq-item.active .answer {
@@ -118,15 +269,16 @@ import chevrondown from "../assets/chevron-down.svg";
 		transform: translateY(0);
 	}
 
-	hr {
-		color: #e4e4e4;
-		opacity: 0.5;
+	@media (width > 760px) {
+		.answer {
+			padding: 0 2.5rem 2.5rem 2.5rem;
+		}
 	}
 </style>
 
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
-		const faqItems = document.querySelectorAll(".faq-item");
+		const faqItems = document.querySelectorAll("[data-faq-item]");
 
 		faqItems.forEach((item) => {
 			const question = item.querySelector(".question");
@@ -142,7 +294,12 @@ import chevrondown from "../assets/chevron-down.svg";
 				faqItems.forEach((otherItem) => {
 					if (otherItem !== item && otherItem.classList.contains("active")) {
 						otherItem.classList.remove("active");
+						const otherButton = otherItem.querySelector(".question");
 						const otherWrapper = otherItem.querySelector(".answer-wrapper");
+
+						if (otherButton instanceof HTMLElement) {
+							otherButton.setAttribute("aria-expanded", "false");
+						}
 						if (otherWrapper instanceof HTMLElement) {
 							otherWrapper.style.height = "0";
 						}
@@ -152,11 +309,13 @@ import chevrondown from "../assets/chevron-down.svg";
 				// Toggle current item
 				if (!isActive) {
 					item.classList.add("active");
+					question.setAttribute("aria-expanded", "true");
 					if (answer instanceof HTMLElement && answerWrapper instanceof HTMLElement) {
 						answerWrapper.style.height = `${answer.offsetHeight}px`;
 					}
 				} else {
 					item.classList.remove("active");
+					question.setAttribute("aria-expanded", "false");
 					if (answerWrapper instanceof HTMLElement) {
 						answerWrapper.style.height = "0";
 					}

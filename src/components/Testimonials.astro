@@ -40,40 +40,48 @@ const testimonialImages: TestimonialImages = {
 		</Heading>
 		<div class="equal-columns testimonial-cards">
 			{
-				testimonials.map((testimonial) => (
-					<article class="card">
-						<div class="heading">
-							<div class="testimonial-avatar">
-								<Image
-									src={testimonialImages[testimonial.data.project].avatar}
-									alt={`${testimonial.data.name} avatar`}
-									width={64}
-									height={64}
-									format="webp"
-									quality="high"
-								/>
-							</div>
-							<div class="heading__text">
-								<h2 class="card__title">{testimonial.data.name}</h2>
-								<p>{testimonial.data.role}</p>
-							</div>
+				testimonials.map((testimonial, index) => (
+					<article class="card" data-testimonial-card data-index={index}>
+						<div class="quote-icon">
+							<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M10 18C10 14.6863 12.6863 12 16 12V12C16 8.68629 13.3137 6 10 6V6C6.68629 6 4 8.68629 4 12V18C4 21.3137 6.68629 24 10 24V24V18Z" fill="currentColor" opacity="0.15"/>
+								<path d="M30 18C30 14.6863 32.6863 12 36 12V12C36 8.68629 33.3137 6 30 6V6C26.6863 6 24 8.68629 24 12V18C24 21.3137 26.6863 24 30 24V24V18Z" fill="currentColor" opacity="0.15"/>
+							</svg>
 						</div>
 						<div class="body">
 							<blockquote>{testimonial.data.text}</blockquote>
 						</div>
-						<footer>
-							{testimonialImages[testimonial.data.project].logo && (
-								<Image
-									src={testimonialImages[testimonial.data.project].logo}
-									alt={`${testimonial.data.project} logo`}
-									width={80}
-									height={32}
-									format="webp"
-									quality="high"
-								/>
-							)}
-							<p>{testimonial.data.project}</p>
-						</footer>
+						<div class="divider"></div>
+						<div class="footer-content">
+							<div class="heading">
+								<div class="testimonial-avatar">
+									<Image
+										src={testimonialImages[testimonial.data.project].avatar}
+										alt={`${testimonial.data.name} avatar`}
+										width={64}
+										height={64}
+										format="webp"
+										quality="high"
+									/>
+								</div>
+								<div class="heading__text">
+									<h3 class="card__title">{testimonial.data.name}</h3>
+									<p class="role">{testimonial.data.role}</p>
+								</div>
+							</div>
+							<div class="company-logo">
+								{testimonialImages[testimonial.data.project].logo && (
+									<Image
+										src={testimonialImages[testimonial.data.project].logo}
+										alt={`${testimonial.data.project} logo`}
+										width={80}
+										height={32}
+										format="webp"
+										quality="high"
+									/>
+								)}
+							</div>
+						</div>
 					</article>
 				))
 			}
@@ -83,118 +91,292 @@ const testimonialImages: TestimonialImages = {
 
 <style>
 	.testimonials-section {
-		padding-block-start: 3rem;
-		padding-block-end: 7.5rem;
+		padding-block: 5rem;
+		background: linear-gradient(180deg, var(--background-light-gray) 0%, #ffffff 100%);
+		position: relative;
+		overflow: hidden;
+	}
 
-		@media (width > 760px) {
-			padding-block-start: 7.5rem;
-			padding-block-end: 11.25rem;
+	.testimonials-section::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 150%;
+		height: 150%;
+		background: radial-gradient(
+			ellipse at center,
+			rgba(255, 87, 51, 0.03) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+	}
+
+	@media (width > 760px) {
+		.testimonials-section {
+			padding-block: 7.5rem;
 		}
-
-		background-color: var(--background-main);
 	}
 
 	.container {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 3rem;
 		max-width: var(--container-max-width);
+		margin-inline: auto;
+		position: relative;
+		z-index: 1;
+
+		@media (width > 760px) {
+			gap: 4rem;
+		}
+	}
+
+	.subtitle {
+		color: var(--clr-gray-600);
+		max-width: 50ch;
 		margin-inline: auto;
 	}
 
 	.testimonial-cards {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+		grid-template-columns: 1fr;
 		gap: 2rem;
+
+		@media (width > 760px) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2.5rem;
+		}
 	}
 
+	/* Testimonial Card */
 	.card {
-		box-shadow: var(--box-shadow);
+		background: white;
+		border-radius: 24px;
+		padding: 3rem 2.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		box-shadow:
+			0 4px 24px rgba(0, 0, 0, 0.06),
+			0 2px 8px rgba(0, 0, 0, 0.04);
+		border: 1px solid rgba(0, 0, 0, 0.04);
+		position: relative;
+		opacity: 0;
+		transform: translateY(30px) scale(0.95);
+		transition:
+			transform 0.4s ease,
+			box-shadow 0.4s ease,
+			opacity 0.6s ease,
+			border-color 0.3s ease;
+		overflow: hidden;
 	}
 
+	.card.animate {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	.card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #ff5733 0%, #e64d2a 100%);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.4s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-8px);
+		box-shadow:
+			0 12px 40px rgba(0, 0, 0, 0.12),
+			0 4px 16px rgba(0, 0, 0, 0.08);
+		border-color: rgba(255, 87, 51, 0.1);
+	}
+
+	.card:hover::before {
+		transform: scaleX(1);
+	}
+
+	/* Staggered animation delays */
+	.card[data-index="0"] {
+		transition-delay: 0.1s;
+	}
+	.card[data-index="1"] {
+		transition-delay: 0.2s;
+	}
+	.card[data-index="2"] {
+		transition-delay: 0.3s;
+	}
+	.card[data-index="3"] {
+		transition-delay: 0.4s;
+	}
+
+	/* Quote Icon */
+	.quote-icon {
+		color: #ff5733;
+		width: 40px;
+		height: 40px;
+	}
+
+	/* Body */
+	.body {
+		flex: 1;
+	}
+
+	.body blockquote {
+		font-size: var(--font-size-regular);
+		font-weight: 400;
+		line-height: 1.7;
+		text-wrap: balance;
+		color: var(--clr-black);
+		margin: 0;
+		font-style: italic;
+		position: relative;
+	}
+
+	@media (width > 760px) {
+		.body blockquote {
+			font-size: var(--font-size-md);
+		}
+	}
+
+	/* Divider */
+	.divider {
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(0, 0, 0, 0.08) 20%,
+			rgba(0, 0, 0, 0.08) 80%,
+			transparent 100%
+		);
+	}
+
+	/* Footer Content */
+	.footer-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+	}
+
+	/* Heading (Author Info) */
 	.heading {
 		display: flex;
-		justify-content: center;
 		align-items: center;
 		gap: 1rem;
+		flex: 1;
+		min-width: 200px;
 	}
 
-	.heading img {
-		width: 3.5rem;
-		height: 3.5rem;
+	.testimonial-avatar {
+		position: relative;
+		flex-shrink: 0;
+	}
+
+	.testimonial-avatar img {
+		width: 56px;
+		height: 56px;
 		border-radius: 50%;
 		object-fit: cover;
+		border: 3px solid white;
+		box-shadow:
+			0 4px 12px rgba(0, 0, 0, 0.1),
+			0 2px 6px rgba(0, 0, 0, 0.08);
 	}
 
 	.heading__text {
 		font-family: var(--ff-accent);
-
-		h2 {
-			font-size: var(--font-size-regular);
-			font-family: inherit;
-			font-weight: 600;
-			color: var(--text-heading);
-			margin-bottom: 0.25rem;
-		}
-
-		p {
-			font-size: var(--font-size-sm);
-			color: var(--text-body);
-		}
-	}
-
-	.body blockquote {
-		font-size: var(--font-size-md);
-		font-weight: 400;
-		line-height: 1.5;
-		text-wrap: balance;
-		text-align: center;
-		color: var(--text-body);
-		position: relative;
-		padding-inline: 1rem;
-
-		&::before {
-			left: -0.5rem;
-			top: -0.5rem;
-		}
-
-		&::after {
-			right: -0.5rem;
-			bottom: -0.5rem;
-		}
-	}
-
-	footer {
 		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 1rem;
-		padding-top: 1rem;
-		border-top: 1px solid var(--background-light-gray);
-
-		p {
-			font-size: var(--font-size-sm);
-			font-family: var(--ff-accent);
-			color: var(--text-body);
-		}
-
-		img {
-			height: 2rem;
-			width: auto;
-		}
+		flex-direction: column;
+		gap: 0.25rem;
 	}
 
-	@media (max-width: 768px) {
-		.container {
-			padding-inline: 1rem;
-		}
+	.card__title {
+		font-size: var(--font-size-regular);
+		font-family: inherit;
+		font-weight: 600;
+		color: var(--clr-black);
+		margin: 0;
+		line-height: 1.3;
+	}
 
-		.testimonial-cards {
-			grid-template-columns: 1fr;
-		}
+	.role {
+		font-size: var(--font-size-sm);
+		color: var(--clr-gray-600);
+		margin: 0;
+		line-height: 1.3;
+	}
 
+	/* Company Logo */
+	.company-logo {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-shrink: 0;
+	}
+
+	.company-logo img {
+		height: 32px;
+		width: auto;
+		max-width: 120px;
+		object-fit: contain;
+		opacity: 0.7;
+		transition: opacity 0.3s ease;
+	}
+
+	.card:hover .company-logo img {
+		opacity: 1;
+	}
+
+	@media (max-width: 760px) {
 		.card {
-			padding: 2rem 1rem;
+			padding: 2.5rem 2rem;
+			gap: 1.5rem;
+		}
+
+		.footer-content {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1.5rem;
+		}
+
+		.company-logo {
+			align-self: flex-start;
+		}
+
+		.testimonial-avatar img {
+			width: 48px;
+			height: 48px;
 		}
 	}
 </style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("animate");
+					}
+				});
+			},
+			{
+				threshold: 0.1,
+				rootMargin: "0px 0px -50px 0px",
+			},
+		);
+
+		document.querySelectorAll("[data-testimonial-card]").forEach((card) => {
+			observer.observe(card);
+		});
+	});
+</script>
