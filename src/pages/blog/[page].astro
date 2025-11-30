@@ -29,6 +29,9 @@ const { Content } = await render(post);
 const { title, description, pubDate, image, author } = post.data;
 const coverImageSource = (await getImage({ src: post.data.image })).src;
 
+// Safely convert date to ISO string
+const dateISO = pubDate instanceof Date ? pubDate.toISOString() : new Date(pubDate).toISOString();
+
 // Article Schema
 const articleSchema = {
 	"@context": "https://schema.org",
@@ -36,8 +39,8 @@ const articleSchema = {
 	headline: title,
 	description: description,
 	image: `https://www.webmoov.be${coverImageSource}`,
-	datePublished: pubDate.toISOString(),
-	dateModified: pubDate.toISOString(),
+	datePublished: dateISO,
+	dateModified: dateISO,
 	author: {
 		"@type": "Person",
 		name: author,

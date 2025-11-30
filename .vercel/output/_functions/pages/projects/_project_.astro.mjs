@@ -78,14 +78,14 @@ const $$project = createComponent(async ($$result, $$props, $$slots) => {
     "@type": "Review",
     itemReviewed: {
       "@type": "WebSite",
-      name: project.data.title,
-      url: project.data.website
+      name: project?.data?.title || "Website Project",
+      url: project?.data?.website || "https://www.webmoov.be"
     },
     author: {
       "@type": "Person",
-      name: testimonial.data.name
+      name: testimonial?.data?.name || "Anonymous"
     },
-    reviewBody: testimonial.data.text,
+    reviewBody: testimonial?.data?.text || "",
     reviewRating: {
       "@type": "Rating",
       ratingValue: "5",
