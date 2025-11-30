@@ -19,28 +19,14 @@ import actionMaker6 from "../assets/projects/actionmaker/actionmaker-6.jpg";
 
 // Map project IDs to their images
 export const projectImages = {
-  "skincenter-anniek-lambrecht": {
-    hero: skinCenterHero,
-    gallery: [
-      skinCenter1,
-      skinCenter2,
-      skinCenter3,
-      skinCenter4,
-      skinCenter5,
-      skinCenter6,
-    ],
-  },
-  "action-maker": {
-    hero: actionMakerHero,
-    gallery: [
-      actionMaker1,
-      actionMaker2,
-      actionMaker3,
-      actionMaker4,
-      actionMaker5,
-      actionMaker6,
-    ],
-  },
+	"skincenter-anniek-lambrecht": {
+		hero: skinCenterHero,
+		gallery: [skinCenter1, skinCenter2, skinCenter3, skinCenter4, skinCenter5, skinCenter6],
+	},
+	"action-maker": {
+		hero: actionMakerHero,
+		gallery: [actionMaker1, actionMaker2, actionMaker3, actionMaker4, actionMaker5, actionMaker6],
+	},
 } as const;
 
 // Type for project IDs

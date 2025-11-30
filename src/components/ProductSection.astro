@@ -14,7 +14,7 @@ interface ProductSectionProps {
 <section class="section product-section">
 	<div class="container">
 		<div class="product-grid">
-			<div class="content-col">
+			<div class="content-col" data-animate>
 				<div class="heading">
 					<div class="brush-icon">
 						<img src={icon.src} alt="paintbrush" />
@@ -31,14 +31,16 @@ interface ProductSectionProps {
 					align="left"
 				/>
 			</div>
-			<div class="image-col">
-				<Image
-					src={image}
-					alt="Modern workspace setup with desktop computer"
-					class="hero-image"
-					width={800}
-					height={600}
-				/>
+			<div class="image-col" data-animate>
+				<div class="image-wrapper">
+					<Image
+						src={image}
+						alt="Modern workspace setup with desktop computer"
+						class="hero-image"
+						width={800}
+						height={600}
+					/>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -46,27 +48,41 @@ interface ProductSectionProps {
 
 <style>
 	.product-section {
-		padding-block: 4rem;
+		padding-block: 5rem;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.product-grid {
 		display: grid;
-		gap: 2rem;
+		gap: 3rem;
+		align-items: center;
 	}
 
 	@media (width > 760px) {
 		.product-grid {
 			grid-template-columns: 1fr 1fr;
-			gap: 4rem;
+			gap: 5rem;
 		}
 	}
 
+	/* Content Column Styling */
 	.content-col {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		gap: 1.5rem;
+		gap: 2rem;
+		opacity: 0;
+		transform: translateX(-50px);
+		transition:
+			opacity 0.8s ease-out,
+			transform 0.8s ease-out;
+	}
+
+	.content-col.animate {
+		opacity: 1;
+		transform: translateX(0);
 	}
 
 	@media (min-width: 760px) {
@@ -77,10 +93,120 @@ interface ProductSectionProps {
 		}
 	}
 
+	/* Heading with Icon */
+	.heading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	@media (width > 760px) {
+		.heading {
+			flex-direction: row;
+			gap: 1.5rem;
+		}
+	}
+
+	.brush-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		background: white;
+		border-radius: 16px;
+		box-shadow:
+			0 4px 15px rgba(0, 0, 0, 0.08),
+			0 10px 30px rgba(0, 0, 0, 0.05);
+		border: 2px solid rgba(255, 87, 51, 0.15);
+		transition:
+			transform 0.3s ease,
+			border-color 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.brush-icon:hover {
+		transform: rotate(-5deg) scale(1.05);
+		border-color: rgba(255, 87, 51, 0.3);
+		box-shadow:
+			0 6px 20px rgba(255, 87, 51, 0.15),
+			0 12px 40px rgba(255, 87, 51, 0.1);
+	}
+
+	.brush-icon img {
+		width: 32px;
+		height: 32px;
+		filter: brightness(0) saturate(100%) invert(31%) sepia(91%) saturate(2447%) hue-rotate(348deg) brightness(100%) contrast(98%);
+	}
+
+	.section-title {
+		font-size: var(--font-size-heading-lg);
+		background: linear-gradient(135deg, var(--clr-black) 0%, var(--clr-gray-600) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		line-height: 1.3;
+		padding-bottom: 0.1em;
+		display: inline-block;
+	}
+
+	.subtitle {
+		max-width: 35ch;
+		color: var(--clr-gray-600);
+
+		line-height: 1.1;
+	}
+
+	/* Image Column Styling */
 	.image-col {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		opacity: 0;
+		transform: translateX(50px);
+		transition:
+			opacity 0.8s ease-out,
+			transform 0.8s ease-out;
+		transition-delay: 0.2s;
+	}
+
+	.image-col.animate {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.image-wrapper {
+		position: relative;
+		width: 100%;
+		border-radius: 20px;
+		overflow: hidden;
+		box-shadow:
+			0 10px 40px rgba(0, 0, 0, 0.1),
+			0 20px 60px rgba(0, 0, 0, 0.08);
+		transition: transform 0.4s ease;
+	}
+
+	.image-wrapper::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(135deg, rgba(255, 87, 51, 0.1) 0%, transparent 50%);
+		opacity: 0;
+		transition: opacity 0.4s ease;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.image-wrapper:hover {
+		transform: translateY(-8px) scale(1.02);
+	}
+
+	.image-wrapper:hover::before {
+		opacity: 1;
 	}
 
 	.hero-image {
@@ -88,7 +214,12 @@ interface ProductSectionProps {
 		height: auto;
 		max-height: 400px;
 		object-fit: cover;
-		border-radius: var(--border-radius);
+		display: block;
+		transition: transform 0.4s ease;
+	}
+
+	.image-wrapper:hover .hero-image {
+		transform: scale(1.05);
 	}
 
 	@media (min-width: 760px) {
@@ -97,30 +228,36 @@ interface ProductSectionProps {
 		}
 	}
 
-	.heading {
-		display: flex;
-		flex-direction: column;
-		@media (width > 760px) {
-			flex-direction: row;
-		}
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.section-title {
-		font-size: var(--font-size-heading-lg);
-	}
-
-	.subtitle {
-		max-width: 35ch;
-	}
-
 	.container {
 		display: flex;
 		flex-direction: column;
+	}
 
-		@media (width > 760px) {
+	@media (width > 760px) {
+		.container {
 			gap: 3rem;
 		}
 	}
 </style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("animate");
+					}
+				});
+			},
+			{
+				threshold: 0.1,
+				rootMargin: "0px 0px -100px 0px",
+			},
+		);
+
+		document.querySelectorAll("[data-animate]").forEach((element) => {
+			observer.observe(element);
+		});
+	});
+</script>

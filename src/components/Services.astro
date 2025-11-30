@@ -14,30 +14,90 @@ import ctaBackground from "../assets/cta-background.png";
 		</Heading>
 		<div class="service-cards">
 			<a href="/one-pager-website" class="card-link">
-				<article class="card box-shadow" data-card>
-					<section class="service-card__header">
-						<img src={paintbrush.src} alt="Service 1" />
-						<h2>One Pager Website</h2>
-					</section>
-					<p>Perfect voor kleine bedrijven en startups die snel online willen gaan.</p>
+				<article class="card" data-card>
+					<div class="card-icon">
+						<img src={paintbrush.src} alt="One Pager Website" />
+					</div>
+					<div class="card-content">
+						<h3 class="card-title">One Pager Website</h3>
+						<p class="card-description">
+							Perfect voor kleine bedrijven en startups die snel online willen gaan.
+						</p>
+					</div>
+					<div class="card-arrow">
+						<svg
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M7 17L17 7M17 7H7M17 7V17"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</div>
 				</article>
 			</a>
 			<a href="/premium-website" class="card-link">
-				<article class="card box-shadow" data-card>
-					<section class="service-card__header">
-						<img src={cup.src} alt="Service 2" />
-						<h2 class="card__title">Premium Website</h2>
-					</section>
-					<p>Een volledig op maat gemaakte website met CMS-integratie.</p>
+				<article class="card" data-card>
+					<div class="card-icon">
+						<img src={cup.src} alt="Premium Website" />
+					</div>
+					<div class="card-content">
+						<h3 class="card-title">Premium Website</h3>
+						<p class="card-description">
+							Een volledig op maat gemaakte website met CMS-integratie.
+						</p>
+					</div>
+					<div class="card-arrow">
+						<svg
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M7 17L17 7M17 7H7M17 7V17"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</div>
 				</article>
 			</a>
 			<a href="/ecommerce-website" class="card-link">
-				<article class="card box-shadow" data-card>
-					<section class="service-card__header">
-						<img src={cart.src} alt="Service 3" />
-						<h2 class="card__title">Ecommerce Website</h2>
-					</section>
-					<p>Complete webshop oplossingen die meegroeien met uw bedrijf.</p>
+				<article class="card" data-card>
+					<div class="card-icon">
+						<img src={cart.src} alt="Ecommerce Website" />
+					</div>
+					<div class="card-content">
+						<h3 class="card-title">Ecommerce Website</h3>
+						<p class="card-description">
+							Complete webshop oplossingen die meegroeien met uw bedrijf.
+						</p>
+					</div>
+					<div class="card-arrow">
+						<svg
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M7 17L17 7M17 7H7M17 7V17"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"></path>
+						</svg>
+					</div>
 				</article>
 			</a>
 		</div>
@@ -48,20 +108,43 @@ import ctaBackground from "../assets/cta-background.png";
 	.services {
 		position: relative;
 		background-image:
-			linear-gradient(180deg, rgba(52, 49, 47, 0.7) 0%, rgba(52, 49, 47, 0.7) 70%),
+			linear-gradient(180deg, rgba(52, 49, 47, 0.85) 0%, rgba(52, 49, 47, 0.9) 100%),
 			var(--backgroundImage);
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
+		background-attachment: fixed;
+		padding-block: 6rem;
 	}
 
-	.service-card__header {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 0.5rem;
+	@media (max-width: 760px) {
+		.services {
+			background-attachment: scroll;
+		}
 	}
 
+	.subtitle {
+		color: rgba(255, 255, 255, 0.85);
+	}
+
+	.service-cards {
+		--card-delay: 0.15s;
+		display: grid;
+		gap: 2rem;
+		grid-template-columns: 1fr;
+		width: 100%;
+		margin-top: 4rem;
+		box-sizing: border-box;
+	}
+
+	@media (min-width: 760px) {
+		.service-cards {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2.5rem;
+		}
+	}
+
+	/* Card Link */
 	.card-link {
 		text-decoration: none;
 		color: inherit;
@@ -70,68 +153,157 @@ import ctaBackground from "../assets/cta-background.png";
 		box-sizing: border-box;
 	}
 
-	.card-link:hover .card {
-		transform: translateY(-5px);
-		transition: transform 0.3s ease;
-	}
-
-	.subtitle {
-		opacity: 60%;
-		color: var(--clr-white);
-	}
-
-	.service-cards {
-		--card-delay: 0.2s;
-		display: grid;
+	/* Card Base Styles */
+	.card {
+		position: relative;
+		background: rgba(255, 255, 255, 0.98);
+		backdrop-filter: blur(10px);
+		border-radius: 24px;
+		padding: 3rem 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 		gap: 1.5rem;
-		grid-template-columns: 1fr;
-		width: 100%;
-		margin-top: 3rem;
-		box-sizing: border-box;
-	}
-
-	@media (min-width: 760px) {
-		.service-cards {
-			grid-template-columns: repeat(3, 1fr);
-			gap: 2rem;
-		}
-	}
-
-	.service-cards .card {
-		padding: 4rem 1rem;
 		opacity: 0;
-		transform: translateY(20px) scale(0.95);
+		transform: translateY(30px) scale(0.95);
 		transition:
-			opacity 0.5s ease-out,
-			transform 0.5s ease-out;
-		width: 100%;
-		box-sizing: border-box;
-		margin: 0;
+			opacity 0.6s ease-out,
+			transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+			box-shadow 0.4s ease,
+			background 0.3s ease;
+		box-shadow:
+			0 10px 40px rgba(0, 0, 0, 0.15),
+			0 2px 8px rgba(0, 0, 0, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		overflow: hidden;
 	}
 
-	.service-cards .card.animate {
+	.card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #ff5733 0%, #e64d2a 100%);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.4s ease;
+	}
+
+	.card.animate {
 		opacity: 1;
 		transform: translateY(0) scale(1);
 	}
 
-	.card:nth-child(1) {
+	.card-link:nth-child(1) .card {
 		transition-delay: calc(var(--card-delay) * 1);
 	}
-	.card:nth-child(2) {
+	.card-link:nth-child(2) .card {
 		transition-delay: calc(var(--card-delay) * 2);
 	}
-	.card:nth-child(3) {
+	.card-link:nth-child(3) .card {
 		transition-delay: calc(var(--card-delay) * 3);
 	}
 
-	img {
-		width: 2rem;
-		height: 2rem;
+	/* Card Hover Effects */
+	.card-link:hover .card {
+		transform: translateY(-12px);
+		box-shadow:
+			0 20px 60px rgba(0, 0, 0, 0.2),
+			0 8px 16px rgba(0, 0, 0, 0.15);
+		background: rgba(255, 255, 255, 1);
+	}
+
+	.card-link:hover .card::before {
+		transform: scaleX(1);
+	}
+
+	.card-link:hover .card-icon {
+		transform: scale(1.1) rotate(5deg);
+	}
+
+	.card-link:hover .card-arrow {
+		transform: translate(4px, -4px);
+		opacity: 1;
+	}
+
+	/* Card Icon */
+	.card-icon {
+		width: 72px;
+		height: 72px;
+		border-radius: 18px;
+		background: linear-gradient(135deg, #ff5733 0%, #e64d2a 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow:
+			0 8px 24px rgba(255, 87, 51, 0.3),
+			0 4px 12px rgba(255, 87, 51, 0.2);
+		transition:
+			transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+			box-shadow 0.4s ease;
+	}
+
+	.card-icon img {
+		width: 36px;
+		height: 36px;
+		filter: brightness(0) invert(1);
+	}
+
+	/* Card Content */
+	.card-content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.card-title {
+		font-family: var(--ff-accent);
+		font-size: var(--font-size-lg);
+		font-weight: 600;
+		color: var(--clr-black);
+		margin: 0;
+		line-height: 1.3;
+	}
+
+	.card-description {
+		font-size: --font-size-medium;
+		text-align: left;
+		color: var(--clr-gray-600);
+		line-height: 1.3;
+		margin: 0;
+	}
+
+	/* Card Arrow */
+	.card-arrow {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		width: 32px;
+		height: 32px;
+		color: #ff5733;
+		opacity: 0.6;
+		transition:
+			transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+			opacity 0.3s ease;
 	}
 
 	@media (min-width: 760px) {
-		.service-cards .card {
-			padding: 7rem 1.5rem;
+		.card {
+			padding: 3.5rem 2.5rem;
+			min-height: 320px;
+		}
+
+		.card-icon {
+			width: 80px;
+			height: 80px;
+		}
+
+		.card-icon img {
+			width: 40px;
+			height: 40px;
 		}
 	}
 </style>
