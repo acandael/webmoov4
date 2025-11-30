@@ -16,12 +16,11 @@ import hamburger from "../assets/hamburger.svg";
 			</button>
 			<nav class="primary-navigation" id="primary-nav" data-visible="false">
 				<ul role="list">
-					<li><a href="/">Home</a></li>
 					<li><a href="/over-ons">Over Ons</a></li>
 					<li><a href="/#producten">Onze Producten</a></li>
 					<li><a href="/ons-werk">Ons Werk</a></li>
 					<li><a href="/blog">Blog</a></li>
-					<li><a href="/contact">Contact</a></li>
+					<li><a href="/contact" class="button-link">Contact</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -123,6 +122,31 @@ import hamburger from "../assets/hamburger.svg";
 		color: var(--clr-accent-500);
 	}
 
+	/* Button-styled Contact link */
+	.primary-navigation .button-link {
+		background-color: #ff5733;
+		border: 2px solid #ff5733;
+		color: white;
+		padding: 0.5rem 1rem;
+		border-radius: var(--border-radius-rounded);
+		font-weight: 500;
+		transition: all 0.3s ease;
+	}
+
+	.primary-navigation .button-link:hover {
+		background-color: #e64d2a;
+		border-color: #e64d2a;
+		color: white;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	@media (min-width: 760px) {
+		.primary-navigation .button-link {
+			padding: 0.75rem 1.5rem;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.menu-toggle {
 			display: block;
@@ -178,6 +202,22 @@ import hamburger from "../assets/hamburger.svg";
 			color: var(--clr-white);
 			font-size: var(--font-size-lg);
 			font-weight: 700;
+		}
+
+		/* Keep button styling in mobile menu */
+		.primary-navigation .button-link {
+			font-size: var(--font-size-regular);
+			font-weight: 500;
+			background-color: #ff5733;
+			border: 2px solid #ff5733;
+			color: white;
+			display: inline-block;
+		}
+
+		.primary-navigation .button-link:hover {
+			background-color: #e64d2a;
+			border-color: #e64d2a;
+			color: white;
 		}
 	}
 
