@@ -10,6 +10,7 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import FormattedDate from "../../components/ui/FormattedDate.astro";
 import AuthorCard from "../../components/blog/AuthorCard.astro";
+import StructuredData from "../../components/StructuredData.astro";
 
 export const getStaticPaths = (async () => {
 	const posts = await getCollection("blog", ({ data }) => !data.isDraft);
@@ -27,9 +28,38 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const { title, description, pubDate, image, author } = post.data;
 const coverImageSource = (await getImage({ src: post.data.image })).src;
+
+// Article Schema
+const articleSchema = {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	headline: title,
+	description: description,
+	image: `https://www.webmoov.be${coverImageSource}`,
+	datePublished: pubDate.toISOString(),
+	dateModified: pubDate.toISOString(),
+	author: {
+		"@type": "Person",
+		name: author,
+	},
+	publisher: {
+		"@type": "Organization",
+		name: "Webmoov",
+		logo: {
+			"@type": "ImageObject",
+			url: "https://www.webmoov.be/logo.png",
+		},
+	},
+	mainEntityOfPage: {
+		"@type": "WebPage",
+		"@id": `https://www.webmoov.be/blog/${post.data.slug}`,
+	},
+};
 ---
 
 <Layout title={title} description={description} image={coverImageSource}>
+	<StructuredData schema={articleSchema} />
+
 	<div class="blog-post">
 		<!-- Post Header -->
 		<section class="section" data-padding="compact">

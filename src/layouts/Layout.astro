@@ -4,13 +4,47 @@ import "@fontsource-variable/eb-garamond";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Analytics from "@vercel/analytics/astro";
+import StructuredData from "../components/StructuredData.astro";
 import "../styles/global.css";
 
 const {
-	title = "Maatwerk websites | Webmoov",
-	description = "Maatwerk websites",
+	title = "Maatwerk Website op Maat | Web Design & Development | Webmoov",
+	description = "Professionele maatwerk websites op maat van uw bedrijf. Web design en development voor one-pager, premium websites en e-commerce oplossingen. CMS integratie en SEO optimalisatie.",
 	image = "src/assets/logo.png",
 } = Astro.props;
+
+// Organization Schema for all pages
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	name: "Webmoov",
+	url: "https://www.webmoov.be",
+	logo: "https://www.webmoov.be/logo.png",
+	description:
+		"Webmoov is een web design en development bureau gespecialiseerd in maatwerk websites op maat. Van one-pager websites tot premium websites met CMS en e-commerce oplossingen.",
+	address: {
+		"@type": "PostalAddress",
+		addressCountry: "BE",
+	},
+	sameAs: [],
+	contactPoint: {
+		"@type": "ContactPoint",
+		contactType: "Customer Service",
+		url: "https://www.webmoov.be/contact",
+	},
+	areaServed: {
+		"@type": "Country",
+		name: "Belgium",
+	},
+	knowsAbout: [
+		"Web Design",
+		"Web Development",
+		"Maatwerk Websites",
+		"CMS Development",
+		"E-commerce Development",
+		"SEO Optimization",
+	],
+};
 ---
 
 <!doctype html>
@@ -26,6 +60,7 @@ const {
 		<meta name="generator" content={Astro.generator} />
 
 		<link rel="sitemap" href="/sitemap-index.xml" />
+		<link rel="canonical" href={Astro.url} />
 		<title>{title}</title>
 
 		<!-- Open Graph / Facebook -->
@@ -43,6 +78,9 @@ const {
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={image} />
 		<meta property="twitter:image:alt" content={description} />
+
+		<!-- Structured Data -->
+		<StructuredData schema={organizationSchema} />
 	</head>
 </html>
 <body>

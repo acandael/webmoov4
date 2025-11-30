@@ -22,115 +22,285 @@ function getIcon(label: string) {
 }
 ---
 
-<section class="section background-broken-white" data-padding="compact">
+<section class="section results-section">
 	<div class="container">
-		<div class="project-results">
-			<h2>Project results</h2>
-			<div class="results-grid">
-				{
-					project.data.results.map(([number, label]: [string, string], index: number) => (
-						<div class="stats-item" data-index={index}>
-							<div class="stats-icon" set:html={getIcon(label)} />
-							<p class="stats-number">{number}</p>
-							<p class="stats-label">{label}</p>
+		<div class="results-header" data-animate-header>
+			<h2 class="section-title">Resultaten</h2>
+			<p class="subtitle">De impact die we samen hebben bereikt</p>
+		</div>
+		<div class="results-grid">
+			{
+				project.data.results.map(([number, label]: [string, string], index: number) => (
+					<div class="result-card" data-index={index} data-result-card>
+						<div class="card-inner">
+							<div class="icon-wrapper">
+								<div class="stats-icon" set:html={getIcon(label)} />
+							</div>
+							<div class="stats-content">
+								<p class="stats-number" data-number={number}>
+									{number}
+								</p>
+								<p class="stats-label">{label}</p>
+							</div>
 						</div>
-					))
-				}
-			</div>
+					</div>
+				))
+			}
 		</div>
 	</div>
 </section>
 
 <style>
-	.project-results {
-		background: var(--background-broken-white);
-		border-radius: var(--border-radius);
+	.results-section {
+		background: linear-gradient(180deg, #ffffff 0%, var(--background-light-gray) 100%);
+		padding-block: 6rem;
+		position: relative;
+		overflow: hidden;
 	}
 
-	.project-results h2 {
-		font-size: var(--font-size-xl);
+	.results-section::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 150%;
+		height: 100%;
+		background: radial-gradient(ellipse at top, rgba(255, 87, 51, 0.03) 0%, transparent 70%);
+		pointer-events: none;
+	}
+
+	@media (width > 760px) {
+		.results-section {
+			padding-block: 8rem;
+		}
+	}
+
+	.container {
+		max-width: var(--container-max-width);
+		margin-inline: auto;
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Header */
+	.results-header {
 		text-align: center;
 		margin-bottom: 4rem;
-	}
-
-	.results-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 3rem;
-	}
-
-	.stats-item {
-		display: grid;
-		gap: 1rem;
-		text-align: center;
-		@media (width > 760px) {
-			text-align: left;
-		}
-		background-color: var(--background-main);
-		padding-inline: 1.5rem;
-		padding-block: 3rem;
-		border-radius: var(--border-radius);
-		box-shadow: var(--box-shadow);
 		opacity: 0;
-		transform: translateY(20px);
+		transform: translateY(-20px);
 		transition:
-			opacity 0.6s ease-out,
-			transform 0.6s ease-out;
+			opacity 0.6s ease,
+			transform 0.6s ease;
 	}
 
-	.stats-item.animate {
+	.results-header.animate {
 		opacity: 1;
 		transform: translateY(0);
 	}
 
+	/* Grid */
+	.results-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+
+		@media (width > 600px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (width > 900px) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 2.5rem;
+		}
+	}
+
+	/* Result Card */
+	.result-card {
+		opacity: 0;
+		transform: translateY(30px) scale(0.95);
+		transition:
+			opacity 0.6s ease,
+			transform 0.6s ease;
+	}
+
+	.result-card.animate {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	.card-inner {
+		background: white;
+		border-radius: 20px;
+		padding: 3rem 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 2rem;
+		box-shadow:
+			0 4px 24px rgba(0, 0, 0, 0.06),
+			0 2px 8px rgba(0, 0, 0, 0.04);
+		border: 1px solid rgba(0, 0, 0, 0.04);
+		position: relative;
+		overflow: hidden;
+		transition:
+			transform 0.4s ease,
+			box-shadow 0.4s ease,
+			border-color 0.3s ease;
+		height: 100%;
+	}
+
+	.card-inner::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #ff5733 0%, #e64d2a 100%);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.4s ease;
+	}
+
+	.result-card:hover .card-inner {
+		transform: translateY(-8px);
+		box-shadow:
+			0 12px 40px rgba(0, 0, 0, 0.12),
+			0 4px 16px rgba(0, 0, 0, 0.08);
+		border-color: rgba(255, 87, 51, 0.1);
+	}
+
+	.result-card:hover .card-inner::before {
+		transform: scaleX(1);
+	}
+
+	/* Icon Wrapper */
+	.icon-wrapper {
+		width: 72px;
+		height: 72px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, rgba(255, 87, 51, 0.1) 0%, rgba(230, 77, 42, 0.1) 100%);
+		border: 2px solid rgba(255, 87, 51, 0.2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition:
+			transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+			background 0.4s ease,
+			border-color 0.4s ease;
+	}
+
+	.result-card:hover .icon-wrapper {
+		transform: scale(1.1) rotate(5deg);
+		background: linear-gradient(135deg, rgba(255, 87, 51, 0.15) 0%, rgba(230, 77, 42, 0.15) 100%);
+		border-color: rgba(255, 87, 51, 0.3);
+	}
+
 	.stats-icon {
-		color: var(--text-body);
-		margin-bottom: 0.5rem;
+		color: #ff5733;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.stats-icon :global(svg) {
+		width: 36px;
+		height: 36px;
+	}
+
+	/* Stats Content */
+	.stats-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		width: 100%;
 	}
 
 	.stats-number {
 		font-family: var(--ff-accent);
-		font-size: var(--font-size-xl);
-		font-weight: 600;
-		color: var(--clr-accent-500);
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: #ff5733;
 		line-height: 1;
+		margin: 0;
+		transition: transform 0.3s ease;
+	}
+
+	.result-card:hover .stats-number {
+		transform: scale(1.05);
+	}
+
+	@media (width > 760px) {
+		.stats-number {
+			font-size: 3rem;
+		}
 	}
 
 	.stats-label {
-		font-size: var(--font-size-regular);
-		color: var(--text-body);
+		font-size: var(--font-size-sm);
+		color: var(--clr-gray-600);
+		margin: 0;
+		line-height: 1.4;
+		font-weight: 500;
+	}
+
+	@media (width > 760px) {
+		.stats-label {
+			font-size: var(--font-size-regular);
+		}
+	}
+
+	/* Staggered animations */
+	.result-card[data-index="0"] {
+		transition-delay: 0.1s;
+	}
+	.result-card[data-index="1"] {
+		transition-delay: 0.2s;
+	}
+	.result-card[data-index="2"] {
+		transition-delay: 0.3s;
+	}
+	.result-card[data-index="3"] {
+		transition-delay: 0.4s;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.stats-item {
+		.result-card,
+		.results-header {
 			transition: none;
 		}
 	}
 </style>
 
 <script>
-	// Set up the Intersection Observer
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					const index = parseInt(entry.target.getAttribute("data-index") || "0", 10);
-					// Add a small delay based on the index for a staggered effect
-					setTimeout(() => {
+	document.addEventListener("DOMContentLoaded", () => {
+		// Set up the Intersection Observer
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
 						entry.target.classList.add("animate");
-					}, index * 150);
-					observer.unobserve(entry.target);
-				}
-			});
-		},
-		{
-			threshold: 0.2,
-			rootMargin: "0px",
-		},
-	);
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{
+				threshold: 0.1,
+				rootMargin: "0px 0px -50px 0px",
+			},
+		);
 
-	// Observe all stats items
-	document.querySelectorAll(".stats-item").forEach((item) => {
-		observer.observe(item);
+		// Observe header
+		const header = document.querySelector("[data-animate-header]");
+		if (header) {
+			observer.observe(header);
+		}
+
+		// Observe all result cards
+		document.querySelectorAll("[data-result-card]").forEach((card) => {
+			observer.observe(card);
+		});
 	});
 </script>
