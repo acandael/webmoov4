@@ -1,6 +1,6 @@
 import { a as createComponent, e as renderComponent, g as renderScript, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_D6Uo94ps.mjs';
 import 'kleur/colors';
-import { $ as $$Layout, a as $$StructuredData } from '../chunks/Layout_BPgg4mbj.mjs';
+import { $ as $$Layout, a as $$StructuredData } from '../chunks/Layout_xaltc5_f.mjs';
 import { $ as $$ProductSection, a as $$FeaturesGrid, b as $$ProcessTimeline, c as $$FormSection } from '../chunks/FormSection_BCuFTIPi.mjs';
 /* empty css                                             */
 export { renderers } from '../renderers.mjs';

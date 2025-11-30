@@ -4,9 +4,24 @@ import { render } from "@react-email/render";
 import SampleEmail from "../../emails/SampleEmail";
 import * as React from "react";
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+// Initialize Resend with error handling
+const apiKey = import.meta.env.RESEND_API_KEY || "";
+const resend = apiKey ? new Resend(apiKey) : null;
 
 export const POST: APIRoute = async ({ request }) => {
+  // Check if Resend is configured
+  if (!resend || !apiKey) {
+    console.error("RESEND_API_KEY is not configured");
+    return new Response(
+      JSON.stringify({
+        error: "Email service is not configured",
+      }),
+      {
+        status: 503,
+        statusText: "Service Unavailable",
+      }
+    );
+  }
   const body = await request.json();
   const { name, email, phone, message, subject } = body;
 

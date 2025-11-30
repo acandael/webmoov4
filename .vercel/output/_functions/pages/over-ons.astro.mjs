@@ -5,7 +5,7 @@ import { $ as $$Image } from '../chunks/_astro_assets_9cdBjiFt.mjs';
 import { c as creatorImage } from '../chunks/creator_Bjq9Q_hz.mjs';
 /* empty css                                    */
 import { $ as $$CTA } from '../chunks/CTA_CVAxtg6H.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BPgg4mbj.mjs';
+import { $ as $$Layout } from '../chunks/Layout_xaltc5_f.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Bio = createComponent(($$result, $$props, $$slots) => {

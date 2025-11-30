@@ -7,7 +7,7 @@ import { g as getCollection } from '../chunks/_astro_content_C24CrOD4.mjs';
 import { $ as $$Image } from '../chunks/_astro_assets_9cdBjiFt.mjs';
 import { p as projectImages } from '../chunks/projectImages_BaXUgYb_.mjs';
 import { $ as $$Heading } from '../chunks/Heading_VoDXhzC6.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BPgg4mbj.mjs';
+import { $ as $$Layout } from '../chunks/Layout_xaltc5_f.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro$2 = createAstro("https://www.webmoov.be");

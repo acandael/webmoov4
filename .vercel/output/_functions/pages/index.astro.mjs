@@ -1,6 +1,6 @@
 import { a as createComponent, m as maybeRenderHead, e as renderComponent, g as renderScript, r as renderTemplate, f as defineStyleVars, b as addAttribute } from '../chunks/astro/server_D6Uo94ps.mjs';
 import 'kleur/colors';
-import { a as $$StructuredData, $ as $$Layout } from '../chunks/Layout_BPgg4mbj.mjs';
+import { a as $$StructuredData, $ as $$Layout } from '../chunks/Layout_xaltc5_f.mjs';
 import { $ as $$Button } from '../chunks/Button_CqV9i-uR.mjs';
 /* empty css                                 */
 import { $ as $$Heading } from '../chunks/Heading_VoDXhzC6.mjs';

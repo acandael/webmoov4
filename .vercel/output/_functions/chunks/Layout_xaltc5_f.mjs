@@ -110,7 +110,13 @@ const $$StructuredData = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$StructuredData;
   const { schema } = Astro2.props;
-  return renderTemplate(_a || (_a = __template(['<script type="application/ld+json">', "<\/script>"])), unescapeHTML(JSON.stringify(schema)));
+  let schemaJSON = "{}";
+  try {
+    schemaJSON = JSON.stringify(schema);
+  } catch (error) {
+    console.error("Error serializing schema:", error);
+  }
+  return renderTemplate(_a || (_a = __template(['<script type="application/ld+json">', "<\/script>"])), unescapeHTML(schemaJSON));
 }, "/Users/anthonycandaele/Projects/webmoov4/website/src/components/StructuredData.astro", void 0);
 
 const $$Astro = createAstro("https://www.webmoov.be");

@@ -2,7 +2,7 @@ import { a as createComponent, c as createAstro, m as maybeRenderHead, s as spre
 import 'kleur/colors';
 import { C as ContactForm } from '../chunks/ContactForm_BzOloBEe.mjs';
 import { $ as $$Heading } from '../chunks/Heading_VoDXhzC6.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BPgg4mbj.mjs';
+import { $ as $$Layout } from '../chunks/Layout_xaltc5_f.mjs';
 /* empty css                                   */
 export { renderers } from '../renderers.mjs';
 

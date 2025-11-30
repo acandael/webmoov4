@@ -18,7 +18,11 @@ export default defineConfig({
 		},
 	},
 	output: "server",
-	adapter: vercel(),
+	adapter: vercel({
+		webAnalytics: {
+			enabled: true,
+		},
+	}),
 	redirects: {
 		"/en": {
 			status: 302,

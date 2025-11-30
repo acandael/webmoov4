@@ -25,12 +25,38 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+
+// Add error handling for render
+let Content;
+try {
+	const rendered = await render(post);
+	Content = rendered.Content;
+} catch (error) {
+	console.error('Error rendering blog post:', error);
+	throw new Error('Failed to render blog post');
+}
+
 const { title, description, pubDate, image, author } = post.data;
-const coverImageSource = (await getImage({ src: post.data.image })).src;
+
+// Safely get image source
+let coverImageSource = '';
+try {
+	const imageResult = await getImage({ src: post.data.image });
+	coverImageSource = imageResult.src;
+} catch (error) {
+	console.error('Error processing image:', error);
+	// Fallback to placeholder
+	coverImageSource = '/logo.png';
+}
 
 // Safely convert date to ISO string
-const dateISO = pubDate instanceof Date ? pubDate.toISOString() : new Date(pubDate).toISOString();
+let dateISO;
+try {
+	dateISO = pubDate instanceof Date ? pubDate.toISOString() : new Date(pubDate).toISOString();
+} catch (error) {
+	console.error('Error converting date:', error);
+	dateISO = new Date().toISOString();
+}
 
 // Article Schema
 const articleSchema = {

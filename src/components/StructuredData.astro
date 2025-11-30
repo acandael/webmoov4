@@ -4,6 +4,14 @@ interface Props {
 }
 
 const { schema } = Astro.props;
+
+// Safely stringify schema with error handling
+let schemaJSON = '{}';
+try {
+	schemaJSON = JSON.stringify(schema);
+} catch (error) {
+	console.error('Error serializing schema:', error);
+}
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={schemaJSON} />

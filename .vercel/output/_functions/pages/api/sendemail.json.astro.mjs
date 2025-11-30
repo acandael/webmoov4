@@ -96,8 +96,21 @@ const footer = {
   fontSize: "12px"
 };
 
-const resend = new Resend("re_AqR6gvyd_6XR7xbZexZFivut2kfAwECvd");
+const apiKey = "re_AqR6gvyd_6XR7xbZexZFivut2kfAwECvd";
+const resend = new Resend(apiKey) ;
 const POST = async ({ request }) => {
+  if (!resend || false) {
+    console.error("RESEND_API_KEY is not configured");
+    return new Response(
+      JSON.stringify({
+        error: "Email service is not configured"
+      }),
+      {
+        status: 503,
+        statusText: "Service Unavailable"
+      }
+    );
+  }
   const body = await request.json();
   const { name, email, phone, message, subject } = body;
   if (!name || !email || !message) {
