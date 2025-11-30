@@ -1,10 +1,11 @@
 import { escape } from 'html-escaper';
 import { Traverse } from 'neotraverse/modern';
 import pLimit from 'p-limit';
-import { r as removeBase, i as isRemotePath, p as prependForwardSlash } from './path_Cvt6sEOY.mjs';
+import { z } from 'zod';
+import { r as removeBase, i as isRemotePath, p as prependForwardSlash } from './path_tbLlI_c1.mjs';
 import { V as VALID_INPUT_FORMATS } from './consts_BmVDRGlB.mjs';
-import { A as AstroError, R as RenderUndefinedEntryError, a as createComponent, u as unescapeHTML, r as renderTemplate, U as UnknownContentCollectionError, i as renderUniqueStylesheet, j as renderScriptElement, k as createHeadAndContent, e as renderComponent } from './astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
+import { A as AstroError, R as RenderUndefinedEntryError, c as createComponent, u as unescapeHTML, a as renderTemplate, U as UnknownContentCollectionError, i as renderUniqueStylesheet, j as renderScriptElement, k as createHeadAndContent, r as renderComponent } from './astro/server_r_wwajli.mjs';
+import 'piccolore';
 import * as devalue from 'devalue';
 
 const CONTENT_IMAGE_FLAG = "astroContentImageFlag";
@@ -65,7 +66,7 @@ class ImmutableDataStore {
    */
   static async fromModule() {
     try {
-      const data = await import('./_astro_data-layer-content_C7Am4mgn.mjs');
+      const data = await import('./_astro_data-layer-content_BsRgaAeb.mjs');
       if (data.default instanceof Map) {
         return ImmutableDataStore.fromMap(data.default);
       }
@@ -113,13 +114,24 @@ function createCollectionToGlobResultMap({
   }
   return collectionToGlobResultMap;
 }
+z.object({
+  tags: z.array(z.string()).optional(),
+  lastModified: z.date().optional()
+});
 function createGetCollection({
   contentCollectionToEntryMap,
   dataCollectionToEntryMap,
   getRenderEntryImport,
-  cacheEntriesByCollection
+  cacheEntriesByCollection,
+  liveCollections
 }) {
   return async function getCollection(collection, filter) {
+    if (collection in liveCollections) {
+      throw new AstroError({
+        ...UnknownContentCollectionError,
+        message: `Collection "${collection}" is a live collection. Use getLiveCollection() instead of getCollection().`
+      });
+    }
     const hasFilter = typeof filter === "function";
     const store = await globalDataStore.get();
     let type;
@@ -212,7 +224,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import('./content-assets_DAheGFrz.mjs');
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('./_astro_assets_9cdBjiFt.mjs').then(n => n._);
+  const { getImage } = await import('./_astro_assets_CofzE13t.mjs').then(n => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -241,7 +253,9 @@ async function updateImageReferencesInBody(html, fileName) {
     return Object.entries({
       ...attributes,
       src: image.src,
-      srcset: image.srcSet.attribute
+      srcset: image.srcSet.attribute,
+      // This attribute is used by the toolbar audit
+      ...Object.assign(__vite_import_meta_env__, { _: process.env._ }).DEV ? { "data-image-component": "true" } : {}
     }).map(([key, value]) => value ? `${key}="${escape(value)}"` : "").join(" ");
   });
 }
@@ -372,6 +386,8 @@ function isPropagatedAssetsModule(module) {
 
 // astro-head-inject
 
+const liveCollections = {};
+
 const contentDir = '/src/content/';
 
 const contentEntryGlob = "";
@@ -416,6 +432,7 @@ const getCollection = createGetCollection({
 	dataCollectionToEntryMap,
 	getRenderEntryImport: createGlobLookup(collectionToRenderEntryMap),
 	cacheEntriesByCollection,
+	liveCollections,
 });
 
 export { getCollection as g, renderEntry as r };

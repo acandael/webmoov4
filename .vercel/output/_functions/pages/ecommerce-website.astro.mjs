@@ -1,22 +1,11 @@
-import { a as createComponent, e as renderComponent, g as renderScript, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
-import { $ as $$Layout, a as $$StructuredData } from '../chunks/Layout_xaltc5_f.mjs';
-import { $ as $$ProductSection, a as $$FeaturesGrid, b as $$ProcessTimeline, c as $$FormSection } from '../chunks/FormSection_BCuFTIPi.mjs';
+import { c as createComponent, r as renderComponent, f as renderScript, a as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_r_wwajli.mjs';
+import 'piccolore';
+import { c as createSvgComponent, $ as $$Layout, a as $$StructuredData } from '../chunks/Layout_CuzQxiQ1.mjs';
+import { $ as $$ProductSection, a as $$FeaturesGrid, b as $$ProcessTimeline, c as $$FormSection } from '../chunks/FormSection_CoFdOZaw.mjs';
 /* empty css                                             */
 export { renderers } from '../renderers.mjs';
 
-const cart = new Proxy({"src":"/_astro/shopping-cart.upPunxhq.svg","width":48,"height":48,"format":"svg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/Users/anthonycandaele/Projects/webmoov4/website/src/assets/shopping-cart.svg";
-							}
-							
-							return target[name];
-						}
-					});
+const cart = createSvgComponent({"meta":{"src":"/_astro/shopping-cart.upPunxhq.svg","width":48,"height":48,"format":"svg"},"attributes":{"width":"48","height":"48","viewBox":"0 0 48 48","fill":"none"},"children":"\n<path d=\"M14.625 40.875C14.625 41.3723 14.8225 41.8492 15.1742 42.2008C15.5258 42.5525 16.0027 42.75 16.5 42.75C16.9973 42.75 17.4742 42.5525 17.8258 42.2008C18.1775 41.8492 18.375 41.3723 18.375 40.875C18.375 40.3777 18.1775 39.9008 17.8258 39.5492C17.4742 39.1975 16.9973 39 16.5 39C16.0027 39 15.5258 39.1975 15.1742 39.5492C14.8225 39.9008 14.625 40.3777 14.625 40.875Z\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n<path d=\"M35.25 40.875C35.25 41.3723 35.4475 41.8492 35.7992 42.2008C36.1508 42.5525 36.6277 42.75 37.125 42.75C37.6223 42.75 38.0992 42.5525 38.4508 42.2008C38.8025 41.8492 39 41.3723 39 40.875C39 40.3777 38.8025 39.9008 38.4508 39.5492C38.0992 39.1975 37.6223 39 37.125 39C36.6277 39 36.1508 39.1975 35.7992 39.5492C35.4475 39.9008 35.25 40.3777 35.25 40.875Z\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n<path d=\"M5.34375 5.34375H9.09375L14.0813 28.6312C14.2642 29.4841 14.7388 30.2465 15.4232 30.7872C16.1077 31.328 16.9592 31.6132 17.8313 31.5938H36.1688C37.0222 31.5924 37.8497 31.2999 38.5144 30.7647C39.1792 30.2295 39.6415 29.4835 39.825 28.65L42.9188 14.7188H11.1\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n"});
 
 const ecommerceWebsite = new Proxy({"src":"/_astro/ecommerce-website.m9gBzHeU.jpg","width":1168,"height":800,"format":"jpg"}, {
 						get(target, name, receiver) {

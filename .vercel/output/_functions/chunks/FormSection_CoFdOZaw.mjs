@@ -1,9 +1,9 @@
-import { c as createAstro, a as createComponent, m as maybeRenderHead, b as addAttribute, e as renderComponent, g as renderScript, r as renderTemplate } from './astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
-import { $ as $$Button } from './Button_CqV9i-uR.mjs';
-import { $ as $$Image } from './_astro_assets_9cdBjiFt.mjs';
+import { b as createAstro, c as createComponent, m as maybeRenderHead, d as addAttribute, r as renderComponent, f as renderScript, a as renderTemplate } from './astro/server_r_wwajli.mjs';
+import 'piccolore';
+import { $ as $$Button } from './Button_ColBcMks.mjs';
+import { $ as $$Image } from './_astro_assets_CofzE13t.mjs';
 /* empty css                                     */
-import { $ as $$Heading } from './Heading_VoDXhzC6.mjs';
+import { $ as $$Heading } from './Heading_AkU23SkB.mjs';
 import { C as ContactForm } from './ContactForm_BzOloBEe.mjs';
 
 const $$Astro$2 = createAstro("https://www.webmoov.be");

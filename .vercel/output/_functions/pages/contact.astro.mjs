@@ -1,8 +1,8 @@
-import { a as createComponent, c as createAstro, m as maybeRenderHead, s as spreadAttributes, b as addAttribute, d as renderSlot, e as renderComponent, r as renderTemplate } from '../chunks/astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
+import { c as createComponent, b as createAstro, m as maybeRenderHead, s as spreadAttributes, d as addAttribute, e as renderSlot, r as renderComponent, a as renderTemplate } from '../chunks/astro/server_r_wwajli.mjs';
+import 'piccolore';
 import { C as ContactForm } from '../chunks/ContactForm_BzOloBEe.mjs';
-import { $ as $$Heading } from '../chunks/Heading_VoDXhzC6.mjs';
-import { $ as $$Layout } from '../chunks/Layout_xaltc5_f.mjs';
+import { $ as $$Heading } from '../chunks/Heading_AkU23SkB.mjs';
+import { $ as $$Layout } from '../chunks/Layout_CuzQxiQ1.mjs';
 /* empty css                                   */
 export { renderers } from '../renderers.mjs';
 

@@ -1,11 +1,11 @@
-import { c as createAstro, a as createComponent, m as maybeRenderHead, g as renderScript, b as addAttribute, u as unescapeHTML, r as renderTemplate, e as renderComponent, F as Fragment } from '../../chunks/astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
-import { g as getCollection } from '../../chunks/_astro_content_C24CrOD4.mjs';
-import { $ as $$Layout, a as $$StructuredData } from '../../chunks/Layout_xaltc5_f.mjs';
-import { $ as $$Heading } from '../../chunks/Heading_VoDXhzC6.mjs';
+import { b as createAstro, c as createComponent, m as maybeRenderHead, f as renderScript, d as addAttribute, u as unescapeHTML, a as renderTemplate, r as renderComponent, F as Fragment } from '../../chunks/astro/server_r_wwajli.mjs';
+import 'piccolore';
+import { g as getCollection } from '../../chunks/_astro_content_BXp6EixN.mjs';
+import { $ as $$Layout, a as $$StructuredData } from '../../chunks/Layout_CuzQxiQ1.mjs';
+import { $ as $$Heading } from '../../chunks/Heading_AkU23SkB.mjs';
 import 'clsx';
 /* empty css                                        */
-import { $ as $$Image } from '../../chunks/_astro_assets_9cdBjiFt.mjs';
+import { $ as $$Image } from '../../chunks/_astro_assets_CofzE13t.mjs';
 import { p as projectImages } from '../../chunks/projectImages_BaXUgYb_.mjs';
 export { renderers } from '../../renderers.mjs';
 

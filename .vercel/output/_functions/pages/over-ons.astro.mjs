@@ -1,68 +1,24 @@
-import { a as createComponent, m as maybeRenderHead, e as renderComponent, r as renderTemplate, g as renderScript } from '../chunks/astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
-import { $ as $$Heading } from '../chunks/Heading_VoDXhzC6.mjs';
-import { $ as $$Image } from '../chunks/_astro_assets_9cdBjiFt.mjs';
+import { c as createComponent, m as maybeRenderHead, r as renderComponent, a as renderTemplate, f as renderScript } from '../chunks/astro/server_r_wwajli.mjs';
+import 'piccolore';
+import { $ as $$Heading } from '../chunks/Heading_AkU23SkB.mjs';
+import { $ as $$Image } from '../chunks/_astro_assets_CofzE13t.mjs';
 import { c as creatorImage } from '../chunks/creator_Bjq9Q_hz.mjs';
 /* empty css                                    */
-import { $ as $$CTA } from '../chunks/CTA_CVAxtg6H.mjs';
-import { $ as $$Layout } from '../chunks/Layout_xaltc5_f.mjs';
+import { $ as $$CTA } from '../chunks/CTA_BYDRMKKn.mjs';
+import { c as createSvgComponent, $ as $$Layout } from '../chunks/Layout_CuzQxiQ1.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Bio = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<section class="section" data-astro-cid-2jiluk5e> <div class="container" data-astro-cid-2jiluk5e> ${renderComponent($$result, "Heading", $$Heading, { "data-astro-cid-2jiluk5e": true }, { "default": ($$result2) => renderTemplate` <h2 class="section-title" data-astro-cid-2jiluk5e>Oprichter Anthony Candaele</h2> ` })} <div class="bio" data-astro-cid-2jiluk5e> <div class="content" data-astro-cid-2jiluk5e> <p data-astro-cid-2jiluk5e>Ik zie web ontwikkeling als een digitaal ambacht. Het vereist tijd, kennis en ervaring om een goede website te bouwen. Hierbij komen verschillende vaardigheden kijken, van de eerste schets tot het lanceren van de website.</p> <p data-astro-cid-2jiluk5e>We vertrekken van een design die aansluit op de strategie van het bedrijf, en de merkidentiteit weerspiegelt. Dit design wordt dan omgezet naar een performante website. Hierbij wordt gebruikt gemaakt van moderne technologieën.</p> <p data-astro-cid-2jiluk5e>Deze aanpak zorgt ervoor dat je website gemakkelijk kan uitgebreid worden en meegroeien met je bedrijf. Iets wat veel minder evident is bij een website die gebaseerd is op een template en gebouwd werd met een zogenaamde webpage builder als Webflow of Wix.</p> <p data-astro-cid-2jiluk5e>We voorzien je website ook met een <strong data-astro-cid-2jiluk5e>op maat gemaakt CMS</strong> zodat jij en je medewerkers de website gemakkelijk kunnen onderhouden en van nieuwe content voorzien. Dit is cruciaal voor de indexering door Google, zodat je website gemakkelijk kan gevonden worden door je doelpubliek.</p> <p data-astro-cid-2jiluk5e>Het is uiteindelijk mijn motivatie om een website te bouwen die niet enkel mooi oogt, maar een echte meerwaarde realiseert voor je bedrijf of organisatie.</p> </div> <div class="image" data-astro-cid-2jiluk5e> ${renderComponent($$result, "Image", $$Image, { "src": creatorImage, "alt": "Anthony Candaele", "width": 800, "height": 600, "class": "box-shadow", "format": "webp", "quality": "high", "data-astro-cid-2jiluk5e": true })} </div> </div> </div> </section> `;
 }, "/Users/anthonycandaele/Projects/webmoov4/website/src/components/Bio.astro", void 0);
 
-const chessIcon = new Proxy({"src":"/_astro/chess.Ba6N1wCp.svg","width":32,"height":33,"format":"svg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/Users/anthonycandaele/Projects/webmoov4/website/src/assets/chess.svg";
-							}
-							
-							return target[name];
-						}
-					});
+const chessIcon = createSvgComponent({"meta":{"src":"/_astro/chess.Ba6N1wCp.svg","width":32,"height":33,"format":"svg"},"attributes":{"width":"32","height":"33","viewBox":"0 0 32 33","fill":"none"},"children":"\n<path d=\"M16 0.330078C17.0842 0.330078 17.96 1.23333 17.96 2.35133V3.36195H18.94C20.0242 3.36195 20.9 4.2652 20.9 5.3832C20.9 6.5012 20.0242 7.40445 18.94 7.40445H17.96V10.4363H27.27C28.6237 10.4363 29.72 11.567 29.72 12.9629C29.72 13.2977 29.6588 13.6261 29.5301 13.9356L24.82 25.5957H7.18003L2.4699 13.9356C2.34128 13.6261 2.28003 13.2977 2.28003 12.9629C2.28003 11.567 3.3764 10.4363 4.73003 10.4363H14.04V7.40445H13.06C11.9759 7.40445 11.1 6.50121 11.1 5.3832C11.1 4.2652 11.9759 3.36195 13.06 3.36195H14.04V2.35133C14.04 1.23333 14.9159 0.330078 16 0.330078ZM4.64428 30.2319L7.18003 27.617H24.82L27.3558 30.2319C27.613 30.4972 27.76 30.8636 27.76 31.2426C27.76 32.0321 27.1414 32.6701 26.3758 32.6701H5.62428C4.85865 32.6701 4.24003 32.0321 4.24003 31.2426C4.24003 30.8636 4.38703 30.4972 4.64428 30.2319Z\" fill=\"#ED5C2E\" />\n"});
 
-const paletteIcon = new Proxy({"src":"/_astro/palette.QlkjI_Z6.svg","width":32,"height":32,"format":"svg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/Users/anthonycandaele/Projects/webmoov4/website/src/assets/palette.svg";
-							}
-							
-							return target[name];
-						}
-					});
+const paletteIcon = createSvgComponent({"meta":{"src":"/_astro/palette.QlkjI_Z6.svg","width":32,"height":32,"format":"svg"},"attributes":{"width":"32","height":"32","viewBox":"0 0 32 32","fill":"none"},"children":"\n<path d=\"M16 29.3334C14.1778 29.3334 12.4555 28.9834 10.8333 28.2834C9.21109 27.5834 7.79443 26.6279 6.58329 25.4167C5.37218 24.2056 4.41663 22.7889 3.71663 21.1667C3.01663 19.5445 2.66663 17.8223 2.66663 16.0001C2.66663 14.1334 3.02218 12.3889 3.73329 10.7667C4.44441 9.14455 5.41663 7.73341 6.64996 6.53341C7.88329 5.33341 9.32776 4.38897 10.9833 3.70008C12.6388 3.01119 14.4111 2.66675 16.3 2.66675C18.0555 2.66675 19.7222 2.96119 21.3 3.55008C22.8778 4.13897 24.2611 4.95563 25.45 6.00008C26.6388 7.04455 27.5833 8.28341 28.2833 9.71675C28.9833 11.1501 29.3333 12.7223 29.3333 14.4334C29.3333 16.8334 28.6333 18.7279 27.2333 20.1167C25.8333 21.5056 23.9778 22.2001 21.6666 22.2001H19.1666C18.7666 22.2001 18.4222 22.3556 18.1333 22.6667C17.8444 22.9779 17.7 23.3223 17.7 23.7001C17.7 24.1445 17.8611 24.5667 18.1833 24.9667C18.5055 25.3667 18.6666 25.8445 18.6666 26.4001C18.6666 26.9779 18.3944 27.6112 17.85 28.3001C17.3055 28.9889 16.6888 29.3334 16 29.3334ZM8.23329 16.8667C8.67776 16.8667 9.06663 16.7001 9.39996 16.3667C9.73329 16.0334 9.89996 15.6445 9.89996 15.2001C9.89996 14.7556 9.73329 14.3667 9.39996 14.0334C9.06663 13.7001 8.67776 13.5334 8.23329 13.5334C7.78883 13.5334 7.39996 13.7001 7.06663 14.0334C6.73329 14.3667 6.56663 14.7556 6.56663 15.2001C6.56663 15.6445 6.73329 16.0334 7.06663 16.3667C7.39996 16.7001 7.78883 16.8667 8.23329 16.8667ZM12.4333 11.2001C12.8778 11.2001 13.2666 11.0334 13.6 10.7001C13.9333 10.3667 14.1 9.97788 14.1 9.53341C14.1 9.08895 13.9333 8.70008 13.6 8.36675C13.2666 8.03341 12.8778 7.86675 12.4333 7.86675C11.9888 7.86675 11.6 8.03341 11.2666 8.36675C10.9333 8.70008 10.7666 9.08895 10.7666 9.53341C10.7666 9.97788 10.9333 10.3667 11.2666 10.7001C11.6 11.0334 11.9888 11.2001 12.4333 11.2001ZM19.5666 11.2001C20.0111 11.2001 20.4 11.0334 20.7333 10.7001C21.0666 10.3667 21.2333 9.97788 21.2333 9.53341C21.2333 9.08895 21.0666 8.70008 20.7333 8.36675C20.4 8.03341 20.0111 7.86675 19.5666 7.86675C19.1222 7.86675 18.7333 8.03341 18.4 8.36675C18.0666 8.70008 17.9 9.08895 17.9 9.53341C17.9 9.97788 18.0666 10.3667 18.4 10.7001C18.7333 11.0334 19.1222 11.2001 19.5666 11.2001ZM23.9333 16.8667C24.3778 16.8667 24.7666 16.7001 25.1 16.3667C25.4333 16.0334 25.6 15.6445 25.6 15.2001C25.6 14.7556 25.4333 14.3667 25.1 14.0334C24.7666 13.7001 24.3778 13.5334 23.9333 13.5334C23.4888 13.5334 23.1 13.7001 22.7666 14.0334C22.4333 14.3667 22.2666 14.7556 22.2666 15.2001C22.2666 15.6445 22.4333 16.0334 22.7666 16.3667C23.1 16.7001 23.4888 16.8667 23.9333 16.8667Z\" fill=\"#ED5C2E\" />\n"});
 
-const wrenchIcon = new Proxy({"src":"/_astro/wrench.C6UyrHPP.svg","width":32,"height":32,"format":"svg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/Users/anthonycandaele/Projects/webmoov4/website/src/assets/wrench.svg";
-							}
-							
-							return target[name];
-						}
-					});
+const wrenchIcon = createSvgComponent({"meta":{"src":"/_astro/wrench.C6UyrHPP.svg","width":32,"height":32,"format":"svg"},"attributes":{"width":"32","height":"32","viewBox":"0 0 32 32","fill":"none"},"children":"\n<g clip-path=\"url(#clip0_72_118)\">\n<path d=\"M14.1785 12.7244L0.320068 26.4694L5.545 31.6782L19.3747 17.8079C22.6272 19.03 26.7602 18.6856 29.3835 16.0735C32.2139 13.2515 32.2077 8.51439 30.5601 5.09945L24.4477 11.193L20.7857 7.54432L26.8981 1.45079C23.4874 -0.205946 18.7049 -0.214347 15.8743 2.60779C13.2126 5.26112 12.8801 9.43899 14.1785 12.7244Z\" fill=\"#ED5C2E\" />\n</g>\n<defs>\n<clipPath id=\"clip0_72_118\">\n<rect width=\"32\" height=\"32\" fill=\"white\" />\n</clipPath>\n</defs>\n"});
 
-const rocketIcon = new Proxy({"src":"/_astro/rocket.BBl33F4K.svg","width":32,"height":32,"format":"svg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/Users/anthonycandaele/Projects/webmoov4/website/src/assets/rocket.svg";
-							}
-							
-							return target[name];
-						}
-					});
+const rocketIcon = createSvgComponent({"meta":{"src":"/_astro/rocket.BBl33F4K.svg","width":32,"height":32,"format":"svg"},"attributes":{"width":"32","height":"32","viewBox":"0 0 32 32","fill":"none"},"children":"\n<path d=\"M3.26681 14.1L8.86681 8.49999C9.17795 8.18885 9.54461 7.96665 9.96681 7.83332C10.389 7.69999 10.8223 7.67772 11.2668 7.76665L13.8335 8.23332C12.6113 9.61105 11.6223 10.9167 10.8668 12.15C10.1113 13.3833 9.41128 14.8222 8.76681 16.4667L3.26681 14.1ZM10.0001 17.0667C10.6001 15.4444 11.3557 13.9167 12.2668 12.4833C13.1779 11.05 14.2113 9.75552 15.3668 8.59999C17.3223 6.64441 19.5557 5.1833 22.0668 4.21663C24.5779 3.24997 26.9223 2.95553 29.1001 3.3333C29.4779 5.51108 29.189 7.85552 28.2335 10.3667C27.2779 12.8777 25.8223 15.1111 23.8668 17.0667C22.7113 18.2222 21.4113 19.2555 19.9668 20.1667C18.5223 21.0777 16.989 21.8333 15.3668 22.4333L10.0001 17.0667ZM19.5335 12.9C19.9779 13.3444 20.5279 13.5667 21.1835 13.5667C21.839 13.5667 22.389 13.3444 22.8335 12.9C23.2779 12.4555 23.5001 11.9055 23.5001 11.25C23.5001 10.5944 23.2779 10.0444 22.8335 9.59999C22.389 9.15552 21.839 8.93332 21.1835 8.93332C20.5279 8.93332 19.9779 9.15552 19.5335 9.59999C19.089 10.0444 18.8668 10.5944 18.8668 11.25C18.8668 11.9055 19.089 12.4555 19.5335 12.9ZM18.3668 29.1667L15.9668 23.6667C17.6113 23.0222 19.0501 22.3222 20.2835 21.5667C21.5168 20.8111 22.8223 19.8222 24.2001 18.6L24.6668 21.1667C24.7557 21.6111 24.7335 22.05 24.6001 22.4833C24.4668 22.9167 24.2446 23.2889 23.9335 23.6L18.3668 29.1667ZM5.40015 21.4C6.17792 20.6222 7.12235 20.2277 8.23348 20.2167C9.34461 20.2055 10.289 20.5889 11.0668 21.3667C11.8446 22.1444 12.2335 23.0889 12.2335 24.2C12.2335 25.3111 11.8446 26.2555 11.0668 27.0333C10.489 27.6111 9.58901 28.0889 8.36681 28.4667C7.14461 28.8444 5.32237 29.2 2.90015 29.5333C3.23348 27.1111 3.58903 25.2944 3.96681 24.0833C4.34459 22.8722 4.82237 21.9777 5.40015 21.4Z\" fill=\"#ED5C2E\" />\n"});
 
 const $$Process = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<section class="section background-broken-white" data-astro-cid-fz4tclxl> <div class="container" data-astro-cid-fz4tclxl> ${renderComponent($$result, "Heading", $$Heading, { "data-astro-cid-fz4tclxl": true }, { "default": ($$result2) => renderTemplate` <h2 class="section-title" data-astro-cid-fz4tclxl>Ons proces</h2> <p class="subtitle" data-astro-cid-fz4tclxl>Hoe wij websites bouwen die converteren</p> ` })} <div class="steps equal-columns" data-astro-cid-fz4tclxl> <div class="step box-shadow" data-step data-astro-cid-fz4tclxl> <div class="process-icon" data-astro-cid-fz4tclxl> ${renderComponent($$result, "Image", $$Image, { "src": chessIcon, "alt": "Chess Icon", "width": 48, "height": 48, "data-astro-cid-fz4tclxl": true })} </div> <h2 data-astro-cid-fz4tclxl>Strategie</h2> <p data-astro-cid-fz4tclxl>We beginnen met het begrijpen van uw behoeften en doelen</p> </div> <div class="step box-shadow" data-step data-astro-cid-fz4tclxl> <div class="process-icon" data-astro-cid-fz4tclxl> ${renderComponent($$result, "Image", $$Image, { "src": paletteIcon, "alt": "Palette Icon", "width": 48, "height": 48, "data-astro-cid-fz4tclxl": true })} </div> <h2 data-astro-cid-fz4tclxl>Design</h2> <p data-astro-cid-fz4tclxl>We creëren een visueel aantrekkelijk en gebruiksvriendelijk ontwerp</p> </div> <div class="step box-shadow" data-step data-astro-cid-fz4tclxl> <div class="process-icon" data-astro-cid-fz4tclxl> ${renderComponent($$result, "Image", $$Image, { "src": wrenchIcon, "alt": "Wrench Icon", "width": 48, "height": 48, "data-astro-cid-fz4tclxl": true })} </div> <h2 data-astro-cid-fz4tclxl>Ontwikkeling</h2> <p data-astro-cid-fz4tclxl>We bouwen uw website met de nieuwste technologieën</p> </div> <div class="step box-shadow" data-step data-astro-cid-fz4tclxl> <div class="process-icon" data-astro-cid-fz4tclxl> ${renderComponent($$result, "Image", $$Image, { "src": rocketIcon, "alt": "Rocket Icon", "width": 48, "height": 48, "data-astro-cid-fz4tclxl": true })} </div> <h2 data-astro-cid-fz4tclxl>Lancering</h2> <p data-astro-cid-fz4tclxl>We lanceren uw website en zorgen voor een soepele overgang</p> </div> </div> </div> </section>  ${renderScript($$result, "/Users/anthonycandaele/Projects/webmoov4/website/src/components/Process.astro?astro&type=script&index=0&lang.ts")}`;

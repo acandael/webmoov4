@@ -1,13 +1,13 @@
-import { c as createAstro, a as createComponent, m as maybeRenderHead, e as renderComponent, g as renderScript, r as renderTemplate, b as addAttribute } from '../chunks/astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
-import { $ as $$CTA } from '../chunks/CTA_CVAxtg6H.mjs';
-import { $ as $$Button } from '../chunks/Button_CqV9i-uR.mjs';
+import { b as createAstro, c as createComponent, m as maybeRenderHead, r as renderComponent, f as renderScript, a as renderTemplate, d as addAttribute } from '../chunks/astro/server_r_wwajli.mjs';
+import 'piccolore';
+import { $ as $$CTA } from '../chunks/CTA_BYDRMKKn.mjs';
+import { $ as $$Button } from '../chunks/Button_ColBcMks.mjs';
 /* empty css                                    */
-import { g as getCollection } from '../chunks/_astro_content_C24CrOD4.mjs';
-import { $ as $$Image } from '../chunks/_astro_assets_9cdBjiFt.mjs';
+import { g as getCollection } from '../chunks/_astro_content_BXp6EixN.mjs';
+import { $ as $$Image } from '../chunks/_astro_assets_CofzE13t.mjs';
 import { p as projectImages } from '../chunks/projectImages_BaXUgYb_.mjs';
-import { $ as $$Heading } from '../chunks/Heading_VoDXhzC6.mjs';
-import { $ as $$Layout } from '../chunks/Layout_xaltc5_f.mjs';
+import { $ as $$Heading } from '../chunks/Heading_AkU23SkB.mjs';
+import { $ as $$Layout } from '../chunks/Layout_CuzQxiQ1.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro$2 = createAstro("https://www.webmoov.be");

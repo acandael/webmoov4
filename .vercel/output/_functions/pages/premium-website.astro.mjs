@@ -1,22 +1,11 @@
-import { a as createComponent, e as renderComponent, g as renderScript, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_D6Uo94ps.mjs';
-import 'kleur/colors';
-import { $ as $$Layout, a as $$StructuredData } from '../chunks/Layout_xaltc5_f.mjs';
-import { $ as $$ProductSection, a as $$FeaturesGrid, b as $$ProcessTimeline, c as $$FormSection } from '../chunks/FormSection_BCuFTIPi.mjs';
+import { c as createComponent, r as renderComponent, f as renderScript, a as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_r_wwajli.mjs';
+import 'piccolore';
+import { c as createSvgComponent, $ as $$Layout, a as $$StructuredData } from '../chunks/Layout_CuzQxiQ1.mjs';
+import { $ as $$ProductSection, a as $$FeaturesGrid, b as $$ProcessTimeline, c as $$FormSection } from '../chunks/FormSection_CoFdOZaw.mjs';
 /* empty css                                           */
 export { renderers } from '../renderers.mjs';
 
-const trophyicon = new Proxy({"src":"/_astro/trophy.jPlSKdrk.svg","width":48,"height":48,"format":"svg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/Users/anthonycandaele/Projects/webmoov4/website/src/assets/trophy.svg";
-							}
-							
-							return target[name];
-						}
-					});
+const trophyicon = createSvgComponent({"meta":{"src":"/_astro/trophy.jPlSKdrk.svg","width":48,"height":48,"format":"svg"},"attributes":{"width":"48","height":"48","viewBox":"0 0 48 48","fill":"none"},"children":"\n<path d=\"M12.75 18.375H9.9375C8.6943 18.375 7.50201 17.8811 6.62294 17.0021C5.74386 16.123 5.25 14.9307 5.25 13.6875C5.25 12.4443 5.74386 11.252 6.62294 10.3729C7.50201 9.49386 8.6943 9 9.9375 9H12.75\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n<path d=\"M35.25 18.375H38.0625C39.3057 18.375 40.498 17.8811 41.3771 17.0021C42.2561 16.123 42.75 14.9307 42.75 13.6875C42.75 12.4443 42.2561 11.252 41.3771 10.3729C40.498 9.49386 39.3057 9 38.0625 9H35.25\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n<path d=\"M9 42.75H39\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n<path d=\"M20.25 28.9878V33.3753C20.25 34.4065 19.3688 35.2128 18.4313 35.644C16.2188 36.6565 14.625 39.4503 14.625 42.7503\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n<path d=\"M27.75 28.9878V33.3753C27.75 34.4065 28.6312 35.2128 29.5687 35.644C31.7812 36.6565 33.375 39.4503 33.375 42.7503\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n<path d=\"M35.25 5.25H12.75V18.375C12.75 21.3587 13.9353 24.2202 16.045 26.33C18.1548 28.4397 21.0163 29.625 24 29.625C26.9837 29.625 29.8452 28.4397 31.955 26.33C34.0647 24.2202 35.25 21.3587 35.25 18.375V5.25Z\" stroke=\"#ED5C2E\" stroke-width=\"2.875\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n"});
 
 const premiumWebsite = new Proxy({"src":"/_astro/premium-website.DxXjc3-G.jpg","width":1340,"height":744,"format":"jpg"}, {
 						get(target, name, receiver) {
