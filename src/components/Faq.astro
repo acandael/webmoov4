@@ -8,34 +8,38 @@ import chevrondown from "../assets/chevron-down.svg";
 const faqData = [
 	{
 		question: "Wat is inbegrepen bij het One Pager Website pakket?",
-		answer: "Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken."
+		answer:
+			"Een onepager website is een eenvoudige en snel te maken website die bestaat uit één pagina. Deze pagina bevat alle belangrijke informatie over uw bedrijf en is bedoeld om potentiële klanten te bereiken.",
 	},
 	{
 		question: "Hoe lang duurt het om een Premium Website te bouwen?",
-		answer: "Een Premium Website kan gebouwd worden in 4 tot 8 weken, afhankelijk van het aantal pagina's en de complexiteit van de website."
+		answer:
+			"Een Premium Website kan gebouwd worden in 4 tot 8 weken, afhankelijk van het aantal pagina's en de complexiteit van de website.",
 	},
 	{
 		question: "Hoe lang duurt het om een Ecommerce Website te bouwen?",
-		answer: "Een Ecommerce Website kan gebouwd worden in 6 tot 12 weken, afhankelijk van het aantal producten en de complexiteit van de website."
+		answer:
+			"Een Ecommerce Website kan gebouwd worden in 6 tot 12 weken, afhankelijk van het aantal producten en de complexiteit van de website.",
 	},
 	{
 		question: "Bieden jullie doorlopende ondersteuning en onderhoud?",
-		answer: "Ja, we bieden doorlopende ondersteuning en onderhoud aan al onze websites. Dit omvat het updaten van de website, en het toevoegen van nieuwe functies."
-	}
+		answer:
+			"Ja, we bieden doorlopende ondersteuning en onderhoud aan al onze websites. Dit omvat het updaten van de website, en het toevoegen van nieuwe functies.",
+	},
 ];
 
 // FAQ Schema
 const faqSchema = {
 	"@context": "https://schema.org",
 	"@type": "FAQPage",
-	mainEntity: faqData.map(faq => ({
+	mainEntity: faqData.map((faq) => ({
 		"@type": "Question",
 		name: faq.question,
 		acceptedAnswer: {
 			"@type": "Answer",
-			text: faq.answer
-		}
-	}))
+			text: faq.answer,
+		},
+	})),
 };
 ---
 
@@ -48,21 +52,36 @@ const faqSchema = {
 			<p class="subtitle">Alles wat u moet weten over onze diensten</p>
 		</Heading>
 		<div class="faq-items">
-			{faqData.map((faq) => (
-				<div class="faq-item" data-faq-item>
-					<button class="question" aria-expanded="false">
-						<span class="question-text">{faq.question}</span>
-						<span class="icon-wrapper">
-							<svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							</svg>
-						</span>
-					</button>
-					<div class="answer-wrapper">
-						<p class="answer">{faq.answer}</p>
+			{
+				faqData.map((faq) => (
+					<div class="faq-item" data-faq-item>
+						<button class="question" aria-expanded="false">
+							<span class="question-text">{faq.question}</span>
+							<span class="icon-wrapper">
+								<svg
+									class="chevron"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M6 9L12 15L18 9"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</span>
+						</button>
+						<div class="answer-wrapper">
+							<p class="answer">{faq.answer}</p>
+						</div>
 					</div>
-				</div>
-			))}
+				))
+			}
 		</div>
 	</div>
 </section>
@@ -83,11 +102,7 @@ const faqSchema = {
 		transform: translateX(-50%);
 		width: 150%;
 		height: 100%;
-		background: radial-gradient(
-			ellipse at bottom,
-			rgba(255, 87, 51, 0.03) 0%,
-			transparent 70%
-		);
+		background: radial-gradient(ellipse at bottom, rgba(255, 87, 51, 0.03) 0%, transparent 70%);
 		pointer-events: none;
 	}
 
@@ -240,9 +255,9 @@ const faqSchema = {
 
 	.answer {
 		padding: 0 2rem 2rem 2rem;
-		font-size: var(--font-size-regular);
+		font-size: var(--font-size-md);
 		line-height: 1.7;
-		color: var(--clr-gray-600);
+		color: var(--clr-gray-700);
 		opacity: 0;
 		transform: translateY(-10px);
 		transition:
